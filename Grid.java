@@ -10,12 +10,11 @@ public class Grid{
 		tokens = 0;
 		file = aFile;
 		column = aColumn;
-		grid = new Token[aColumn][aFile];
+		grid = new Token[aFile][aColumn];
 
-		for(int i=0; i<aColumn; i++)
-			for (int j=0; j<aFile; j++)
+		for(int i=0; i<aFile; i++)
+			for (int j=0; j<aColumn; j++)
 				grid[i][j]=null;	
-			
 	}
 
 	/*checkea si la columna en la que quiero insertar una ficha esta llena*/
@@ -85,30 +84,46 @@ arreglo[x][y]
 
 */
 	public void putAToken(Integer player, int aColumn){
-		Integer[][] hola = new Integer[file][column];
-		hola[6][3] = 1;
-		for (int i=0;i<file ;i++ ) {
-			for (int j =0;j<column ;j++ ) {
-				System.out.print(hola[i][j]+" ");
-			}		
-			System.out.println();	
-		}
 		int limUp = file-1;
 		int limDown = 0;
-		int half;
+		int half = (limUp + limDown)/2;
 		Token aToken = new Token(player);
-		while(limUp>limDown){
-			half=(limUp+limDown)/2;
-			if (grid[aColumn][half]==null)
-				if (grid[aColumn][half-1]!=null)
-					grid[aColumn][half]= aToken;
-				else
-					limUp=half;
-				else
-					if (grid[aColumn][half+1]==null)
-						grid[aColumn][half+1]= aToken;
-					else
-						limDown=half;
+		while(limUp > limDown + 1){
+			System.out.println("half" + half);
+			if (half == 0){
+				grid[half-1][aColumn] = aToken;
+				System.out.println("half" + half);
+			}
+			else{
+				half = (limUp + limDown)/2;
+				if (grid[half][aColumn] == null){
+					if (grid[half-1][aColumn] != null){
+						System.out.println("half" + half);
+						grid[half][aColumn] = aToken;
+					}
+					else{
+						limUp  = half;
+					}
+				}
+				else{
+					if (grid[half+1][aColumn] == null){
+						System.out.println("half" + half);
+						grid[half+1][aColumn] = aToken;
+					}
+					else{
+						limDown = half;
+					}
+			// System.out.println("half" + half);
+			// System.out.println("limUp" + limUp);
+			// System.out.println("limDown" + limDown);
+				}
+			}
+		}
+		for (int i = 0; i < file ; i++) {
+			for (int j = 0; j < column ; j++) {
+				System.out.print(grid[i][j]+" ");
+			}		
+			System.out.println();	
 		}
 	}
 
@@ -152,8 +167,8 @@ arreglo[x][y]
 		int cantidad=0;
 
 		// System.out.println(grid.putAToken(2,1));
-		grid.putAToken(new Integer(2),1);
-		grid.putAToken(new Integer(1),1);
+		//grid.putAToken(new Integer(2),1);
+		grid.putAToken(new Integer(1),0);
 	}
 
 
