@@ -15,9 +15,11 @@ public class App
 
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-        /**User u = new User();
+        User u = new User();
         u.set("first_name", "Ariel");
-        u.save();**/
+        u.set("last_name", "Jorobado");
+        u.set("email","someone@nobody.com");
+        u.save();
 
         /**User prueba = new User();
         prueba.set("first_name", "Roberto");
@@ -25,7 +27,7 @@ public class App
         prueba.set("email", "412@nadie.com");
         prueba.save();**/
 
-        User.deleteAll();
+        //User.deleteAll();
 
 
         Base.close();
