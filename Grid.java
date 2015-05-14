@@ -1,160 +1,176 @@
 public class Grid{
 
-	private Token[][] grid;
+	Token[][] grid;
 	private int file;
 	private int column;
 	private int tokens;
 
 	/*CONSTRUCTOR*/
 	public Grid(int aFile, int aColumn){
+		grid = new Token[aFile][aColumn];
+		file = aFile-1;
+		column = aColumn-1;
 		tokens = 0;
-		file = aFile;
-		column = aColumn;
-		grid = new Token[aColumn][aFile];
 
-		for(int i=0; i<aColumn; i++)
-			for (int j=0; j<aFile; j++)
-				grid[i][j]=null;	
-			
+		for(int i=0; i<=file; i++)
+			for (int j=0 ;j<=column; j++)
+				grid[i][j]=null;
 	}
 
-	/*checkea si la columna en la que quiero insertar una ficha esta llena*/
-	public boolean fullColumn(int thisColumn){
-		boolean flag=true;
-		int half=file/2;
-			while (half<file){//busca en la columna de manera dicotomica
-				if ((grid[thisColumn][half]).getToken()==null)
-					return false;
-				half=half+(file-half)/2;
-			}
-		return flag;
-	}
+	public int searchWinner(){
+		Integer playerOne = 1;
+		Integer playertwo = 2;
+		int count = 0;
 
-	/*indica si el tablero esta completo o no*/
-	public boolean fullGrid(){
-		
-		return tokens == file*column;
-	}
-
-	/*coloca una ficha en alguna posicion del tablero*/
-// 	public void putAToken(Integer player, int aColumn){
-// 		Token token = new Token(player);
-// 		int limDown = 0;
-// 		int limUp = file;
-// 		Boolean cond = true;
-// 		int half = (limUp+limDown)/2;
-
-// 		while(cond&& limUp>limDown){
-// 			half = (limUp+limDown)/2;
-// 			System.out.println((half-1)+" "+ (half+1));
-// 			if(grid[0][column]==null){
-// 				half =0;
-// 				cond=false;
-// 			}
-// else{
-// 			if(grid[half-1][column] == null )
-// 				limUp=half;
-// 			else{
-// 				if (grid[half+1][column] == null)
-// 					limDown=half;
-// 				else{
-					
-// 					cond = false;
-// 				}
-// 			}
-// 		}
-// 			}
-// 			grid[half][column] = token;
-// 	}
-
-
-/*
-
-arreglo[x][y]
-
-				 y y y y y y
-				____________
-			x	|1 2 3 4 5 6
-			x	|1 2 3 4 5 6
-			x	|1 2 3 4 5 6
-			x	|1 2 3 4 5 6 
-			x	|1 2 3 4 5 6 
-			x	|1 2 3 4 5 6 
-			x	|1 2 3 4 5 6 
-
-
-*/
-	public void putAToken(Integer player, int aColumn){
-		Integer[][] hola = new Integer[file][column];
-		hola[6][3] = 1;
-		for (int i=0;i<file ;i++ ) {
-			for (int j =0;j<column ;j++ ) {
-				System.out.print(hola[i][j]+" ");
-			}		
-			System.out.println();	
+		for(int i=0; i<=file; i++){
+			count = 0;
+			for (int j=0 ;j<column; j++){
+				if(count == 4)
+					return 1;
+				if(grid[i][j].getToken() == playerOne && playerOne == grid[i][j+1].getToken())
+					count++;
+				else
+					count = 0;
+			}	
 		}
-		int limUp = file-1;
-		int limDown = 0;
+
+			for(int i=0; i<column; i++){
+			count = 0;
+			for (int j=0 ;j<=file; j++){
+				if(count == 4)
+					return 1;
+				if(grid[j][i].getToken() == playerOne && playerOne == grid[j][i+1].getToken())
+					count++;
+				else
+					count = 0;
+			}	
+		}
+
+
+
+
+
+
+
+
+
+			for(int i=0; i<=file; i++){
+			count = 0;
+			for (int j=0 ;j<column; j++){
+				if(count == 4)
+					return 2;
+				if(grid[i][j].getToken() == playertwo && playertwo == grid[i][j+1].getToken())
+					count++;
+				else
+					count = 0;
+			}	
+		}
+
+			for(int i=0; i<=column; i++){
+			count = 0;
+			for (int j=0 ;j<file; j++){
+				if(count == 4)
+					return 2;
+				if(grid[j][i].getToken() == playertwo && playertwo == grid[j][i+1].getToken())
+					count++;
+				else
+					count = 0;
+			}	
+		}
+
+		return 0; 
+
+
+
+
+
+
+
+
+		 //return 1 ;//= ganadaron el jugador nº 1
+		// return 2 = ganadaron el jugador nº 2
+		// return 0 = es un empate 
+		// return -1 = nadie gano
+		// 
+	}
+
+	public Boolean fullBoard(){
+		return tokens == (file+1)*(column+1);
+	}
+
+	public Boolean fullColumn(int aColumn){
+		return grid[0][aColumn-1] != null;	
+	}
+
+	public void play(Integer player,int aColumn){
+		if (!fullColumn(aColumn))
+			putAToken(player,aColumn);
+		int game = searchWinner();
+		if (game == 1)
+			System.out.println("EL JUGADRO NUMERO 1 ES EL GANADOR");
+		if (game == 2)
+			System.out.println("EL JUGADRO NUMERO 2 ES EL GANADOR");
+		if(fullBoard())
+			System.out.println("EMPATE");
+	}
+
+
+	public void show(){
+		for(int i=0; i<=file; i++){
+			for (int j=0 ;j<=column; j++){
+				System.out.print(" "+grid[i][j]);
+				}	
+			System.out.println();
+		}
+	}
+
+
+	public void putAToken(Integer player,int aColumn){
+		Token token = new Token(player);
+		aColumn--;
+		int limDown = file;
+		int limUp = 0;
 		int half;
-		Token aToken = new Token(player);
-		while(limUp>limDown){
-			half=(limUp+limDown)/2;
-			if (grid[aColumn][half]==null)
-				if (grid[aColumn][half-1]!=null)
-					grid[aColumn][half]= aToken;
-				else
-					limUp=half;
-				else
-					if (grid[aColumn][half+1]==null)
-						grid[aColumn][half+1]= aToken;
-					else
-						limDown=half;
-		}
-	}
+		Boolean cond = true;
+		tokens++;
+		while(cond){
+			half = (limDown+limUp)/2;
 
-	/*despues de colocar una ficha dice si ese jugador es el ganador*/
-	public boolean searchWiner(int x, int y){
-		boolean flag1=true;
-		boolean flag2=true;
-		for(int i=x; i>x-3; i--){
-			if (((grid[i][y]).getToken())!=((grid[i-1][y]).getToken()))
-				flag1 = false;
-		}
-		for(int j=y; j>y-3; j--){
-			if (((grid[x][j]).getToken())!=((grid[x][j-1]).getToken()))
-				flag2 = false;
-		}
-		return (flag1||flag2);
-	}
-
-	public Integer playAGame( int thisColumn, Integer player){
-		if (tokens == file * column)
-			return 0;
-		else{
-			if (fullColumn(thisColumn))
-				System.out.println("***ERROR***");
-			else{
-				putAToken(player,thisColumn);
-				tokens++;
+			if(grid[file][aColumn] == null){
+				grid[file][aColumn] =token;
+				cond = false;
 			}
-			for(int i=column; i>0; i--)
-				for(int j=file; j>0; j--){
-					if (false)
-						return player;
-				}
-			return 0;
-		}
 
+			if(grid[1][aColumn] != null){
+				grid[0] [aColumn]=token;
+				cond = false;
+			}
+			
+			if(grid[half][aColumn]!= null)
+				limDown = half;
+			else{
+				if(grid[half+1][aColumn] == null)
+					limUp = half;
+				else{
+					grid[half][aColumn]= token; 
+					cond = false;
+				}
+			}
+		}
 	}
+	
+
 
 	public static void main(String[] args) {
 		Grid grid = new Grid(7,6);
-		int cantidad=0;
-
-		// System.out.println(grid.putAToken(2,1));
+		grid.play(new Integer(1),1);
 		grid.putAToken(new Integer(2),1);
 		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(2),1);
+		grid.putAToken(new Integer(1),2);
+		grid.putAToken(new Integer(2),3);
+		grid.putAToken(new Integer(1),4);
+		System.out.println(grid.fullColumn(1));
+		grid.show();
 	}
-
-
 }
