@@ -11,10 +11,32 @@ public class Grid{
 		file = aFile-1;
 		column = aColumn-1;
 		tokens = 0;
+<<<<<<< HEAD
 
 		for(int i=0; i<=file; i++)
 			for (int j=0 ;j<=column; j++)
 				grid[i][j]=null;
+=======
+		file = aFile;
+		column = aColumn;
+		grid = new Token[aFile][aColumn];
+
+		for(int i=0; i<aFile; i++)
+			for (int j=0; j<aColumn; j++)
+				grid[i][j]=null;	
+	}
+
+	/*checkea si la columna en la que quiero insertar una ficha esta llena*/
+	public boolean fullColumn(int thisColumn){
+		boolean flag=true;
+		int half=file/2;
+			while (half<file){//busca en la columna de manera dicotomica
+				if ((grid[thisColumn][half]).getToken()==null)
+					return false;
+				half=half+(file-half)/2;
+			}
+		return flag;
+>>>>>>> 7a7052c973cc142aa8ac93b0c0b60d0bd51e3b1d
 	}
 
 	public int searchWinner(){
@@ -34,6 +56,7 @@ public class Grid{
 			}	
 		}
 
+<<<<<<< HEAD
 			for(int i=0; i<column; i++){
 			count = 0;
 			for (int j=0 ;j<=file; j++){
@@ -76,6 +99,97 @@ public class Grid{
 				else
 					count = 0;
 			}	
+=======
+	/*coloca una ficha en alguna posicion del tablero*/
+// 	public void putAToken(Integer player, int aColumn){
+// 		Token token = new Token(player);
+// 		int limDown = 0;
+// 		int limUp = file;
+// 		Boolean cond = true;
+// 		int half = (limUp+limDown)/2;
+
+// 		while(cond&& limUp>limDown){
+// 			half = (limUp+limDown)/2;
+// 			System.out.println((half-1)+" "+ (half+1));
+// 			if(grid[0][column]==null){
+// 				half =0;
+// 				cond=false;
+// 			}
+// else{
+// 			if(grid[half-1][column] == null )
+// 				limUp=half;
+// 			else{
+// 				if (grid[half+1][column] == null)
+// 					limDown=half;
+// 				else{
+					
+// 					cond = false;
+// 				}
+// 			}
+// 		}
+// 			}
+// 			grid[half][column] = token;
+// 	}
+
+
+/*
+
+arreglo[x][y]
+
+				 y y y y y y
+				____________
+			x	|1 2 3 4 5 6
+			x	|1 2 3 4 5 6
+			x	|1 2 3 4 5 6
+			x	|1 2 3 4 5 6 
+			x	|1 2 3 4 5 6 
+			x	|1 2 3 4 5 6 
+			x	|1 2 3 4 5 6 
+
+
+*/
+	public void putAToken(Integer player, int aColumn){
+		int limUp = file-1;
+		int limDown = 0;
+		int half = (limUp + limDown)/2;
+		Token aToken = new Token(player);
+		while(limUp > limDown + 1){
+			System.out.println("half" + half);
+			if (half == 0){
+				grid[half-1][aColumn] = aToken;
+				System.out.println("half" + half);
+			}
+			else{
+				half = (limUp + limDown)/2;
+				if (grid[half][aColumn] == null){
+					if (grid[half-1][aColumn] != null){
+						System.out.println("half" + half);
+						grid[half][aColumn] = aToken;
+					}
+					else{
+						limUp  = half;
+					}
+				}
+				else{
+					if (grid[half+1][aColumn] == null){
+						System.out.println("half" + half);
+						grid[half+1][aColumn] = aToken;
+					}
+					else{
+						limDown = half;
+					}
+			// System.out.println("half" + half);
+			// System.out.println("limUp" + limUp);
+			// System.out.println("limDown" + limDown);
+				}
+			}
+		}
+		for (int i = 0; i < file ; i++) {
+			for (int j = 0; j < column ; j++) {
+				System.out.print(grid[i][j]+" ");
+			}		
+			System.out.println();	
+>>>>>>> 7a7052c973cc142aa8ac93b0c0b60d0bd51e3b1d
 		}
 
 		return 0; 
@@ -163,6 +277,7 @@ public class Grid{
 
 	public static void main(String[] args) {
 		Grid grid = new Grid(7,6);
+<<<<<<< HEAD
 		grid.play(new Integer(1),1);
 		grid.putAToken(new Integer(2),1);
 		grid.putAToken(new Integer(1),1);
@@ -172,5 +287,12 @@ public class Grid{
 		grid.putAToken(new Integer(1),4);
 		System.out.println(grid.fullColumn(1));
 		grid.show();
+=======
+		int cantidad=0;
+
+		// System.out.println(grid.putAToken(2,1));
+		//grid.putAToken(new Integer(2),1);
+		grid.putAToken(new Integer(1),0);
+>>>>>>> 7a7052c973cc142aa8ac93b0c0b60d0bd51e3b1d
 	}
 }

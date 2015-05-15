@@ -17,7 +17,17 @@ public class App
 
         User u = new User();
         u.set("first_name", "Ariel");
+        u.set("last_name", "Jorobado");
+        u.set("email","someone@nobody.com");
         u.save();
+
+        /**User prueba = new User();
+        prueba.set("first_name", "Roberto");
+        prueba.set("last_name","Rufini");
+        prueba.set("email", "412@nadie.com");
+        prueba.save();**/
+
+        //User.deleteAll();
 
 
         Base.close();

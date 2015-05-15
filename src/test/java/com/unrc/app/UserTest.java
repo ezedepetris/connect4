@@ -32,6 +32,8 @@ public class UserTest {
       User user = new User();
 
       user.set("first_name", "Juan");
+      user.set("last_name", "Testt");
+      user.set("email", "someone@nobody.com");
 
       the(user).shouldBe("valid");
     }
