@@ -51,7 +51,25 @@ public class Grid{
 				if(grid[j][i]==null)
 					count =0;
 				else{
-					if(grid[j][i].getToken() == playerOne && playerOne == grid[j][i+1].getToken())
+					System.out.println(playerOne+"="+grid[j][i].getToken());
+					//System.out.println(playerOne+"="+grid[j][i+1].getToken());
+					if(grid[j][i].getToken() == playerOne && playerOne == grid[j][i+1].getToken())//**CAMBIAR**
+						count++;
+					else
+						count = 0;
+				}
+			}	
+		}
+
+		for(int i=0; i<=file; i++){
+			count = 0;
+			for (int j=0 ;j<column; j++){
+				if(count == 4)
+					return 1;
+				if(grid[i][j]==null)
+					count =0;
+				else{
+					if(grid[i][j].getToken() == playerOne && playerOne == grid[i+1][j+1].getToken())
 						count++;
 					else
 						count = 0;
@@ -78,14 +96,30 @@ public class Grid{
 		}
 
 			for(int i=0; i<=column; i++){
+				count = 0;
+				for (int j=0 ;j<file; j++){
+					if(count == 4)
+						return 2;
+					if(grid[j][i]==null)
+						count =0;
+					else{
+						if(grid[j][i].getToken() == playertwo && playertwo == grid[j][i+1].getToken())//**CAMBIAR**
+							count++;
+						else
+							count = 0;
+					}	
+			}	
+		}
+
+		for(int i=0; i<=file; i++){
 			count = 0;
-			for (int j=0 ;j<file; j++){
+			for (int j=0 ;j<column; j++){
 				if(count == 4)
 					return 2;
-				if(grid[j][i]==null)
+				if(grid[i][j]==null)
 					count =0;
 				else{
-					if(grid[j][i].getToken() == playertwo && playertwo == grid[j][i+1].getToken())
+					if(grid[i][j].getToken() == playertwo && playertwo == grid[i+1][j+1].getToken())
 						count++;
 					else
 						count = 0;
@@ -171,14 +205,17 @@ public class Grid{
 
 	public static void main(String[] args) {
 		Grid grid = new Grid(7,6);
-		grid.play(new Integer(1),1);
-		grid.putAToken(new Integer(2),1);
+		//grid.play(new Integer(1),1);
 		grid.putAToken(new Integer(1),1);
-		grid.putAToken(new Integer(2),1);
-		grid.putAToken(new Integer(1),2);
-		grid.putAToken(new Integer(2),3);
-		grid.putAToken(new Integer(1),4);
+		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		/*grid.putAToken(new Integer(2),3);
+		grid.putAToken(new Integer(1),4);*/
 		System.out.println(grid.fullColumn(1));
 		grid.show();
+		System.out.println(grid.searchWinner());
 	}
 }
+
+
