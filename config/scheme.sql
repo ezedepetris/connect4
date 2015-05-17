@@ -7,22 +7,22 @@ create table users(
   email varchar(60) unique,
   first_name varchar(56),
   last_name varchar(56),
-	constraint user_id primary key (id)
+	constraint users_id primary key (id)
 );
-
+o
 drop table if exists game;
 create table games(
 	id integer not null,
 	grid_id integer not null,
 	user1_id integer not null,
 	user2_id integer not null
-	constraint game_id primary key (id)
+	constraint games_id primary key (id)
 );
 
 drop table if exists grids;
 create table grids(
 	id integer not null unique,
-	constraint grid_id primary key (id)
+	constraint grids_id primary key (id)
 );
 
 drop table if exists cells;
