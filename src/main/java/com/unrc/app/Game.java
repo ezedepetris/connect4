@@ -55,9 +55,31 @@ public class Game{
 				if(grid[j][i]==null||grid[j+1][i] ==null)
 					count =0;
 				else{
+<<<<<<< HEAD:src/main/java/com/unrc/app/Game.java
 					//System.out.println(playerOne.compareTo(grid[j][i].getToken()));
 				//	System.out.println(playerOne.compareTo(grid[j+1][i].getToken()));
 					if(playerOne.compareTo(grid[j][i].getToken())  == 0 && 0 == playerOne.compareTo(grid[j+1][i].getToken()))
+=======
+					System.out.println(playerOne+"="+grid[j][i].getToken());
+					//System.out.println(playerOne+"="+grid[j][i+1].getToken());
+					if(grid[j][i].getToken() == playerOne && playerOne == grid[j][i+1].getToken())//**CAMBIAR**
+						count++;
+					else
+						count = 0;
+				}
+			}	
+		}
+
+		for(int i=0; i<=file; i++){
+			count = 0;
+			for (int j=0 ;j<column; j++){
+				if(count == 4)
+					return 1;
+				if(grid[i][j]==null)
+					count =0;
+				else{
+					if(grid[i][j].getToken() == playerOne && playerOne == grid[i+1][j+1].getToken())
+>>>>>>> edcf83c8a46a9c3df25367192e054176acde3332:Grid.java
 						count++;
 					else
 						count = 0;
@@ -87,7 +109,24 @@ public class Game{
 		}
 
 			for(int i=0; i<=column; i++){
+				count = 0;
+				for (int j=0 ;j<file; j++){
+					if(count == 4)
+						return 2;
+					if(grid[j][i]==null)
+						count =0;
+					else{
+						if(grid[j][i].getToken() == playertwo && playertwo == grid[j][i+1].getToken())//**CAMBIAR**
+							count++;
+						else
+							count = 0;
+					}	
+			}	
+		}
+
+		for(int i=0; i<=file; i++){
 			count = 0;
+<<<<<<< HEAD:src/main/java/com/unrc/app/Game.java
 			for (int j=0 ;j<file; j++){
 				System.out.println(count+" player 2");
 				if(count == 4)
@@ -98,6 +137,15 @@ public class Game{
 				//	System.out.println(playerTwo.compareTo(grid[j][i].getToken()));
 				//	System.out.println(playerTwo.compareTo(grid[j+1][i].getToken()));
 					if(playerTwo.compareTo(grid[j][i].getToken())  == 0 && 0 == playerTwo.compareTo(grid[j+1][i].getToken()))
+=======
+			for (int j=0 ;j<column; j++){
+				if(count == 4)
+					return 2;
+				if(grid[i][j]==null)
+					count =0;
+				else{
+					if(grid[i][j].getToken() == playertwo && playertwo == grid[i+1][j+1].getToken())
+>>>>>>> edcf83c8a46a9c3df25367192e054176acde3332:Grid.java
 						count++;
 					else
 						count = 0;
@@ -186,6 +234,7 @@ public class Game{
 
 	public static void main(String[] args) {
 		Grid grid = new Grid(7,6);
+<<<<<<< HEAD:src/main/java/com/unrc/app/Game.java
 		// grid.play(new Integer(1),1);
 		// grid.play(new Integer(1),1);
 		 grid.play(new Integer(2),1);
@@ -196,6 +245,19 @@ public class Game{
 		grid.play(new Integer(1),1);
 		//  
 		// System.out.println(grid.fullColumn(1));
+=======
+		//grid.play(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		grid.putAToken(new Integer(1),1);
+		/*grid.putAToken(new Integer(2),3);
+		grid.putAToken(new Integer(1),4);*/
+		System.out.println(grid.fullColumn(1));
+>>>>>>> edcf83c8a46a9c3df25367192e054176acde3332:Grid.java
 		grid.show();
+		System.out.println(grid.searchWinner());
 	}
 }
+
+
