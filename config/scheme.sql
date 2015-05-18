@@ -12,7 +12,7 @@ create table users(
 
 drop table if exists games;
 create table games(
-	id integer not null,
+	id integer not null auto_increment,
 	grid_id integer not null,
 	user1_id integer not null,
 	user2_id integer not null,
@@ -21,23 +21,23 @@ create table games(
 
 drop table if exists grids;
 create table grids(
-	id integer not null unique,
+	id integer not null  auto_increment,
 	constraint grids_id primary key (id)
 );
 
 drop table if exists cells;
 create table cells(
-	id integer not null,
+	id integer not null  auto_increment,
 	pos_x integer not null,
 	pos_y integer not null,
-	grid_id integer not null,
+	grid_id integer /*not null*/,
 	user_id integer not null,
 	constraint cells_id primary key (id)
 );
 
 drop table if exists games_users;
 create table games_users(
-	id integer not null,
+	id integer not null auto_increment,
 	grid_id integer not null,
 	user_id integer not null,
 	constraint games_users_id primary key (id)

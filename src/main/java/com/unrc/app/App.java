@@ -13,6 +13,7 @@ public class App
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
         User.deleteAll();
+        Cell.deleteAll();
 
         User user1 = new User();
         user1.set("first_name", "ezequiel");
@@ -38,11 +39,12 @@ public class App
             Cell c = new Cell();
             column = in.nextInt();
             row = grid.play(move%2+1,column);
-            c.set("grids_id",grid.getId());
+            c.set("grid_id",grid.getId());
             c.set("pos_x", row);
             c.set("pos_y", column);
-            c.set("users_id", move%2+1);
+            c.set("user_id", move%2+1);
             c.save();
+            move++;
         }
 
         Base.close();
