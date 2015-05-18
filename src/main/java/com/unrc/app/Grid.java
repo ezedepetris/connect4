@@ -4,19 +4,19 @@ import org.javalite.activejdbc.Model;
 public class Grid extends Model{
 
 	Cell[][] grid;
-	private int file;
+	private int row;
 	private int column;
 	private int tokens;
 
 	/*CONSTRUCTOR*/
 	/*this method build the structure of an board, and sets the atributs of this method*/
-	public Grid(int aFile, int aColumn){
-		grid = new Cell[aFile][aColumn];
-		file = aFile-1;
+	public Grid(int arow, int aColumn){
+		grid = new Cell[arow][aColumn];
+		row = arow-1;
 		column = aColumn-1;
 		tokens = 0;
 
-		for(int i=0; i<=file; i++)
+		for(int i=0; i<=row; i++)
 			for (int j=0 ;j<=column; j++)
 				grid[i][j]=null;
 	}
@@ -24,7 +24,7 @@ public class Grid extends Model{
 /*this method search a winner of this game*/
 	public int searchWinner(Integer player){
 		int count = 0;
-		for(int i=0; i<=file; i++){
+		for(int i=0; i<=row; i++){
 			count = 0;
 			for (int j=0 ;j<column; j++){
 				if(grid[i][j]==null||grid[i][j+1] ==null)
@@ -43,12 +43,31 @@ public class Grid extends Model{
 
 		for(int i=0; i<=column; i++){
 			count = 0;
-			for (int j=0 ;j<file; j++){
+			for (int j=0 ;j<row; j++){
 				if(grid[j][i]==null||grid[j+1][i] ==null)
 					count =0;
 				else{
 					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i].getCell())){
 						count++;
+						if (count >= 3)
+							return player;
+					}
+					else
+						count = 0;
+				}
+			}	
+		}
+
+		for(int i=0; i<=column; i++){
+			count = 0;
+			for (int j=0 ;j<row; j++){
+				if(grid[j][i]==null||grid[j+1][i] ==null)
+					count =0;
+				else{
+					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i+1].getCell())){
+						count++;
+						i++;
+						j++;
 						if (count >= 3)
 							return player;
 					}
@@ -66,7 +85,7 @@ public class Grid extends Model{
 
 	/*this return true if the board is complete*/
 	public Boolean fullBoard(){
-		return tokens == (file+1)*(column+1);
+		return tokens == (row+1)*(column+1);
 	}
 	 /*this return true if te column where ther player wish to insert is  full*/
 	public Boolean fullColumn(int aColumn){
@@ -75,9 +94,10 @@ public class Grid extends Model{
 
 
 	/*this method modeling an user inserting a Cell in the board*/
-	public void play(Integer player,int aColumn){
+	public int play(Integer player,int aColumn){
+		int x = 0;
 		if (!fullColumn(aColumn))
-			putAToken(player,aColumn);
+			x = putACell(player,aColumn);
 		int game = searchWinner(player);
 		if (game == 1)
 			System.out.println("EL JUGADRO NUMERO 1 ES EL GANADOR");
@@ -85,11 +105,12 @@ public class Grid extends Model{
 			System.out.println("EL JUGADRO NUMERO 2 ES EL GANADOR");
 		if(fullBoard())
 			System.out.println("EMPATE");
+		return x;
 	}
 
 	/*this method show de board at now*/
 	public void show(){
-		for(int i=0; i<=file; i++){
+		for(int i=0; i<=row; i++){
 			for (int j=0 ;j<=column; j++){
 				if(grid[i][j]!=null)
 					System.out.print(" "+grid[i][j].getCell());
@@ -102,19 +123,19 @@ public class Grid extends Model{
 
 	/*this method modeling how we insert a toke, we choose de dicotomic insert,
 	cause its more efficient that lineal form*/
-	public void putAToken(Integer player,int aColumn){
+	public int putACell(Integer player,int aColumn){
 		Cell cell = new Cell(player);
 		aColumn--;
-		int limDown = file;
+		int limDown = row;
 		int limUp = 0;
-		int half;
+		int half = 0;
 		Boolean cond = true;
 		tokens++;
 		while(cond){
 			half = (limDown+limUp)/2;
 
-			if(grid[file][aColumn] == null){
-				grid[file][aColumn] =cell;
+			if(grid[row][aColumn] == null){
+				grid[row][aColumn] =cell;
 				cond = false;
 			}
 
@@ -134,6 +155,7 @@ public class Grid extends Model{
 				}
 			}
 		}
+		return half;
 	}
 }
 	
