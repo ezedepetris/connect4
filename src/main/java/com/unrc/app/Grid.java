@@ -1,6 +1,7 @@
 package com.unrc.app;
 import org.javalite.activejdbc.Model;
 
+
 public class Grid extends Model{
 
 	Cell[][] grid;
@@ -22,8 +23,8 @@ public class Grid extends Model{
 	}
 
 /*this method search a winner of this game*/
-	public int searchWinner(Integer player){
-		int count = 0;
+	public int searchWinner(Integer player){int count = 0;
+		/*this verify the column if some player wins*/
 		for(int i=0; i<=row; i++){
 			count = 0;
 			for (int j=0 ;j<column; j++){
@@ -40,7 +41,7 @@ public class Grid extends Model{
 				}
 			}	
 		}
-
+		/*this verify the row if some player wins*/
 		for(int i=0; i<=column; i++){
 			count = 0;
 			for (int j=0 ;j<row; j++){
@@ -57,17 +58,34 @@ public class Grid extends Model{
 				}
 			}	
 		}
-
-		for(int i=0; i<=column; i++){
+		/*this verify the diagonal left toright if some player wins*/
+		for(int i=0; i<column; i++){
 			count = 0;
 			for (int j=0 ;j<row; j++){
-				if(grid[j][i]==null||grid[j+1][i] ==null)
+				if(grid[j][i]==null||grid[j+1][i+1] ==null)
 					count =0;
 				else{
 					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i+1].getCell())){
 						count++;
 						i++;
-						j++;
+						if (count >= 3)
+							return player;
+					}
+					else
+						count = 0;
+				}
+			}	
+		}
+		/*this verify the diagonal right to left if some player wins*/
+		for(int i=column; i>0; i--){
+			count = 0;
+			for (int j=0 ;j<row; j++){
+				if(grid[j][i]==null||grid[j+1][i-1] ==null)
+					count =0;
+				else{
+					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i-1].getCell())){
+						count++;
+						i--;
 						if (count >= 3)
 							return player;
 					}
@@ -96,15 +114,19 @@ public class Grid extends Model{
 	/*this method modeling an user inserting a Cell in the board*/
 	public int play(Integer player,int aColumn){
 		int x = 0;
-		if (!fullColumn(aColumn))
+		if (!fullColumn(aColumn)){
 			x = putACell(player,aColumn);
-		int game = searchWinner(player);
-		if (game == 1)
-			System.out.println("EL JUGADRO NUMERO 1 ES EL GANADOR");
-		if (game == 2)
-			System.out.println("EL JUGADRO NUMERO 2 ES EL GANADOR");
-		if(fullBoard())
-			System.out.println("EMPATE");
+			x++;
+			int game = searchWinner(player);
+			if (game == player){
+				System.out.println("EL JUGADOR NUMERO "+ player+" ES EL GANADOR");
+				return -x;
+			}
+			if(fullBoard()){
+				System.out.println("EMPATE");
+				return 0 ;
+			}
+		}
 		return x;
 	}
 
@@ -136,12 +158,12 @@ public class Grid extends Model{
 
 			if(grid[row][aColumn] == null){
 				grid[row][aColumn] =cell;
-				cond = false;
+				return row;
 			}
 
 			if(grid[1][aColumn] != null){
 				grid[0] [aColumn]=cell;
-				cond = false;
+				return 0;
 			}
 			
 			if(grid[half][aColumn]!= null)

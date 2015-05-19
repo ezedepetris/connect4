@@ -30,7 +30,7 @@ create table cells(
 	id integer not null  auto_increment,
 	pos_x integer not null,
 	pos_y integer not null,
-	grid_id integer /*not null*/,
+	grid_id integer ,
 	user_id integer not null,
 	constraint cells_id primary key (id)
 );
