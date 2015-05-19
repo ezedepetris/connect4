@@ -9,6 +9,7 @@ public class User extends Model{
 	// private Integer id;/*numer identification of an user,its the primary key,with this we find the users*/
 	// private String password;/*its the password of an user*/
 
+
 	static{
 		validatePresenceOf("first_name");
 		validatePresenceOf("last_name");

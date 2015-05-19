@@ -11,6 +11,10 @@ public class Grid extends Model{
 
 	/*CONSTRUCTOR*/
 	/*this method build the structure of an board, and sets the atributs of this method*/
+	public Grid(){
+
+	}
+
 	public Grid(int arow, int aColumn){
 		grid = new Cell[arow][aColumn];
 		row = arow-1;
