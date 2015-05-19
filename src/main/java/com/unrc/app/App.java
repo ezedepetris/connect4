@@ -12,7 +12,7 @@ public class App
 
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-        // User.deleteAll();
+        User.deleteAll();
         // Cell.deleteAll();
         // Grid.deleteAll();
 
@@ -57,6 +57,11 @@ public class App
             move++;
 
         }
+
+        GamesUsers partida = new GamesUsers();
+        partida.set("grid_id",board.getId());
+        partida.set("user_id",user1.getId());
+        partida.save();
         Base.close();
     }
 }
