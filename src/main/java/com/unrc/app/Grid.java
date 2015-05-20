@@ -116,22 +116,24 @@ public class Grid extends Model{
 
 
 	/*this method modeling an user inserting a Cell in the board*/
-	public int play(Integer player,int aColumn){
+	public Doublet play(Integer player,int aColumn){
 		int x = 0;
+		Doublet doublet;
 		if (!fullColumn(aColumn)){
 			x = putACell(player,aColumn);
 			x++;
 			int game = searchWinner(player);
 			if (game == player){
 				System.out.println("EL JUGADOR NUMERO "+ player+" ES EL GANADOR");
-				return -x;
+				return doublet = new Doublet(x,player);
 			}
 			if(fullBoard()){
 				System.out.println("EMPATE");
-				return 0 ;
+				doublet = new Doublet(x,0);
+				return doublet ;
 			}
 		}
-		return x;
+		return doublet = new Doublet(x,-1);
 	}
 
 	/*this method show de board at now*/

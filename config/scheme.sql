@@ -16,12 +16,13 @@ create table games(
 	grid_id integer not null,
 	user1_id integer not null,
 	user2_id integer not null,
+	winner_id Integer,
 	constraint games_id primary key (id)
 );
 
 drop table if exists grids;
 create table grids(
-	id integer not null  auto_increment,
+	id integer not null auto_increment,
 	constraint grids_id primary key (id)
 );
 
@@ -38,7 +39,7 @@ create table cells(
 drop table if exists games_users;
 create table games_users(
 	id integer not null auto_increment,
-	grid_id integer not null,
+	game_id integer not null,
 	user_id integer not null,
 	constraint games_users_id primary key (id)
 	-- este teiene las claves foraneas a de usuario y la de tablero

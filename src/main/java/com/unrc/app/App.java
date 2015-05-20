@@ -12,7 +12,7 @@ public class App
 
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-        User.deleteAll();
+            User.deleteAll();
         // Cell.deleteAll();
         // Grid.deleteAll();
 
@@ -36,32 +36,50 @@ public class App
         int row;
         Scanner in = new Scanner(System.in);
         int column;
-
+       
+        Game gaming = new Game();
         while(playing){
             System.out.println("Player "+(move%2+1)+":");
             Cell c = new Cell();
             column = in.nextInt();
-            row = board.play(move%2+1,column);
-            if (row <= 0){
-              playing = false;
-              row = row * -1;
-            }
-            c.set("pos_x", row);
+            Doublet doublet = board.play(move%2+1,column);
+            c.set("pos_x", doublet.getFirst());
             c.set("pos_y", column);
-            if(move%2+1 == 0)
+            if(move%2 == 0)
               c.set("user_id", user1.getId());
             else
               c.set("user_id", user2.getId());
+
             c.set("grid_id", board.getId());
             c.save();
+
+            if(doublet.getSecond() >= 0){
+              if(doublet.getSecond() == 1)
+                gaming.set("winner_id",user1.getId());
+              
+              if(doublet.getSecond() == 2)
+                gaming.set("winner_id",user2.getId());
+              
+              gaming.set("user1_id",user1.getId());
+              gaming.set("user2_id",user2.getId());
+              gaming.set("grid_id",board.getId());
+              playing = false;
+              gaming.save();
+            }
             move++;
-
         }
+        System.out.println("LLLLLEEEEGGGGGGOOOOOOOO"+ gaming.getId());
 
-        GamesUsers partida = new GamesUsers();
-        partida.set("grid_id",board.getId());
-        partida.set("user_id",user1.getId());
-        partida.save();
+        GamesUsers gamePlay = new GamesUsers();
+        gamePlay.set("game_id",gaming.getId());
+        gamePlay.set("user_id",user1.getId());
+        gamePlay.save();
+
+        GamesUsers gamePlay1 = new GamesUsers();
+        gamePlay1.set("game_id",gaming.getId());
+        gamePlay1.set("user_id",user2.getId());
+        gamePlay1.save();
+
         Base.close();
     }
 }
