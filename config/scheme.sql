@@ -10,6 +10,13 @@ create table users(
 	constraint users_id primary key (id)
 );
 
+drop table if exists ranks;
+create table ranks(
+	id integer not null auto_increment /*unique*/,
+	user_id integer not null,
+	constraint ranks_id primary key (id)
+);
+
 drop table if exists games;
 create table games(
 	id integer not null auto_increment,
