@@ -39,43 +39,58 @@ public class App
     /*METHOD DATA ENTRY*/
     Scanner in = new Scanner(System.in);
     int column;
+    String columnString;
     /*CREATE A GAME*/
     Game gaming = new Game();
 
     while(playing){
       System.out.println("Player "+(move%2+1)+":");
-      /*CREATE A CELL*/
-      Cell c = new Cell();
-      column = in.nextInt();
-      /*DOUBLET = (FILA,RESULT)*/
-      Doublet doublet = board.play(move%2+1,column);
-      c.set("pos_x", doublet.getFirst());
-      c.set("pos_y", column);
-      if(move%2 == 0)
-        /*ASSIGN A USER TO CELL1*/
-        c.set("user_id", user1.getId());
-      else
-        /*ASSIGN A USER TO CELL 2*/
-        c.set("user_id", user2.getId());
-      /*ASSIGN A GRID TO CELL*/
-      c.set("grid_id", board.getId());
-      c.save();
-
-      /*CHECK FOR A WINNER FOR NOW*/
-      if(doublet.getSecond() >= 0){
-        if(doublet.getSecond() == 1)
-          gaming.set("winner_id",user1.getId());
-        
-        if(doublet.getSecond() == 2)
-          gaming.set("winner_id",user2.getId());
-        
+      columnString = in.next();
+      //System.out.println(columnString=='g');
+      if (columnString.charAt(0)=='g' || columnString.charAt(0)=='G'){
         gaming.set("user1_id",user1.getId());
         gaming.set("user2_id",user2.getId());
         gaming.set("grid_id",board.getId());
         playing = false;
         gaming.save();
       }
-      move++;
+      else{
+        /*CREATE A CELL*/
+        Cell c = new Cell();
+        /*CONVERT A STRING TO INT*/
+        column = Integer.parseInt(columnString);
+        /*DOUBLET = (FILA,RESULT)*/
+        Doublet doublet = board.play(move%2+1,column);
+        c.set("pos_x", doublet.getFirst());
+        c.set("pos_y", column);
+        if(move%2 == 0)
+          /*ASSIGN A USER TO CELL1*/
+          c.set("user_id", user1.getId());
+        else
+          /*ASSIGN A USER TO CELL 2*/
+          c.set("user_id", user2.getId());
+        /*ASSIGN A GRID TO CELL*/
+        c.set("grid_id", board.getId());
+        c.save();
+
+        /*CHECK FOR A WINNER FOR NOW*/
+        if(doublet.getSecond() >= 0){
+          if(doublet.getSecond() == 1)
+            gaming.set("winner_id",user1.getId());
+          
+          if(doublet.getSecond() == 2)
+            gaming.set("winner_id",user2.getId());
+          
+          gaming.set("user1_id",user1.getId());
+          gaming.set("user2_id",user2.getId());
+          gaming.set("grid_id",board.getId());
+          playing = false;
+          gaming.save();
+        }
+        if (doublet.getSecond() == -2)
+        move++;
+      }
+      board.show();
     }
     /*CHECK THIS PART*/
 

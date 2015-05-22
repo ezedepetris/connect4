@@ -132,19 +132,35 @@ public class Grid extends Model{
 				doublet = new Doublet(x,0);
 				return doublet ;
 			}
+			return doublet = new Doublet(x,-2);
 		}
 		return doublet = new Doublet(x,-1);
 	}
 
 	/*this method show de board at now*/
 	public void show(){
+		for(int x = 0; x<25; x++){
+			System.out.println();
+		}
 		for(int i=0; i<=row; i++){
 			for (int j=0 ;j<=column; j++){
-				if(grid[i][j]!=null)
-					System.out.print(" "+grid[i][j].getCell());
-				else
-					System.out.print(" 0");
-				}	
+				System.out.print("\033[34m"+"|");
+				if(grid[i][j]!=null){
+					if (grid[i][j].getCell()==1){
+						System.out.print("\033[31m"+"o"/*grid[i][j].getCell()*/);
+						System.out.print("\033[34m"+"");
+					}
+					else{
+						System.out.print("\033[32m"+"x"/*grid[i][j].getCell()*/);
+						System.out.print("\033[34m"+"");
+					}
+				}
+				else{
+					System.out.print("0");
+				}
+			}
+			System.out.print("|");
+			System.out.print("\033[37m"+"");	
 			System.out.println();
 		}
 	}
