@@ -65,13 +65,15 @@ public class Grid extends Model{
 		/*this verify the diagonal left toright if some player wins*/
 		for(int i=0; i<column; i++){
 			count = 0;
+			int ii = i;
 			for (int j=0 ;j<row; j++){
-				if(grid[j][i]==null||grid[j+1][i+1] ==null)
+
+				if(grid[j][ii]==null||grid[j+1][ii+1] ==null)
 					count =0;
 				else{
-					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i+1].getCell())){
+					if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii+1].getCell())){
 						count++;
-						i++;
+						ii++;
 						if (count >= 3)
 							return player;
 					}
@@ -83,13 +85,14 @@ public class Grid extends Model{
 		/*this verify the diagonal right to left if some player wins*/
 		for(int i=column; i>0; i--){
 			count = 0;
+			int ii = i;
 			for (int j=0 ;j<row; j++){
-				if(grid[j][i]==null||grid[j+1][i-1] ==null)
+				if(grid[j][ii] == null || grid[j+1][ii-1] == null)
 					count =0;
 				else{
-					if(player.compareTo(grid[j][i].getCell())  == 0 && 0 == player.compareTo(grid[j+1][i-1].getCell())){
+					if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii-1].getCell())){
 						count++;
-						i--;
+						ii--;
 						if (count >= 3)
 							return player;
 					}
@@ -146,6 +149,7 @@ public class Grid extends Model{
 			for (int j=0 ;j<=column; j++){
 				System.out.print("\033[34m"+"|");
 				if(grid[i][j]!=null){
+				//	System.out.println(grid[i][j].getCell());
 					if (grid[i][j].getCell()==1){
 						System.out.print("\033[31m"+"o"/*grid[i][j].getCell()*/);
 						System.out.print("\033[34m"+"");
@@ -154,9 +158,11 @@ public class Grid extends Model{
 						System.out.print("\033[32m"+"x"/*grid[i][j].getCell()*/);
 						System.out.print("\033[34m"+"");
 					}
-				}
+				 }
 				else{
-					System.out.print("0");
+					System.out.print("\033[30m"+"");
+					System.out.print(" ");
+					System.out.print("\033[34m"+"");
 				}
 			}
 			System.out.print("|");

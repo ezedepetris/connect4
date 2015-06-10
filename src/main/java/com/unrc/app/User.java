@@ -1,5 +1,7 @@
 package com.unrc.app;
+import java.util.Scanner;
 import org.javalite.activejdbc.Model;
+import java.util.List;
 
 /*this class model an user for connect4 game*/
 public class User extends Model{
@@ -16,19 +18,42 @@ public class User extends Model{
 		validatePresenceOf("email");
 	}
 
-// /*method constructor, create an new user*/
-// 	public User(String anEmail, String aName, String aLastName, String aPassword, Integer anId){
-// 		email = anEmail;
-// 		name = aName;
-// 		lastName = aLastName;
-// 		id = anId;
-// 		password = aPassword;
-// 	}
+/*method constructor, create an new user*/
+	public User(){
+		
+	}
 
-// /*return an user*/
-// 	public User getUser(){
-// 		return this;
-// 	}
+
+/*return an user*/
+	public User getUser(){
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("Ingrese su email ya registrado");
+		String currentData = in.next();
+
+		List<User> current = User.where("email = ?",currentData);
+		if(!current.isEmpty())
+			return current.get(0);
+		return null;
+	}
+
+	public User createUser(){
+		Scanner in = new Scanner(System.in);
+
+		System.out.println("Ingrese su email");
+		String currentData = in.next();
+		this.set("email", currentData);
+
+		System.out.println("Ingrese su nombre");
+		currentData = in.next();
+		this.set("first_name", currentData);
+
+		System.out.println("Ingrese su apellido");
+		currentData = in.next();
+		this.set("last_name", currentData);
+		this.save();
+		return this;
+	}
 
 // /*set a new email for an user*/
 // 	public void setEmail(String anEmail){

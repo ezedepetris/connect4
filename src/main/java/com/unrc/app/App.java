@@ -3,6 +3,18 @@ package com.unrc.app;
 import com.unrc.app.User;
 import org.javalite.activejdbc.Base;
 import java.util.Scanner;
+import java.util.*;
+
+
+// import static spark.Spark.*;
+
+//     public class Appd {
+//         public static void main(String[] args) {
+//             get("/hello", (req, res) -> "Hello World");
+//         }
+//     }
+
+    // cerrar en terminal con contro cy no control z
 
 public class App
 {
@@ -11,22 +23,28 @@ public class App
 
     Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-      User.deleteAll();
+    // User.deleteAll();
     // Cell.deleteAll();
     // Grid.deleteAll();
-    /*CREATE USER 1*/
     User user1 = new User();
-    user1.set("first_name", "ezequiel");
-    user1.set("last_name", "depetris");
-    user1.set("email","ezedeptris@gmail.com");
-    user1.save();
-
-    /*CREATE USER 2*/
     User user2 = new User();
-    user2.set("first_name", "gaston");
-    user2.set("last_name", "massimino");
-    user2.set("email","gamassimino@gmail.com");
-    user2.save();
+    Scanner in = new Scanner(System.in);
+
+    System.out.println("PRESS 1 TO CREATE THE USER 1\nPRESS 2 TO SEARCH THE USER 1"); 
+    String number = in.next();
+    /*CREATE USER 1*/
+    if(number.charAt(0) == '2')
+      user1 = user1.getUser();
+    else
+      user1 = user1.createUser();
+
+    System.out.println("PRESS 1 TO CREATE THE USER 2\nPRESS 2 TO SEARCH THE USER 2");
+    number = in.next();
+    /*CREATE USER 2*/
+    if(number.charAt(0) == '2')
+      user2 = user2.getUser();
+    else
+      user2 = user2.createUser();
 
     /*VAR GAME CONDITION*/
     boolean playing = true;
@@ -37,12 +55,12 @@ public class App
     int move = 0;
     int row;
     /*METHOD DATA ENTRY*/
-    Scanner in = new Scanner(System.in);
+   // Scanner in = new Scanner(System.in);
     int column;
     String columnString;
     /*CREATE A GAME*/
     Game gaming = new Game();
-
+    board.show();
     while(playing){
       System.out.println("Player "+(move%2+1)+":");
       columnString = in.next();
@@ -96,6 +114,58 @@ public class App
 
     /*CREATE A NEW CONECCTION BETWEN GAME A USER, SO, HERE WE SAVE A USER GAME AND CREATE TWO GAME USER. ONE FOR THE PLAYER NUMER ONE
     AN THE OTHER FOR THE PLAYER TWO, INTO A GAME_USER THIS CONTAIN SAME GRID ID, BUT DISTINT GAMEUSER_ID AN PLAYER_ID*/
+
+    Rank ranking = new Rank();
+    List<Rank> list = ranking.findAll();
+    Boolean modify = false;
+    Boolean found = false;
+
+    int i = 0; 
+    /*IF THE USER EXIST THIS ADD A WONS GAMEN IN THE RANK TABLE*/
+    while(i < list.size() && !modify ){
+      ranking = list.get(i);
+      if(ranking.get("user_id") == gaming.get("winner_id")){
+        found = true;
+        modify = true;
+        int wons = (int)ranking.get("games_won");
+        ranking.set("games_won",wons++);
+      }
+      i++;
+    }
+
+    if(!found){
+      ranking = new Rank();
+      ranking.set("user_id",gaming.get("winner_id"));
+      ranking.set("games_won",1);
+      ranking.save();
+    }
+
+
+    i =list.size();
+
+    while(i >1 && modify ){
+      modify = false;
+      Rank ranking1 = list.get(i);
+      Rank ranking2 = list.get(i-1);
+
+      if((int)ranking1.get("games_won") < (int)ranking2.get("games_won")){
+        modify = true;
+        int id = (int)ranking2.get("user_id");
+        int won = (int)ranking2.get("games_won");
+
+        ranking2.set("games_won",ranking1.get("games_won"));
+        ranking2.set("user_id",ranking1.get("user_id"));
+        ranking2.save();
+
+        ranking1.set("games_won",won);
+        ranking1.set("user_id",id);
+        ranking1.save();
+
+      }
+      i--;
+    }
+
+    System.out.println(" LISTA DE RANKINNNGGG EL TAMAÑO ES = " + list.size());
     
     GamesUsers gamePlay = new GamesUsers();
     gamePlay.set("game_id",gaming.getId());
