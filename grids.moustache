@@ -1,0 +1,10 @@
+<h1>Grids</h1>
+
+
+  <table width="50%" border="3" cellspacing="3" cellpadding="3">
+    {{#grids}}
+        <tr>
+          <td>{{toString}}</td>
+        </tr>
+    {{/grids}}
+  </table>

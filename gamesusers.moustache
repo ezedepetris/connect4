@@ -1,0 +1,18 @@
+<h1>GamesUsers</h1>
+
+
+  <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+    	<td><h4>Id</h4></td>
+    	<td><h4>Game Id</h4></td>
+    	<td><h4>User Id</h4></td>
+    </table>
+    
+  <table width="50%" border="3" cellspacing="3" cellpadding="3">
+    {{#gamesusers}}
+        <tr>
+          <td>{{toStringId}}</td>
+					<td>{{toStringGamesId}}</td>
+					<td>{{toStringUserId}}</td>
+        </tr>
+    {{/gamesusers}}
+  </table>

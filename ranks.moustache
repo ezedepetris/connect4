@@ -1,0 +1,21 @@
+<body background="fondo1.jpg">
+<h1>Ranks</h1>
+
+
+  <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+    	<td><h4>Id</h4></td>
+    	<td><h4>User</h4></td>
+    	<td><h4>Games_Wons</h4></td>
+    </table>
+    
+  <table width="50%" border="3" cellspacing="3" cellpadding="3">
+    {{#ranks}}
+        <tr>
+          <td>{{toStringId}}</td>
+					<td>{{toStringUserId}}</td>
+					<td>{{toStringRank}}</td>
+        </tr>
+    {{/ranks}}
+  </table>
+  <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+</body>

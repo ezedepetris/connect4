@@ -1,0 +1,18 @@
+<body background="fondo1.jpg">
+	<center>
+	<h1> WELCOME TO CONNECT FOUR </h1>
+	<img src="fondo2.jpg" height="300" width="300">
+	<h1></h1>
+	<a href="http://localhost:4567/users"><button type ="button" >Show Users</button></a>
+	<h1></h1>
+	<a href="http://localhost:4567/ranks"><button type ="button" >Show Ranking</button></a>
+	<h1></h1>
+	<a href="http://localhost:4567/play"><button type ="button" >New Game</button></a>
+	<h1></h1>
+	<a href="http://localhost:4567/completar"><button type ="button" >Return Game</button></a>
+	</center>
+	<h3>connect4 by Error-404</h3>
+	
+	{{#main}}
+    {{/main}}
+ </body>
