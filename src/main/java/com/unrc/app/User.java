@@ -55,38 +55,14 @@ public class User extends Model{
 		return this;
 	}
 
-// /*set a new email for an user*/
-// 	public void setEmail(String anEmail){
-// 		email = anEmail;
-// 	}
 
-// /*return the current user email*/
-// 	public String getEmail(){
-// 		return email;
-// 	}
-
-// /*modify the name of an user*/
-// 	public void setName(String aName){
-// 		name = aName;
-// 	}
-
-// /*return the current user name*/
-// 	public String getName(){
-// 		return name;		
-// 	}
-
-// /*modify the current user last name*/
-// 	public void setLastName(String aLastName){
-// 		lastName = aLastName;
-// 	}
-
-// /*return the id of an user*/
-// 	public Integer getId(){
-// 		return id;
-// 	}
-
-// /*return the current user password*/
-// 	public String getPassword(){
-// 		return password;
-// 	}
+	public String toStringFirstName(){
+		return this.getString("first_name");
+	}
+	public String toStringLastName(){
+		return this.getString("last_name");
+	}
+	public String toStringEmail(){
+		return this.getString("email");
+	}
 }

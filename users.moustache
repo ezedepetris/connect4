@@ -3,7 +3,7 @@
 
   <h2>Users count: {{users_count}}</h2>
 
-  <table width="50%" border="6" cellspacing="3" cellpadding="3">
+  <table width="1" border="6" cellspacing="1" cellpadding="1">
     {{#users}}
         <tr>
         <td>{{toStringFirstName}}</td>

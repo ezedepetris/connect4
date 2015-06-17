@@ -12,6 +12,10 @@
 	<a href="http://localhost:4567/completar"><button type ="button" >Return Game</button></a>
 	</center>
 	<h3>connect4 by Error-404</h3>
+
+	<audio controls autoplay>
+		<source src="geometry.mp3" type="audio">
+	</audio>
 	
 	{{#main}}
     {{/main}}
