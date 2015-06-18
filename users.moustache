@@ -3,7 +3,12 @@
 
   <h2>Users count: {{users_count}}</h2>
 
-  <table width="1" border="6" cellspacing="1" cellpadding="1">
+  <table width="50%" frame="box"border="3" cellpadding="3" cellspacing="3">
+  <tr>
+      <td><h4>First Name</h4></td>
+      <td><h4>Last Name</h4></td>
+      <td><h4>Email</h4></td>
+    </tr>
     {{#users}}
         <tr>
         <td>{{toStringFirstName}}</td>

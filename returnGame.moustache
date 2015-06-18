@@ -1,0 +1,15 @@
+<body background="fondo1.jpg">
+	<h1>PLAYER 1</h1>
+
+	<h2>Sing in</h2>
+	<h4>Email <textarea rows="1" cols="20"></textarea></h4>
+
+	<h1>__________________________________________________</h1>
+
+	<h1>PLAYER 2</h1>
+
+	<h2>Sing in</h2>
+	<h4>Email <textarea rows="1" cols="20"></textarea></h4>
+
+	<a href="http://localhost:4567/play"><button type ="button" >Play</button></a>
+</body>

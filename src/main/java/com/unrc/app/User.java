@@ -55,6 +55,12 @@ public class User extends Model{
 		return this;
 	}
 
+	public void createUser(String email, String first_name, String last_name){
+		this.set("email", email);
+		this.set("first_name", first_name);
+		this.set("last_name", last_name);
+		this.save();
+	}
 
 	public String toStringFirstName(){
 		return this.getString("first_name");
@@ -65,4 +71,6 @@ public class User extends Model{
 	public String toStringEmail(){
 		return this.getString("email");
 	}
+
+
 }

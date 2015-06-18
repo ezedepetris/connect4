@@ -2,13 +2,15 @@
 <h1>Ranks</h1>
 
 
-  <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+ 
+    
+  <table width="50%" border="3" cellpadding="3" cellspacing="3">
+    <tr>
     	<td><h4>Id</h4></td>
     	<td><h4>User</h4></td>
-    	<td><h4>Games_Wons</h4></td>
-    </table>
-    
-  <table width="50%" border="3" cellspacing="3" cellpadding="3">
+    	<td><h4>Games Wons</h4></td>
+    </tr>
+
     {{#ranks}}
         <tr>
           <td>{{toStringId}}</td>
