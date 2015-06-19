@@ -37,12 +37,14 @@ public class App{
     );
 
 
-    // get("/add_token",(request,response)-> ){
+    post("/add_token",(request,response)-> {
+      Map<String, Object> attributes = new HashMap<>();
       
-    //   Integer  columna = request.params(":col");
+      Integer  column = request.session().attribute("col");
+      response.redirect("/user/"+column);
+      return null;
 
-    // },
-    // );
+    });
 
 
 
@@ -67,6 +69,14 @@ public class App{
     },
       new MustacheTemplateEngine()
     );
+
+
+
+
+    // post("/add_token/:col",(request,response)-> {
+    //   Integer col = request.queryParams("col");
+    
+    // });
 
     post("/user/create", (request, response) -> {
     
@@ -126,7 +136,12 @@ public class App{
     get("/play", (request, response) -> {
       // crear para que el mustache tome la ficah y la pued alelgar a mostrar
       // luego null sera repmplazado por parametros
-      return new ModelAndView(null, "play.moustache");
+      Map<String, Object> attributes = new HashMap<>();
+      Grid grid = new Grid();
+      attributes.put("grid", grid);
+      return new ModelAndView(attributes, "play.moustache");
+       // return new ModelAndView(null, "play.moustache");
+
     },
       new MustacheTemplateEngine()
     );

@@ -1,5 +1,6 @@
 package com.unrc.app;
 import org.javalite.activejdbc.Model;
+import java.util.*;
 
 
 public class Grid extends Model{
@@ -12,7 +13,16 @@ public class Grid extends Model{
 	/*CONSTRUCTOR*/
 	/*this method build the structure of an board, and sets the atributs of this method*/
 	public Grid(){
+		grid = new Cell[6][7];
+		row = 5;
+		column = 6;
+		tokens = 0;
+	}
 
+	public int turn(){
+		if(tokens%2 == 0)
+			return 1;
+		return 2;
 	}
 
 	public Grid(int arow, int aColumn){
@@ -207,5 +217,70 @@ public class Grid extends Model{
 		}
 		return half;
 	}
+
+
+
+
+
+
+
+	// @Override
+	public List<String> print(){
+		String currentRow ;
+		List<String> board = new LinkedList<String>();
+		grid[2][1]= new Cell(1);
+		grid[1][2]= new Cell(2);
+		grid[2][5]= new Cell(1);
+		grid[3][2]= new Cell(2);
+		grid[4][2]= new Cell(1);
+		grid[2][2]= new Cell(2);
+		grid[3][3]= new Cell(1);
+		grid[2][4]= new Cell(2);
+		grid[1][1]= new Cell(1);
+
+		board.add("<table align="+'"'+"center"+'"'+" rules="+'"'+"all"+'"'+">");
+		for(int i=0; i<=row; i++){
+		board.add("<tr>");
+			for (int j=0 ;j<=column; j++){
+				if(grid[i][j]!=null){
+					if (grid[i][j].getCell()==1){
+							board.add("<td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+">");
+							board.add("</td>");
+						//imprime rojo
+					}
+					else{
+						board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+">");
+						board.add("</td>");
+						//imprimir verde
+					}
+				 }
+				else{
+					board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"white"+'"'+">");
+					board.add("</td>");
+					// imprirmr blanco
+				}
+			}
+			board.add("</tr>");
+		}
+		board.add("</table>");
+		return board;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 	

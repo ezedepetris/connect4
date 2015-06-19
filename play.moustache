@@ -2,45 +2,80 @@
   <table align="center">
     <tr>
       <!-- <td width="70" align="center"><button type ="button" >HERE</button></td> -->
-      <td width="70" align="center">
-        <a href="/add_token?col=1" class="btn"> HERE </a>
-      </td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-      <td width="70" align="center"><button type ="button" >HERE</button></td>
-    </td width="70">
-  </table>
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="º" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
 
-  <table align="center" bgcolor="blue" rules="all">
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="2" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="3" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="4" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="5" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+    <form action="/add_attoken" autocomplete="on" method="post">
+    <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="6" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+   <form action="/add_attoken" autocomplete="on" method="post">
+   <!-- <form action="/play" autocomplete="on" method="post"> -->
+      <input type="hidden" value="7" name="col">
+      <td width="70" align="center"><button type ="submit" >HERE</button></td>
+    </form>
+
+    {{#grid}}
+        {{{print}}}
+    {{/grid}}
+
+  <!-- <table align="center" rules="all">
     <tr>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
+     
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
+      <td width="70" height="70" bgcolor="red"></td>
     </tr>
     <tr>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
+      <td width="70" height="70" bgcolor = "green"></td>
     </tr>
     <tr>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
-      <td width="70" height="70"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
+      <td width="70" height="70" bgcolor = "blue"></td>
     </tr>
     <tr>
       <td width="70" height="70"></td>
@@ -71,6 +106,8 @@
     </tr>
     
   </table>
+ -->
+
   <h1></h1>
   <a href="http://localhost:4567/main"><button type ="button" >FINISH GAME</button></a>
   <h1></h1>

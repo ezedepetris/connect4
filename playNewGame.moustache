@@ -1,25 +1,26 @@
 <body background="fondo1.jpg">
 	<h1>Sing Up</h1>
-	<form action="/play" autocomplete="on" method="get">
+	<form action="/user/new" autocomplete="on" method="post">
 		<h3>
 	  	First name: <input type="text" name="fname"><br>
-		Last name: <input type="text" name="lname"><br>
-		Email: <input type="text" name="email"><br>
+			Last name: <input type="text" name="lname"><br>
+			Email: <input type="text" name="email"><br>
 		</h3>
-		{{createUser(email,fname,lname)}}
+			<!-- {{createUser(email,fname,lname)}} -->
 	  	<input type="submit" value="Submit">
 	</form>
 
 
 	<h1>Sing In</h1>
-	<form action="play.moustache" autocomplete="on">
+	<form action="/user/find" autocomplete="on">
 		<h3>
-		Email: <input type="text" name="email"><br>
+			Email: <input type="text" name="email"><br>
 		</h3>
+
 	  	<input type="submit" value="Submit">
 	</form>
 
-	<a href="http://localhost:4567/play"><button type ="button" >Play</button></a>
+	<!-- <a href="http://localhost:4567/play"><button type ="button" >Play</button></a> -->
 </body>
 
 
