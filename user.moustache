@@ -1,5 +1,5 @@
 <body background="fondo1.jpg">
-  <h1>Users</h1>
+  <h1>{{toStringFirstName}}</h1>
   
   {{#user}}
   <tr>

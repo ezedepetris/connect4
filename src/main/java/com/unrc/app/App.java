@@ -37,12 +37,12 @@ public class App{
     );
 
 
-    get("/add_token",(request,response)-> ){
+    // get("/add_token",(request,response)-> ){
       
-      Integer  columna = request.params(":col");
+    //   Integer  columna = request.params(":col");
 
-    },
-    );
+    // },
+    // );
 
 
 
@@ -52,6 +52,8 @@ public class App{
     }, 
       new MustacheTemplateEngine()
     );
+
+
 
     get("/user/:id", (request, response) -> {
       
@@ -123,7 +125,8 @@ public class App{
 
     get("/play", (request, response) -> {
       // crear para que el mustache tome la ficah y la pued alelgar a mostrar
-      return new ModelAndView(, "play.moustache");
+      // luego null sera repmplazado por parametros
+      return new ModelAndView(null, "play.moustache");
     },
       new MustacheTemplateEngine()
     );
