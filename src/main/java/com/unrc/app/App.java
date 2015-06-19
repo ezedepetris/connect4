@@ -6,6 +6,7 @@ import org.javalite.activejdbc.Base;
 import java.util.Scanner;
 import java.util.List;
 import java.util.*;
+import java.lang.Object;
 
 import spark.ModelAndView;
 import spark.TemplateEngine;
@@ -27,14 +28,56 @@ public class App{
     );
 
     get("/users", (request, response) -> {
-          Map<String, Object> attributes = new HashMap<>();
-          List<User> users = User.findAll();
-          attributes.put("users_count", users.size());
-          attributes.put("users", users);
-          return new ModelAndView(attributes, "users.moustache");
+        Map<String, Object > attributes = new HashMap<>();
+        List<User> users = User.findAll();
+        attributes.put("users", users);
+        return new ModelAndView(attributes, "users.moustache");
       },
       new MustacheTemplateEngine()
     );
+
+
+    get("/add_token",(request,response)-> ){
+      
+      Integer  columna = request.params(":col");
+
+    },
+    );
+
+
+
+
+    get("/user/new", (request, response) -> {
+      return new ModelAndView(null, "formulario.moustache");
+    }, 
+      new MustacheTemplateEngine()
+    );
+
+    get("/user/:id", (request, response) -> {
+      
+      Map<String, Object > attributes = new HashMap<>();
+      
+      User user = User.findFirst("id = " + request.params(":id"));
+      // System.out.println(user.toStringFirstName());
+      attributes.put("user",user);
+      
+      return new ModelAndView(attributes, "user.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
+    post("/user/create", (request, response) -> {
+    
+      String name     = (String)request.queryParams("user[firstname]");
+      String email    = (String)request.queryParams("user[lastname]");
+      String lastname = (String)request.queryParams("user[email]");
+
+      User user12 = new User();
+      user12.createUser(email, name, lastname);
+      
+      response.redirect("/user/" + user12.getId());
+      return null;
+     });
 
     get("/grids",(request, response) -> {
 
@@ -79,7 +122,8 @@ public class App{
    );
 
     get("/play", (request, response) -> {
-      return new ModelAndView(null, "play.moustache");
+      // crear para que el mustache tome la ficah y la pued alelgar a mostrar
+      return new ModelAndView(, "play.moustache");
     },
       new MustacheTemplateEngine()
     );
