@@ -2,43 +2,42 @@
   <table align="center">
     <tr>
       <!-- <td width="70" align="center"><button type ="button" >HERE</button></td> -->
-    <form action="/add_attoken" autocomplete="on" method="post">
+    <form action="add_token" class=.btn autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="º" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
     </form>
 
-    <form action="/add_attoken" autocomplete="on" method="post">
+    <form action="add_token" autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="2" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
     </form>
 
-    <form action="/add_attoken" autocomplete="on" method="post">
+    <form action="add_token" autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="3" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
-    </form>
-
-    <form action="/add_attoken" autocomplete="on" method="post">
+    </formdr<
+    <form action="add_token" autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="4" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
     </form>
 
-    <form action="/add_attoken" autocomplete="on" method="post">
+    <form action="add_token" autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="5" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
     </form>
 
-    <form action="/add_attoken" autocomplete="on" method="post">
+    <form action="add_token" autocomplete="on" method="post">
     <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="6" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>
     </form>
 
-   <form action="/add_attoken" autocomplete="on" method="post">
+   <form action="add_token" autocomplete="on" method="post">
    <!-- <form action="/play" autocomplete="on" method="post"> -->
       <input type="hidden" value="7" name="col">
       <td width="70" align="center"><button type ="submit" >HERE</button></td>

@@ -4,7 +4,6 @@ import static spark.Spark.*;
 import com.unrc.app.User;
 import org.javalite.activejdbc.Base;
 import java.util.Scanner;
-import java.util.List;
 import java.util.*;
 import java.lang.Object;
 
@@ -40,11 +39,36 @@ public class App{
     post("/add_token",(request,response)-> {
       Map<String, Object> attributes = new HashMap<>();
       
-      Integer  column = request.session().attribute("col");
-      response.redirect("/user/"+column);
+      Integer column = Integer.parseInt(request.queryParams("col"));
+      Integer gameID = Integer.parseInt(request.queryParams("grid_id"));
+      Game currentGame = new Game();
+      Grid currentGrid = new Grid();
+
+      currentGame = currentGame.findFirst("id = "+gameID);
+      currentGrid = currentGrid.findFirst("id = "+ currentGame.get("grid_id"));
+      Cell cell = new Cell();
+      List<Cell> listCells = cell.where("grid_id = ?",currentGrid.getId());
+      int move = 0;
+      move = currentGrid.load(listCells);
+      Doublet doublet = currentGrid.play(move%2+1,column);
+
+      cell.set("pos_x", doublet.getFirst());
+      cell.set("pos_y", column);
+      if(move%2 == 0)
+        /*ASSIGN A USER TO CELL 1*/
+        cell.set("user_id", currentGame.get("user1_id"));
+      else
+        /*ASSIGN A USER TO CELL 2*/
+        cell.set("user_id", currentGame.get("user2_id"));
+      /*ASSIGN A GRID TO CELL*/
+      cell.set("grid_id", currentGrid.getId());
+      cell.save();
+
+      response.redirect("/play");
       return null;
 
-    });
+    }
+    );
 
 
 
@@ -217,6 +241,7 @@ public class App{
 //     Game gaming = new Game();
 //     board.show();
 //     while(playing){
+
 //       System.out.println("Player "+(move%2+1)+":");
 //       columnString = in.next();
 //       //System.out.println(columnString=='g');

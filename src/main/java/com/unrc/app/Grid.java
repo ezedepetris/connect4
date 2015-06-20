@@ -218,6 +218,25 @@ public class Grid extends Model{
 		return half;
 	}
 
+	public int load(List<Cell> listCells){
+		int move = 0;
+		Cell cell = null;
+		row = 5;
+		column = 6;
+		while(!listCells.isEmpty()){
+        cell = listCells.get(0);
+        int x = (int)cell.get("pos_x");
+				int y = (int)cell.get("pos_y");
+        this.grid[x][y] = new Cell(move%2+1);
+        listCells.remove(0);
+			move++;
+    }
+    tokens = move;
+    return move;
+   }
+
+	
+
 
 
 
@@ -255,7 +274,7 @@ public class Grid extends Model{
 					}
 				 }
 				else{
-					board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"white"+'"'+">");
+					board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"blue"+'"'+">");
 					board.add("</td>");
 					// imprirmr blanco
 				}
