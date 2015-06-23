@@ -222,6 +222,8 @@ public class App{
           else
             currentGame.set("winner_id", currentGame.get("user2_id"));
           currentGame.save();
+          Rank rank = new Rank();
+          rank.upDateRank((Integer)currentGame.get("winner_id"));
           request.session().attribute("winnerID",doublet.getSecond());
           // return new ModelAndView(attributes,"/winner.moustache");
           response.redirect("/winner");
