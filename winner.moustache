@@ -25,10 +25,6 @@
     		from { -webkit-transform: rotateY(0deg);    }
     		to   { -webkit-transform: rotateY(-360deg); }
   	  }
-  	  .contenedor {
-     		margin: 30px auto;
-     		-webkit-perspective: 600px;
-  	  }
   	  .girando {
      		-webkit-animation-name: girando;
      		-webkit-animation-timing-function: linear;

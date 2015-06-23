@@ -53,4 +53,3 @@ create table games_users(
 	-- este teiene las claves foraneas a de usuario y la de tablero
 );
 
-
