@@ -44,7 +44,7 @@
     		<table aling="center" class="girando">
     			<tr>
     				<td width="300" height="80">
-              <p> PLAYER {{player}} WON !!!</p>
+              <p> PLAYER {{player}} WIN !!!</p>
     				</td>
     			</tr>
     		</table>

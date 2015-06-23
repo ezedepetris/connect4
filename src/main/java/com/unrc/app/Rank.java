@@ -7,17 +7,15 @@ public class Rank extends Model{
 	public Rank(){
 	}
 
-
+  /*method that update the rank after a game ended*/
 	public void upDateRank(Integer winner){
 		Boolean modified = false;
 		int i = 0;
 		int user = 0;
 		List<Rank> ranking = Rank.findAll();
-		System.out.println("=========+++++========="+ ranking.size());
 		
 		while(i < ranking.size() && !modified){
       Rank rank = ranking.get(i);
-   		System.out.println(winner+" ELL RAAANKKKIINNGGG ESS IIGUUALLLLLLL "+(Integer)rank.get("user_id"));
       if(winner.compareTo((Integer)rank.get("user_id")) == 0){//Find the player on the rank list
         modified = true;
         Integer wons = (Integer)rank.get("games_won");
@@ -26,7 +24,6 @@ public class Rank extends Model{
       }
       i++;
     }//End of while
-    System.out.println("KSDKOASKODKAOSDOKASKDAKSDKOSAKDOKASDKO"+!modified);
     if(!modified){//Player wasn't on the rank list
       Rank rankNew = new Rank();
       rankNew.set("user_id", winner);

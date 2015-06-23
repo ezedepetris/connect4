@@ -140,11 +140,9 @@ public class Grid extends Model{
 			x++;
 			int game = searchWinner(player);
 			if (game == player){
-				System.out.println("EL JUGADOR NUMERO "+ player+" ES EL GANADOR");
 				return doublet = new Doublet(x,player);
 			}
 			if(fullBoard()){
-				System.out.println("EMPATE");
 				doublet = new Doublet(x,0);
 				return doublet ;
 			}
@@ -221,6 +219,8 @@ public class Grid extends Model{
 		return half;
 	}
 
+
+	/*load a old game*/
 	public int load(List<Cell> listCells){
 		int move = 0;
 		Cell cell = null;
@@ -230,8 +230,6 @@ public class Grid extends Model{
       cell = listCells.get(move);
       int x = (int)cell.get("pos_x");
 			int y = (int)cell.get("pos_y");
-			System.out.println("LA POSICION X ES = "+ x+"LA POSICION Y ES = "+y);
-      System.out.println("LA POSICION X ES = "+ x+"LA POSICION Y ES = "+y);
       grid[(x-1)][(y-1)] = new Cell(move%2+1);
 			move++;
     }
@@ -240,13 +238,14 @@ public class Grid extends Model{
    }
 
 	
-
+/*defines the color for the turn player*/
 public String next(){
 	if(tokens%2==0)
 		return ("<td><h1>TURN<button class="+'"'+"crojo"+'"'+"></button></h1>");
 	return ("<td><h1>TURN<button class="+'"'+"cverde"+'"'+"></button></h1>");
 }
-
+	
+	/*defines the color for a button*/
  public String colorButton(){
  	if(tokens%2==0)
  		return ("<input type="+'"'+"image"+'"'+"src="+'"'+"redHand.png"+'"'+"alt="+'"'+"Submit"+'"'+"width="+'"'+"70"+'"'+"height="+'"'+"70"+'"'+">");
@@ -256,7 +255,7 @@ public String next(){
 
 
 
-	// @Override
+	/*this method show the board on the client side*/
 	public String print(){
 		String board = "";
 

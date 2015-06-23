@@ -1,7 +1,7 @@
 package com.unrc.app;
 import org.javalite.activejdbc.Model;
 
-
+/*this class model a column with her result after insert a token */
 public class Doublet{
 	private Integer first  ;
 	private Integer second  ;

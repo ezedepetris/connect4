@@ -5,11 +5,7 @@ import java.util.List;
 
 /*this class model an user for connect4 game*/
 public class User extends Model{
-	// private String email;/*email of an user,its unique, and can be use for username*/
-	// private String name;/*its the real name of an user*/
-	// private String lastName;its the last name of an user
-	// private Integer id;/*numer identification of an user,its the primary key,with this we find the users*/
-	// private String password;/*its the password of an user*/
+	String password;/*its the password of an user*/
 
 
 	static{
@@ -22,6 +18,7 @@ public class User extends Model{
 	public User(){
 	}
 
+	/*constructor for create a new user*/
 	public User(String email, String first_name, String last_name){
 		this.set("email", email);
 		this.set("first_name", first_name);
@@ -38,27 +35,10 @@ public class User extends Model{
 		return null;
 	}
 
-	public User createUser(){
-		Scanner in = new Scanner(System.in);
-
-		System.out.println("Ingrese su email");
-		String currentData = in.next();
-		this.set("email", currentData);
-
-		System.out.println("Ingrese su nombre");
-		currentData = in.next();
-		this.set("first_name", currentData);
-
-		System.out.println("Ingrese su apellido");
-		currentData = in.next();
-		this.set("last_name", currentData);
-		this.save();
-		return this;
-	}
 	public static String setName(String n){
 		return n;
 	}
-
+	/*this method return a new user*/
 	public User createUser(String email, String first_name, String last_name){
 		this.set("email", email);
 		this.set("first_name", first_name);

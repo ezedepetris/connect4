@@ -16,10 +16,12 @@ public class App{
   public static void main(String[] args) {
     externalStaticFileLocation("./media");
 
+    /*open the connection with the database*/
     before((request, response) -> {
       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
     });
 
+    /*return the menu of the application*/
     get("/main", (request, response) -> {
       return new ModelAndView(null, "main.moustache");
     },
@@ -33,13 +35,14 @@ public class App{
       return null;
     });
 
+    /*return the form to register the user 1*/
     get("/register_1", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
       return new ModelAndView(null, "register1.moustache");
     },
       new MustacheTemplateEngine()
     );
-
+    /*return the form to register the user 2*/
     get("/register_2", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
       return new ModelAndView(null, "register2.moustache");
@@ -47,6 +50,7 @@ public class App{
       new MustacheTemplateEngine()
     );
 
+    /*search or create an user*/
     post("/register1", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
       String fname1 = request.queryParams("fname1");
@@ -75,11 +79,10 @@ public class App{
         request.session().attribute("user1int",intUser1_id);
       }
       response.redirect("/register_2");
-
-
       return null;
     });
 
+    /*search or create the user 2, and create a new game */
     post("/register2", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
       String fname2 = request.queryParams("fname2");
@@ -110,7 +113,6 @@ public class App{
       Game newGame = new Game();
       Grid newGrid = new Grid();
       newGrid.save();
-      System.out.println("EL ID DEL USUARIO 1 ESSSSSSSSSSSS ="+request.session().attribute("user1"));
       if(request.session().attribute("user1int")!=null)
         newGame.set("user1_id",(Integer)request.session().attribute("user1int"));
       else
@@ -119,7 +121,6 @@ public class App{
       newGame.set("grid_id",newGrid.getId());
       newGame.save();
       request.session().attribute("gameId",newGame.getId());
-      System.out.println("ELLL ATRRIIBUUTOOO OGAMEMEE ESSSSS SS S S SS S = "+ request.session().attribute("gameId"));
       response.redirect("/play");
       return null;
     }
@@ -127,7 +128,7 @@ public class App{
     );
 
 
-
+      /*show the board*/
      get("/play", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
 
@@ -152,17 +153,16 @@ public class App{
       currentGrid = currentGrid.findFirst("id = "+ (int)currentGame.get("grid_id"));
       Cell cell = new Cell();
       List<Cell> listCells = cell.where("grid_id = ?",(int)currentGrid.getId());
-      System.out.println(listCells.size()+ " EL TAMAÑO DE LA LISTA DE LAS CELDAS");
       currentGrid.load(listCells);
 
       attributes.put("grid", currentGrid);
       return new ModelAndView(attributes, "play.moustache");
-       // return new ModelAndView(null, "play.moustache");
 
     },
       new MustacheTemplateEngine()
     );
-
+    
+    /*show all the user of the application*/
     get("/users", (request, response) -> {
         Map<String, Object > attributes = new HashMap<>();
         List<User> users = User.findAll();
@@ -172,7 +172,7 @@ public class App{
       new MustacheTemplateEngine()
     );
 
-
+    /*insert an atoken and verify if there is a winner or deat head */
     post("/add_token",(request,response)-> {
       Map<String, Object> attributes = new HashMap<>();
       
@@ -184,12 +184,9 @@ public class App{
         longGameID = (Long)request.session().attribute("gameId");
       else{
         intGameID = (Integer)request.session().attribute("gameId");
-        // request.session().removeAttribute("returnGame");
       }
 
 
-      // Long gameID = (Long)request.session().attribute("gameId");
-      // Integer gameID = 61;//hardcode
       Game currentGame = new Game();
       Grid currentGrid = new Grid();
 
@@ -229,7 +226,6 @@ public class App{
           Rank rank = new Rank();
           rank.upDateRank((Integer)currentGame.get("winner_id"));
           request.session().attribute("winnerID",doublet.getSecond());
-          // return new ModelAndView(attributes,"/winner.moustache");
           response.redirect("/winner");
           return null;
         }
@@ -254,7 +250,6 @@ public class App{
     }
     );
 
-
     get("/games",(request, response) -> {
 
       Map<String, Object> attributes = new HashMap<>();
@@ -264,7 +259,7 @@ public class App{
     },
       new MustacheTemplateEngine()
    );
-
+    /*show all the ranks*/
   get("/ranks",(request, response) -> {
 
       Map<String, Object> attributes = new HashMap<>();
@@ -297,7 +292,7 @@ public class App{
       new MustacheTemplateEngine()
    );
 
-
+   /*return the view when an user wins*/
     get("/winner", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
       // User user = User.where("id = ?", request.session().attribute("user_id"));
@@ -307,26 +302,14 @@ public class App{
       new MustacheTemplateEngine()
     );
 
-
-
-
-
-
-     get("/dead_heat", (request, response) -> {
+    /*return the view when a game is dead heat*/
+    get("/dead_heat", (request, response) -> {
       return new ModelAndView(null, "dead_heat.moustache");
     },
       new MustacheTemplateEngine()
     );
 
-
-   
-
-
-
-
-
-
-
+    /*here search two useres and load his last game*/
     get("/returnGame", (request, response) -> {
       return new ModelAndView(null, "returnGame.moustache");
     },
@@ -364,7 +347,7 @@ public class App{
     });
 
 
-
+    /*close the connection*/  
     after((request, response) -> {
       Base.close();
     });
