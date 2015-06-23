@@ -255,22 +255,6 @@ public class App{
     );
 
 
-
-
-    get("/user/:id", (request, response) -> {
-      
-      Map<String, Object > attributes = new HashMap<>();
-      
-      User user = User.findFirst("id = " + request.params(":id"));
-      // System.out.println(user.toStringFirstName());
-      attributes.put("user",user);
-      
-      return new ModelAndView(attributes, "user.moustache");
-    },
-      new MustacheTemplateEngine()
-    );
-
-
     get("/games",(request, response) -> {
 
       Map<String, Object> attributes = new HashMap<>();

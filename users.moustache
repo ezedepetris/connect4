@@ -38,7 +38,6 @@
     
     <table width="50%" frame="box"border="3" cellpadding="3" cellspacing="3">
      <tr>
-        <td><p>Id</p></td>
         <td><p>First Name</p></td>
         <td><p>Last Name</p></td>
         <td><p>Email</p></td>
@@ -46,7 +45,6 @@
 
       {{#users}}
           <tr>
-            <td><a href="http://localhost:4567/user/{{toId}}">{{toId}}</a></td>
             <td>{{toStringFirstName}}</td>
             <td>{{toStringLastName}}</td>
             <td>{{toStringEmail}}</td>
