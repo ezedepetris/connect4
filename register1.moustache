@@ -1,6 +1,6 @@
 <html>
 	<style>
-        button, table {
+        .button {
             position:relative;
             background: #3498db;
             background-image: -webkit-linear-gradient(top, #3498db, #216996);
@@ -38,11 +38,11 @@
 		<p>Sing Up</p>
 		<form action="/register1" autocomplete="on" method="post">
 			<h3>
-		  	First name: <input type="text" name="fname1"><br>
+		  	    First name: <input type="text" name="fname1"><br>
 				Last name:  <input type="text" name="lname1"><br>
 				Email:      <input type="text" name="email1"><br>
 			</h3>
-		  	<input type="submit" value="Submit">
+		  	<input class="button" type="submit" value="Submit">
 		</form>
 	</body>
 </html>
