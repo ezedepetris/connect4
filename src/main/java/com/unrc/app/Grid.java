@@ -77,18 +77,19 @@ public class Grid extends Model{
 			count = 0;
 			int ii = i;
 			for (int j=0 ;j<row; j++){
-
-				if(grid[j][ii]==null||grid[j+1][ii+1] ==null)
-					count =0;
-				else{
-					if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii+1].getCell())){
-						count++;
-						ii++;
-						if (count >= 3)
-							return player;
+				if(ii<column){
+					if(grid[j][ii]==null||grid[j+1][ii+1] ==null)
+						count =0;
+					else{
+						if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii+1].getCell())){
+							count++;
+							ii++;
+							if (count >= 3)
+								return player;
+						}
+						else
+							count = 0;
 					}
-					else
-						count = 0;
 				}
 			}	
 		}
@@ -97,19 +98,21 @@ public class Grid extends Model{
 			count = 0;
 			int ii = i;
 			for (int j=0 ;j<row; j++){
-				if(grid[j][ii] == null || grid[j+1][ii-1] == null)
-					count =0;
-				else{
-					if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii-1].getCell())){
-						count++;
-						ii--;
-						if (count >= 3)
-							return player;
+				if(ii>0){
+					if(grid[j][ii] == null || grid[j+1][ii-1] == null)
+						count =0;
+					else{
+						if(player.compareTo(grid[j][ii].getCell())  == 0 && 0 == player.compareTo(grid[j+1][ii-1].getCell())){
+							count++;
+							ii--;
+							if (count >= 3)
+								return player;
+						}
+						else
+							count = 0;
 					}
-					else
-						count = 0;
-				}
-			}	
+				}	
+			}
 		}
 		return 0 ;
 	}
@@ -223,12 +226,13 @@ public class Grid extends Model{
 		Cell cell = null;
 		row = 5;
 		column = 6;
-		while(!listCells.isEmpty()){
-        cell = listCells.get(0);
-        int x = (int)cell.get("pos_x");
-				int y = (int)cell.get("pos_y");
-        this.grid[x][y] = new Cell(move%2+1);
-        listCells.remove(0);
+		while(move<listCells.size()){
+      cell = listCells.get(move);
+      int x = (int)cell.get("pos_x");
+			int y = (int)cell.get("pos_y");
+			System.out.println("LA POSICION X ES = "+ x+"LA POSICION Y ES = "+y);
+      System.out.println("LA POSICION X ES = "+ x+"LA POSICION Y ES = "+y);
+      grid[(x-1)][(y-1)] = new Cell(move%2+1);
 			move++;
     }
     tokens = move;
@@ -237,51 +241,45 @@ public class Grid extends Model{
 
 	
 
-
+public String next(){
+	if(tokens%2==0)
+		return ("<table> <td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+"> <h1>TURN</h1></td></table>");
+	return ("<table><td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+"><h1>TURN</h1></td></table>");
+}
 
 
 
 
 
 	// @Override
-	public List<String> print(){
-		String currentRow ;
-		List<String> board = new LinkedList<String>();
-		grid[2][1]= new Cell(1);
-		grid[1][2]= new Cell(2);
-		grid[2][5]= new Cell(1);
-		grid[3][2]= new Cell(2);
-		grid[4][2]= new Cell(1);
-		grid[2][2]= new Cell(2);
-		grid[3][3]= new Cell(1);
-		grid[2][4]= new Cell(2);
-		grid[1][1]= new Cell(1);
+	public String print(){
+		String board = "";
 
-		board.add("<table align="+'"'+"center"+'"'+" rules="+'"'+"all"+'"'+">");
+		// board.add("<table align="+'"'+"center"+'"'+" rules="+'"'+"all"+'"'+">");
 		for(int i=0; i<=row; i++){
-		board.add("<tr>");
+		board +=("<tr>");
 			for (int j=0 ;j<=column; j++){
 				if(grid[i][j]!=null){
 					if (grid[i][j].getCell()==1){
-							board.add("<td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+">");
-							board.add("</td>");
+							board +=("<td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+">");
+							board +=("</td>");
 						//imprime rojo
 					}
 					else{
-						board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+">");
-						board.add("</td>");
+						board +=("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+">");
+						board +=("</td>");
 						//imprimir verde
 					}
 				 }
 				else{
-					board.add("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"blue"+'"'+">");
-					board.add("</td>");
+					board +=("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"blue"+'"'+">");
+					board +=("</td>");
 					// imprirmr blanco
 				}
 			}
-			board.add("</tr>");
+			board +=("</tr>");
 		}
-		board.add("</table>");
+		board +=("</table>");
 		return board;
 	}
 

@@ -1,15 +1,11 @@
 <body background="fondo1.jpg">
-	<h1>PLAYER 1</h1>
+	<form action="/findGame" method="post">
+		<h1>PLAYER 1</h1>
+		<h4>Email <input type="text" name="email1"><br></h4>
 
-	<h2>Sing in</h2>
-	<h4>Email <textarea rows="1" cols="20"></textarea></h4>
+		<h1>PLAYER 2</h1>
+		<h4>Email <input type="text" name="email2"><br></h4>
+		<input type="submit" value="Submit">
+	</form>
 
-	<h1>__________________________________________________</h1>
-
-	<h1>PLAYER 2</h1>
-
-	<h2>Sing in</h2>
-	<h4>Email <textarea rows="1" cols="20"></textarea></h4>
-
-	<a href="http://localhost:4567/play"><button type ="button" >Play</button></a>
 </body>

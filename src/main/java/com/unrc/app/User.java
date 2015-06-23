@@ -25,14 +25,9 @@ public class User extends Model{
 
 
 /*return an user*/
-	public User getUser(){
-		Scanner in = new Scanner(System.in);
-
-		System.out.println("Ingrese su email ya registrado");
-		String currentData = in.next();
-
-		List<User> current = User.where("email = ?",currentData);
-		if(!current.isEmpty())
+	public User getUser(String email){
+		List<User> current = User.where("email = ?",email);
+		if(!current.isEmpty() && current != null)
 			return current.get(0);
 		return null;
 	}
@@ -58,11 +53,12 @@ public class User extends Model{
 		return n;
 	}
 
-	public void createUser(String email, String first_name, String last_name){
+	public User createUser(String email, String first_name, String last_name){
 		this.set("email", email);
 		this.set("first_name", first_name);
 		this.set("last_name", last_name);
 		this.save();
+		return this;
 	}
 
 	public String toStringFirstName(){

@@ -1,0 +1,12 @@
+<body background="fondo1.jpg">
+	<h1>PLAYER 1</h1>
+	<h1>Sing Up</h1>
+	<form action="/register1" autocomplete="on" method="post">
+		<h3>
+	  	First name: <input type="text" name="fname1"><br>
+			Last name:  <input type="text" name="lname1"><br>
+			Email:      <input type="text" name="email1"><br>
+		</h3>
+	  	<input type="submit" value="Submit">
+	</form>
+</body>
