@@ -1,22 +1,60 @@
-<h1>Games</h1>
+<html>
+  <style>
+        button, table {
+            position:relative;
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #216996);
+            background-image: -moz-linear-gradient(top, #3498db, #216996);
+            background-image: -ms-linear-gradient(top, #3498db, #216996);
+            background-image: -o-linear-gradient(top, #3498db, #216996);
+            background-image: linear-gradient(to bottom, #3498db, #216996);
+            -webkit-border-radius: 20;
+            -moz-border-radius: 20;
+            border-radius: 24px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 5px 15px 5px 15px;
+            text-decoration: none;
+        }
+        p{
+          font-family: Verdana;
+          font-size: 30px;
+        }
+        @-webkit-keyframes girando {
+        from { -webkit-transform: rotateY(0deg);    }
+        to   { -webkit-transform: rotateY(-360deg); }
+      }
+      .girando {
+        -webkit-animation-name: girando;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 3s;
+        -webkit-transform-style: preserve-3d;
+      }
+  </style>
+  <body>
+    <h1>Games</h1>
 
 
-  <table width="50%" border="3" cellspacing="4" cellpadding="3">  
-    	<td><h4>Id</h4></td>
-    	<td><h4>GridId</h4></td>
-    	<td><h4>Player1</h4></td>
-    	<td><h4>Player2</h4></td>
-    	<td><h4>Winner</h4></td>
-    </table>
-    
-  <table width="50%" border="3" cellspacing="3" cellpadding="3">
-    {{#games}}
-        <tr>
-          <td>{{toStringId}}</td>
-					<td>{{toStringGridId}}</td>
-					<td>{{toStringPlayer1}}</td>
-					<td>{{toStringPlayer2}}</td>
-					<td>{{toStringWinnerId}}</td>
-        </tr>
-    {{/games}}
-  </table>
+      <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+        	<td><h4>Id</h4></td>
+        	<td><h4>GridId</h4></td>
+        	<td><h4>Player1</h4></td>
+        	<td><h4>Player2</h4></td>
+        	<td><h4>Winner</h4></td>
+        </table>
+        
+      <table width="50%" border="3" cellspacing="3" cellpadding="3">
+        {{#games}}
+            <tr>
+              <td>{{toStringId}}</td>
+    					<td>{{toStringGridId}}</td>
+    					<td>{{toStringPlayer1}}</td>
+    					<td>{{toStringPlayer2}}</td>
+    					<td>{{toStringWinnerId}}</td>
+            </tr>
+        {{/games}}
+      </table>
+  </body>
+</html>

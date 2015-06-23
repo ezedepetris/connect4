@@ -1,23 +1,59 @@
-<body background="fondo1.jpg">
-<h1>Ranks</h1>
+<html>
+  <style>
+        button, table {
+            position:relative;
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #216996);
+            background-image: -moz-linear-gradient(top, #3498db, #216996);
+            background-image: -ms-linear-gradient(top, #3498db, #216996);
+            background-image: -o-linear-gradient(top, #3498db, #216996);
+            background-image: linear-gradient(to bottom, #3498db, #216996);
+            -webkit-border-radius: 20;
+            -moz-border-radius: 20;
+            border-radius: 24px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 5px 15px 5px 15px;
+            text-decoration: none;
+        }
+        p{
+          font-family: Verdana;
+          font-size: 30px;
+        }
+        @-webkit-keyframes girando {
+        from { -webkit-transform: rotateY(0deg);    }
+        to   { -webkit-transform: rotateY(-360deg); }
+      }
+      .girando {
+        -webkit-animation-name: girando;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 3s;
+        -webkit-transform-style: preserve-3d;
+      }
+  </style>  
+  <body background="fondo1.jpg">
+  <p>Ranks</p>
 
 
- 
-    
-  <table width="50%" border="3" cellpadding="3" cellspacing="3">
-    <tr>
-    	<td><h4>Id</h4></td>
-    	<td><h4>User</h4></td>
-    	<td><h4>Games Wons</h4></td>
-    </tr>
+   
+      
+    <table width="50%" border="3" cellpadding="3" cellspacing="3">
+      <tr>
+      	<td><p>Id</p></td>
+      	<td><p>User</p></td>
+      	<td><p>Games Wons</p></td>
+      </tr>
 
-    {{#ranks}}
-        <tr>
-          <td>{{toStringId}}</td>
-					<td>{{toStringUserId}}</td>
-					<td>{{toStringRank}}</td>
-        </tr>
-    {{/ranks}}
-  </table>
-  <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
-</body>
+      {{#ranks}}
+          <tr>
+            <td>{{toStringId}}</td>
+  					<td>{{toStringUserId}}</td>
+  					<td>{{toStringRank}}</td>
+          </tr>
+      {{/ranks}}
+    </table>
+    <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+  </body>
+</html>

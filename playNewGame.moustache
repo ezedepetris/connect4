@@ -1,27 +1,61 @@
-<body background="fondo1.jpg">
-	<h1>Sing Up</h1>
-	<form action="/register1" autocomplete="on" method="post">
-		<h3>
-	  	First name: <input type="text" name="fname"><br>
-			Last name: <input type="text" name="lname"><br>
-			Email: <input type="text" name="email1"><br>
-		</h3>
-			<!-- {{createUser(email,fname,lname)}} -->
-	  	<input type="submit" value="Submit">
-	</form>
+<html>
+	<style>
+        button, table {
+            position:relative;
+            background: #3498db;
+            background-image: -webkit-linear-gradient(top, #3498db, #216996);
+            background-image: -moz-linear-gradient(top, #3498db, #216996);
+            background-image: -ms-linear-gradient(top, #3498db, #216996);
+            background-image: -o-linear-gradient(top, #3498db, #216996);
+            background-image: linear-gradient(to bottom, #3498db, #216996);
+            -webkit-border-radius: 20;
+            -moz-border-radius: 20;
+            border-radius: 24px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 5px 15px 5px 15px;
+            text-decoration: none;
+        }
+        p{
+          font-family: Verdana;
+          font-size: 30px;
+        }
+        @-webkit-keyframes girando {
+        from { -webkit-transform: rotateY(0deg);    }
+        to   { -webkit-transform: rotateY(-360deg); }
+      }
+      .girando {
+        -webkit-animation-name: girando;
+        -webkit-animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-duration: 3s;
+        -webkit-transform-style: preserve-3d;
+      }
+  </style>
+	<body background="fondo1.jpg">
+		<h1>Sing Up</h1>
+		<form action="/register1" autocomplete="on" method="post">
+			<h3>
+		  	First name: <input type="text" name="fname"><br>
+				Last name: <input type="text" name="lname"><br>
+				Email: <input type="text" name="email1"><br>
+			</h3>
+				<!-- {{createUser(email,fname,lname)}} -->
+		  	<input type="submit" value="Submit">
+		</form>
 
 
-	<h1>Sing In</h1>
-	<form action="/user/find" autocomplete="on">
-		<h3>
-			Email: <input type="text" name="email"><br>
-		</h3>
+		<h1>Sing In</h1>
+		<form action="/user/find" autocomplete="on">
+			<h3>
+				Email: <input type="text" name="email"><br>
+			</h3>
 
-	  	<input type="submit" value="Submit">
-	</form>
-
-	<!-- <a href="http://localhost:4567/play"><button type ="button" >Play</button></a> -->
-</body>
+		  	<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>
 
 
 
