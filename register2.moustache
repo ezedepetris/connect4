@@ -1,6 +1,6 @@
 <html>
 	<style>
-        button, table {
+        .button, table {
             position:relative;
             background: #3498db;
             background-image: -webkit-linear-gradient(top, #3498db, #216996);
@@ -42,7 +42,7 @@
 				Last name:  <input type="text" name="lname2"><br>
 				Email:      <input type="text" name="email2"><br>
 			</h3>
-		  	<input type="submit" value="Submit">
+		  	<input type="submit" class="button" value="Submit">
 		</form>
 	</body>
 </html>

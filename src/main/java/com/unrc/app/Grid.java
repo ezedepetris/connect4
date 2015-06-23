@@ -243,11 +243,16 @@ public class Grid extends Model{
 
 public String next(){
 	if(tokens%2==0)
-		return ("<table> <td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+"> <h1>TURN</h1></td></table>");
-	return ("<table><td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+"><h1>TURN</h1></td></table>");
+		return ("<td><h1>TURN<button class="+'"'+"crojo"+'"'+"></button></h1>");
+	return ("<td><h1>TURN<button class="+'"'+"cverde"+'"'+"></button></h1>");
 }
 
-
+ public String colorButton(){
+ 	if(tokens%2==0)
+ 		return ("<input type="+'"'+"image"+'"'+"src="+'"'+"redHand.png"+'"'+"alt="+'"'+"Submit"+'"'+"width="+'"'+"70"+'"'+"height="+'"'+"70"+'"'+">");
+ 	else
+ 		return ("<input type="+'"'+"image"+'"'+"src="+'"'+"greenHand.png"+'"'+"alt="+'"'+"Submit"+'"'+"width="+'"'+"70"+'"'+"height="+'"'+"70"+'"'+">");
+ }
 
 
 
@@ -255,24 +260,24 @@ public String next(){
 	public String print(){
 		String board = "";
 
-		// board.add("<table align="+'"'+"center"+'"'+" rules="+'"'+"all"+'"'+">");
+		board +=("<table align="+'"'+"center"+'"'+" bgcolor="+'"'+"blue"+'"'+">");
 		for(int i=0; i<=row; i++){
 		board +=("<tr>");
 			for (int j=0 ;j<=column; j++){
 				if(grid[i][j]!=null){
 					if (grid[i][j].getCell()==1){
-							board +=("<td width="+'"'+70+'"'+" height="+'"'+70+'"'+"bgcolor="+'"'+"red"+'"'+">");
+							board +=("<td><button class="+'"'+"crojo"+'"'+"></button>");
 							board +=("</td>");
 						//imprime rojo
 					}
 					else{
-						board +=("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"green"+'"'+">");
+						board +=("<td><button class="+'"'+"cverde"+'"'+"></button>");
 						board +=("</td>");
 						//imprimir verde
 					}
 				 }
 				else{
-					board +=("<td width="+'"'+70+'"'+ "height="+'"'+70+'"'+"bgcolor="+'"'+"blue"+'"'+">");
+					board +=("<td><button class="+'"'+"cfondo"+'"'+"></button>");
 					board +=("</td>");
 					// imprirmr blanco
 				}
