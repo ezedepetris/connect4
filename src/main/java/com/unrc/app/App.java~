@@ -48,15 +48,17 @@ public class App{
     );
 
     post("/register1", (request, response) -> {
+      System.out.println("********************************************");
       Map<String, Object> attributes = new HashMap<>();
       String fname1 = request.queryParams("fname1");
       String lname1 = request.queryParams("lname1");
       String email1 = request.queryParams("email1");
       //crear o buscar usuario
       // request.session(true);
-
+      System.out.println("********************************************");
       User user1 = new User();
       user1 = user1.getUser(email1);
+      System.out.println("********************************************");
       if(user1 == null)
         user1 = user1.createUser(email1,fname1,lname1);
       Integer user1_id = (Integer)user1.getId();

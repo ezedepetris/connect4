@@ -57,11 +57,18 @@ public class App{
 
       User user1 = new User();
       user1 = user1.getUser(email1);
-      if(user1 == null)
-        user1 = user1.createUser(email1,fname1,lname1);
-      Integer user1_id = (Integer)user1.getId();
-      request.session().attribute("user1",user1_id);
-      
+      Long longUser1_id;
+      Integer intUser1_id;
+      if(user1 == null){
+        User aux = new User(email1,fname1,lname1);
+        user1 = aux;
+        longUser1_id = (Long)user1.getId();
+        request.session().attribute("user1long",longUser1_id);
+      }
+      else{
+        intUser1_id = (Integer)user1.getId();
+        request.session().attribute("user1int",intUser1_id);
+      }
       response.redirect("/register_2");
 
 
@@ -78,8 +85,17 @@ public class App{
 
       User user2 = new User();
       user2 = user2.getUser(email2);
-      if(user2 == null)
-        user2 = user2.createUser(email2,fname2,lname2);
+      Long longUser2_id;
+      Integer intUser2_id;
+      if(user2 == null){
+        User aux = new User(email2,fname2,lname2);
+        user2 = aux;
+        longUser2_id = (Long)user2.getId();
+        request.session().attribute("user2",longUser2_id);
+      }
+      else{
+        intUser2_id = (Integer)user2.getId();
+      }
 
       // String user2_id =(String)user2.getId();
       // request.session().attribute("SESSION_NAME",user2.getId());
@@ -88,7 +104,10 @@ public class App{
       Grid newGrid = new Grid();
       newGrid.save();
       System.out.println("EL ID DEL USUARIO 1 ESSSSSSSSSSSS ="+request.session().attribute("user1"));
-      newGame.set("user1_id",(Integer)request.session().attribute("user1"));
+      if(request.session().attribute("user1int")!=null)
+        newGame.set("user1_id",(Integer)request.session().attribute("user1int"));
+      else
+        newGame.set("user1_id",(Long)request.session().attribute("user1long"));
       newGame.set("user2_id",user2.getId());
       newGame.set("grid_id",newGrid.getId());
       newGame.save();
@@ -351,6 +370,277 @@ public class App{
   }
 
 }
+
+// package com.unrc.app;
+
+// import static spark.Spark.*;
+// import com.unrc.app.User;
+// import org.javalite.activejdbc.Base;
+// import java.util.Scanner;
+// import java.util.*;
+// import java.lang.Object;
+
+// import spark.ModelAndView;
+// import spark.TemplateEngine;
+
+
+// public class App{
+
+//   public static void main(String[] args) {
+//     externalStaticFileLocation("./media");
+
+//     before((request, response) -> {
+//       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+//     });
+
+//     get("/main", (request, response) -> {
+//       return new ModelAndView(null, "main.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+//     get("/playNewGame", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+//           request.session(true);
+//       response.redirect("/register_1");
+//       return null;
+//     });
+
+//     get("/register_1", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+//       return new ModelAndView(null, "register1.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+//     get("/register_2", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+//       return new ModelAndView(null, "register2.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+//     post("/register1", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+//       String fname1 = request.queryParams("fname1");
+//       String lname1 = request.queryParams("lname1");
+//       String email1 = request.queryParams("email1");
+//       //crear o buscar usuario
+//       // request.session(true);
+//       User user1 = new User();
+//       user1 = user1.getUser(email1);
+//       if(user1 == null){
+//         User aux = new User(email1,fname1,lname1);
+//         user1 = aux;
+//       }
+//       Long user1_id = (Long)user1.getId();
+//       request.session().attribute("user1",user1_id);
+      
+//       response.redirect("/register_2");
+
+
+//       return null;
+//     });
+
+//     post("/register2", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+//       String fname2 = request.queryParams("fname2");
+//       String lname2 = request.queryParams("lname2");
+//       String email2 = request.queryParams("email2");
+//       //crear o buscar usuario
+
+
+//       User user2 = new User();
+//       user2 = user2.getUser(email2);
+//       if(user2 == null){
+//         User aux = new User(email2,fname2,lname2);
+//         user2 = aux;
+//       }
+
+//       // String user2_id =(String)user2.getId();
+//       // request.session().attribute("SESSION_NAME",user2.getId());
+
+//       Game newGame = new Game();
+//       Grid newGrid = new Grid();
+//       newGrid.save();
+//       System.out.println("EL ID DEL USUARIO 1 ESSSSSSSSSSSS ="+request.session().attribute("user1"));
+//       newGame.set("user1_id",(Long)request.session().attribute("user1"));
+//       newGame.set("user2_id",user2.getId());
+//       newGame.set("grid_id",newGrid.getId());
+//       newGame.save();
+//       request.session().attribute("gameId",newGame.getId());
+//       // String newGameId = (String) newGame.getId();
+
+//       // request.session().attribute(user2_id,user2_id);
+//       System.out.println("ELLL ATRRIIBUUTOOO OGAMEMEE ESSSSS SS S S SS S = "+ request.session().attribute("gameId"));
+//       return new ModelAndView(null, "play.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+
+
+
+
+
+
+
+
+
+//      get("/play", (request, response) -> {
+//       Map<String, Object> attributes = new HashMap<>();
+
+
+//       Integer gameID = request.session().attribute("gameId");
+//       // System.out.println("EELLLLLL DDDDIIIIIIIIAAAAAAAAA  ASDASDAS" + gameI);
+
+
+
+//       // Integer gameID = 1;//hardcode
+//       Game currentGame = new Game();
+//       Grid currentGrid = new Grid();
+//       currentGame = currentGame.findFirst("id = "+gameID);
+//       currentGrid = currentGrid.findFirst("id = "+ (int)currentGame.get("grid_id"));
+//       Cell cell = new Cell();
+//       List<Cell> listCells = cell.where("grid_id = ?",(int)currentGrid.getId());
+//       System.out.println(listCells.size()+ " EL TAMAÑO DE LA LISTA DE LAS CELDAS");
+//       currentGrid.load(listCells);
+
+//       attributes.put("grid", currentGrid);
+//       return new ModelAndView(attributes, "play.moustache");
+//        // return new ModelAndView(null, "play.moustache");
+
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+//     get("/users", (request, response) -> {
+//         Map<String, Object > attributes = new HashMap<>();
+//         List<User> users = User.findAll();
+//         attributes.put("users", users);
+//         return new ModelAndView(attributes, "users.moustache");
+//       },
+//       new MustacheTemplateEngine()
+//     );
+
+
+//     post("/add_token",(request,response)-> {
+//       Map<String, Object> attributes = new HashMap<>();
+      
+//       Integer column = Integer.parseInt(request.queryParams("col"));
+//       Integer gameID = (Integer)request.session().attribute("gameId");
+//       Game currentGame = new Game();
+//       Grid currentGrid = new Grid();
+
+//       currentGame = currentGame.findFirst("id = "+gameID);
+//       currentGrid = currentGrid.findFirst("id = "+ currentGame.get("grid_id"));
+//       Cell cell = new Cell();
+//       List<Cell> listCells = cell.where("grid_id = ?",currentGrid.getId());
+//       int move = 0;
+//       move = currentGrid.load(listCells);
+//       Doublet doublet = currentGrid.play(move%2+1,column);
+
+//       cell.set("pos_x", doublet.getFirst());
+//       cell.set("pos_y", column);
+//       if(move%2 == 0)
+//         /*ASSIGN A USER TO CELL 1*/
+//         cell.set("user_id", currentGame.get("user1_id"));
+//       else
+//         /*ASSIGN A USER TO CELL 2*/
+//         cell.set("user_id", currentGame.get("user2_id"));
+//       /*ASSIGN A GRID TO CELL*/
+//       cell.set("grid_id", currentGrid.getId());
+//       cell.save();
+
+//       response.redirect("/play");
+//       return null;
+
+//     }
+//     );
+
+
+
+
+//     get("/user/:id", (request, response) -> {
+      
+//       Map<String, Object > attributes = new HashMap<>();
+      
+//       User user = User.findFirst("id = " + request.params(":id"));
+//       // System.out.println(user.toStringFirstName());
+//       attributes.put("user",user);
+      
+//       return new ModelAndView(attributes, "user.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+
+//     get("/games",(request, response) -> {
+
+//       Map<String, Object> attributes = new HashMap<>();
+//       List<Game> games = Game.findAll();
+//       attributes.put("games", games);
+//       return new ModelAndView(attributes, "games.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//    );
+
+//   get("/ranks",(request, response) -> {
+
+//       Map<String, Object> attributes = new HashMap<>();
+//       List<Rank> ranks = Rank.findAll();
+//       attributes.put("ranks", ranks);
+//       return new ModelAndView(attributes, "ranks.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//    );
+
+//     get("/gamesusers",(request, response) -> {
+
+//       Map<String, Object> attributes = new HashMap<>();
+//       List<GamesUsers> gamesusers = GamesUsers.findAll();
+//       attributes.put("gamesusers", gamesusers);
+//       return new ModelAndView(attributes, "gamesusers.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//    );
+
+   
+   
+//    get("/grids",(request, response) -> {
+
+//       Map<String, Object> attributes = new HashMap<>();
+//       List<Grid> grids = Grid.findAll();
+//       attributes.put("grids", grids);
+//       return new ModelAndView(attributes, "grids.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//    );
+
+
+
+
+   
+
+
+
+
+
+
+
+//     get("/returnGame", (request, response) -> {
+//       return new ModelAndView(null, "returnGame.moustache");
+//     },
+//       new MustacheTemplateEngine()
+//     );
+
+//     after((request, response) -> {
+//       Base.close();
+//     });
+
+//   }
+
+// }
 
 // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 

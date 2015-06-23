@@ -20,7 +20,13 @@ public class User extends Model{
 
 /*method constructor, create an new user*/
 	public User(){
-		
+	}
+
+	public User(String email, String first_name, String last_name){
+		this.set("email", email);
+		this.set("first_name", first_name);
+		this.set("last_name", last_name);
+		this.save();
 	}
 
 
