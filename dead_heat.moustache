@@ -22,8 +22,8 @@
           font-size: 30px;
         }
         @-webkit-keyframes girando {
-    		from { -webkit-transform: rotateY(0deg);    }
-    		to   { -webkit-transform: rotateY(-360deg); }
+    		from { -webkit-transform: rotateX(0deg);    }
+    		to   { -webkit-transform: rotateX(-360deg); }
   	  }
   	  .girando {
      		-webkit-animation-name: girando;
@@ -34,14 +34,33 @@
   	  }
   </style>
 	<body background="fondo1.jpg">
-		<table aling="center" class="girando">
-    		<tr class="girando">
-    			<td width="120" height="80">
-            	  <p> THE GAME ENDED IN A DRAW</p>
-    			</td>
-    		</tr>
-    	</table>
-
+		<center>
+			<h1></h1>
+			<table class="girando">
+	    		<tr>
+	    			<td>
+	            	  <p> THE GAME </p>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    	<h1></h1>
+	    	<table class="girando">
+	    		<tr>
+	    			<td>
+	    			  	<p> ENDED </P>
+	   				</td>
+	   			</tr>
+	   		</table>
+	   		<h1></h1>
+	   		<table class="girando">
+	   			<tr>
+	   				<td>
+	   				  <p> IN A DRAW </p> 
+	   				</td>
+	    		</tr>
+	    	</table>
+	    	<h1></h1>
+	    </center>
 		<h1></h1>
 	  <center><a href="http://localhost:4567/main"><button type ="button" >MENU</button></a></center>
 	</body>

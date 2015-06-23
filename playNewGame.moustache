@@ -21,17 +21,6 @@
           font-family: Verdana;
           font-size: 30px;
         }
-        @-webkit-keyframes girando {
-        from { -webkit-transform: rotateY(0deg);    }
-        to   { -webkit-transform: rotateY(-360deg); }
-      }
-      .girando {
-        -webkit-animation-name: girando;
-        -webkit-animation-timing-function: linear;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-duration: 3s;
-        -webkit-transform-style: preserve-3d;
-      }
   </style>
 	<body background="fondo1.jpg">
 		<h1>Sing Up</h1>

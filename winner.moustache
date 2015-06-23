@@ -22,8 +22,8 @@
           font-size: 30px;
         }
         @-webkit-keyframes girando {
-    		from { -webkit-transform: rotateY(0deg);    }
-    		to   { -webkit-transform: rotateY(-360deg); }
+    		from { -webkit-transform: rotateX(0deg);    }
+    		to   { -webkit-transform: rotateX(-360deg); }
   	  }
   	  .girando {
      		-webkit-animation-name: girando;
@@ -42,8 +42,8 @@
           <img src="chino.png" width="400" height="400" ></img>
         </center>
     		<table aling="center" class="girando">
-    			<tr class="girando">
-    				<td width="120" height="80">
+    			<tr>
+    				<td width="300" height="80">
               <p> PLAYER {{player}} WON !!!</p>
     				</td>
     			</tr>
