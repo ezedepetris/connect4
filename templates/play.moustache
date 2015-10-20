@@ -1,93 +1,97 @@
 <html>
-<body background="fondo1.jpg">
-  <table align="center">
-    <tr>
-    <form action="add_token" autocomplete="on" method="post" id="column1">
-      <input type="hidden" value="1" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-    <form action="add_token" autocomplete="on" method="post" id="column2">
-      <input type="hidden" value="2" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-    <form action="add_token" autocomplete="on" method="post" id="column3">
-      <input type="hidden" value="3" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-    <form action="add_token" autocomplete="on" method="post" id="column4">
-      <input type="hidden" value="4" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-    <form action="add_token" autocomplete="on" method="post" id="column5">
-      <input type="hidden" value="5" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-    <form action="add_token" autocomplete="on" method="post" id="column6">
-      <input type="hidden" value="6" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-
-   <form action="add_token" autocomplete="on" method="post" id="column7">
-      <input type="hidden" value="7" name="col">
-      <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
-      <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-    </form>
-    {{#grid}}
-      {{{print}}}
-    {{/grid}}
-    {{#grid}}
-      {{{next}}}
-    {{/grid}}
-
-    <form action="add_token" autocomplete="on" method="post">
-      <input type="hidden" value="0" name="col">
-      <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
-    </form>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   
- 
+    <body background="fondo1.jpg">
+      <table align="center">
+        <tr>
+        <form action="add_token" autocomplete="on" method="post" id="column1">
+          <input type="hidden" value="1" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
 
-  <style>
-        .crojo {
-       width: 70px;
-       height: 70px;
-       -moz-border-radius: 50%;
-       -webkit-border-radius: 50%;
-       border-radius: 50%;
-       border: 3px solid #555;
-       background: #FF0000;
-    }
+        <form action="add_token" autocomplete="on" method="post" id="column2">
+          <input type="hidden" value="2" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
 
-    .cverde {
-       width: 70px;
-       height: 70px;
-       -moz-border-radius: 50%;
-       -webkit-border-radius: 50%;
-       border-radius: 50%;
-       border: 3px solid #555;
-       background: #00CC00;
-    }
+        <form action="add_token" autocomplete="on" method="post" id="column3">
+          <input type="hidden" value="3" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
 
-    .cfondo {
-       width: 70px;
-       height: 70px;
-       -moz-border-radius: 50%;
-       -webkit-border-radius: 50%;
-       border-radius: 50%;
-       border: 3px solid #555;
-       background: #FFCC66;
-    }
- </style>
+        <form action="add_token" autocomplete="on" method="post" id="column4">
+          <input type="hidden" value="4" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
 
-</body>
+        <form action="add_token" autocomplete="on" method="post" id="column5">
+          <input type="hidden" value="5" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
+
+        <form action="add_token" autocomplete="on" method="post" id="column6">
+          <input type="hidden" value="6" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
+
+       <form action="add_token" autocomplete="on" method="post" id="column7">
+          <input type="hidden" value="7" name="col">
+          <!-- <td width="70" align="center"><button type ="submit" ><img src="mano.png" height="50" width="50"></button></td> -->
+          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+        </form>
+        {{#grid}}
+          {{{print}}}
+        {{/grid}}
+        {{#grid}}
+          {{{next}}}
+        {{/grid}}
+
+        <form action="add_token" autocomplete="on" method="post">
+          <input type="hidden" value="0" name="col">
+          <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
+        </form>
+      
+     
+
+      <style>
+            .crojo {
+           width: 70px;
+           height: 70px;
+           -moz-border-radius: 50%;
+           -webkit-border-radius: 50%;
+           border-radius: 50%;
+           border: 3px solid #555;
+           background: #FF0000;
+        }
+
+        .cverde {
+           width: 70px;
+           height: 70px;
+           -moz-border-radius: 50%;
+           -webkit-border-radius: 50%;
+           border-radius: 50%;
+           border: 3px solid #555;
+           background: #00CC00;
+        }
+
+        .cfondo {
+           width: 70px;
+           height: 70px;
+           -moz-border-radius: 50%;
+           -webkit-border-radius: 50%;
+           border-radius: 50%;
+           border: 3px solid #555;
+           background: #FFCC66;
+        }
+     </style>
+
+    </body>
+  </head>
 </html>
