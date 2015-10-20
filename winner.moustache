@@ -33,23 +33,26 @@
      		-webkit-transform-style: preserve-3d;
   	  }
   </style>
-  <body background="fondo1.jpg">
-  
-  	<center>
-        <center>
-          <p>Chino says congratulations to player {{player}}</p>
-          <p></p>
-          <img src="chino.png" width="400" height="400" ></img>
-        </center>
-    		<table aling="center" class="girando">
-    			<tr>
-    				<td width="300" height="80">
-              <p> PLAYER {{player}} WIN !!!</p>
-    				</td>
-    			</tr>
-    		</table>
-      <h1></h1>
-      <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
-  	</center>	
-  </body>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body background="fondo1.jpg">
+    
+      <center>
+          <center>
+            <p>Chino says congratulations to player {{player}}</p>
+            <p></p>
+            <img src="chino.png" width="400" height="400" ></img>
+          </center>
+          <table aling="center" class="girando">
+            <tr>
+              <td width="300" height="80">
+                <p> PLAYER {{player}} WIN !!!</p>
+              </td>
+            </tr>
+          </table>
+        <h1></h1>
+        <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+      </center> 
+    </body>
+  </head>
 </html>

@@ -22,28 +22,31 @@
           font-size: 30px;
         }
   </style>
-	<body background="fondo1.jpg">
-		<h1>Sing Up</h1>
-		<form action="/register1" autocomplete="on" method="post">
-			<h3>
-		  	First name: <input type="text" name="fname"><br>
-				Last name: <input type="text" name="lname"><br>
-				Email: <input type="text" name="email1"><br>
-			</h3>
-				<!-- {{createUser(email,fname,lname)}} -->
-		  	<input type="submit" value="Submit">
-		</form>
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body background="fondo1.jpg">
+        <h1>Sing Up</h1>
+        <form action="/register1" autocomplete="on" method="post">
+            <h3>
+            First name: <input type="text" name="fname"><br>
+                Last name: <input type="text" name="lname"><br>
+                Email: <input type="text" name="email1"><br>
+            </h3>
+                <!-- {{createUser(email,fname,lname)}} -->
+            <input type="submit" value="Submit">
+        </form>
 
 
-		<h1>Sing In</h1>
-		<form action="/user/find" autocomplete="on">
-			<h3>
-				Email: <input type="text" name="email"><br>
-			</h3>
+        <h1>Sing In</h1>
+        <form action="/user/find" autocomplete="on">
+            <h3>
+                Email: <input type="text" name="email"><br>
+            </h3>
 
-		  	<input type="submit" value="Submit">
-		</form>
-	</body>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+  </head>
 </html>
 
 

@@ -22,28 +22,31 @@
           font-size: 30px;
         }
   </style>
-  <body>
-    <h1>Games</h1>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body>
+      <h1>Games</h1>
 
 
-      <table width="50%" border="3" cellspacing="4" cellpadding="3">  
-        	<td><h4>Id</h4></td>
-        	<td><h4>GridId</h4></td>
-        	<td><h4>Player1</h4></td>
-        	<td><h4>Player2</h4></td>
-        	<td><h4>Winner</h4></td>
+        <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+            <td><h4>Id</h4></td>
+            <td><h4>GridId</h4></td>
+            <td><h4>Player1</h4></td>
+            <td><h4>Player2</h4></td>
+            <td><h4>Winner</h4></td>
+          </table>
+          
+        <table width="50%" border="3" cellspacing="3" cellpadding="3">
+          {{#games}}
+              <tr>
+                <td>{{toStringId}}</td>
+                <td>{{toStringGridId}}</td>
+                <td>{{toStringPlayer1}}</td>
+                <td>{{toStringPlayer2}}</td>
+                <td>{{toStringWinnerId}}</td>
+              </tr>
+          {{/games}}
         </table>
-        
-      <table width="50%" border="3" cellspacing="3" cellpadding="3">
-        {{#games}}
-            <tr>
-              <td>{{toStringId}}</td>
-    					<td>{{toStringGridId}}</td>
-    					<td>{{toStringPlayer1}}</td>
-    					<td>{{toStringPlayer2}}</td>
-    					<td>{{toStringWinnerId}}</td>
-            </tr>
-        {{/games}}
-      </table>
-  </body>
+    </body>
+  </head>
 </html>

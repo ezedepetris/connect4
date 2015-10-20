@@ -33,24 +33,27 @@
         -webkit-transform-style: preserve-3d;
       }
   </style>
-  <body>
-    <p>GamesUsers</p>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body>
+      <p>GamesUsers</p>
 
 
-      <table width="50%" border="3" cellspacing="4" cellpadding="3">  
-        	<td><p>Id</p></td>
-        	<td><p>Game Id</p></td>
-        	<td><p>User Id</p></td>
+        <table width="50%" border="3" cellspacing="4" cellpadding="3">  
+            <td><p>Id</p></td>
+            <td><p>Game Id</p></td>
+            <td><p>User Id</p></td>
+          </table>
+          
+        <table width="50%" border="3" cellspacing="3" cellpadding="3">
+          {{#gamesusers}}
+              <tr>
+                <td>{{toStringId}}</td>
+                <td>{{toStringGamesId}}</td>
+                <td>{{toStringUserId}}</td>
+              </tr>
+          {{/gamesusers}}
         </table>
-        
-      <table width="50%" border="3" cellspacing="3" cellpadding="3">
-        {{#gamesusers}}
-            <tr>
-              <td>{{toStringId}}</td>
-    					<td>{{toStringGamesId}}</td>
-    					<td>{{toStringUserId}}</td>
-            </tr>
-        {{/gamesusers}}
-      </table>
-  </body>
+    </body>
+  </head>
 </html>

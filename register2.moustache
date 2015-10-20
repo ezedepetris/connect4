@@ -32,17 +32,20 @@
         -webkit-animation-duration: 3s;
         -webkit-transform-style: preserve-3d;
       }
-  </style>	
-	<body background="fondo1.jpg">
-		<p>PLAYER 2</p>
-		<p>Sing Up</p>
-		<form action="/register2" autocomplete="on" method="post">
-			<h3>
-		  	First name: <input type="text" name="fname2"><br>
-				Last name:  <input type="text" name="lname2"><br>
-				Email:      <input type="text" name="email2"><br>
-			</h3>
-		  	<input type="submit" class="button" value="Submit">
-		</form>
-	</body>
+  </style>
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body background="fondo1.jpg">
+        <p>PLAYER 2</p>
+        <p>Sing Up</p>
+        <form action="/register2" autocomplete="on" method="post">
+            <h3>
+            First name: <input type="text" name="fname2"><br>
+                Last name:  <input type="text" name="lname2"><br>
+                Email:      <input type="text" name="email2"><br>
+            </h3>
+            <input type="submit" class="button" value="Submit">
+        </form>
+    </body>
+  </head>	
 </html>

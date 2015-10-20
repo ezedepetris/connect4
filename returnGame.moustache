@@ -23,15 +23,18 @@
         }
   </style>
 
-	<body background="fondo1.jpg">
-		<form action="/findGame" method="post">
-			<p>PLAYER 1</p>
-			<p>Email <input type="text" name="email1"><br></p>
+	<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   
+        <body background="fondo1.jpg">
+            <form action="/findGame" method="post">
+                <p>PLAYER 1</p>
+                <p>Email <input type="text" name="email1"><br></p>
 
-			<p>PLAYER 2</p>
-			<p>Email <input type="text" name="email2"><br></p>
-			<input class="button" type="submit" value="Submit">
-		</form>
+                <p>PLAYER 2</p>
+                <p>Email <input type="text" name="email2"><br></p>
+                <input class="button" type="submit" value="Submit">
+            </form>
 
-	</body>
+        </body>
+    </head>
 </html>

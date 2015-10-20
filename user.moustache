@@ -1,16 +1,19 @@
-<body background="fondo1.jpg">
-  <h5>{{toStringFirstName}}</h5>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <body background="fondo1.jpg">
+    <h5>{{toStringFirstName}}</h5>
 
-    {{#user}}
-    <tr>
-      <td><h4>Id</h4>{{toId}} </td>
-      <td><h4>First Name</h4> {{toStringFirstName}}</td>
-      <td><h4>Last Name</h4> {{toStringLastName}}</td>
-      <td><h4>Email</h4> {{toStringEmail}}</td>
-    </tr>
-  {{/user}}
+      {{#user}}
+      <tr>
+        <td><h4>Id</h4>{{toId}} </td>
+        <td><h4>First Name</h4> {{toStringFirstName}}</td>
+        <td><h4>Last Name</h4> {{toStringLastName}}</td>
+        <td><h4>Email</h4> {{toStringEmail}}</td>
+      </tr>
+    {{/user}}
 
-  
+    
 
-  <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
-</body>
+    <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+  </body>
+</head>

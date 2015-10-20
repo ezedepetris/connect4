@@ -33,25 +33,29 @@
         -webkit-transform-style: preserve-3d;
       }
   </style>
-  <body background="fondo1.jpg">
-  <p>Users</p>
-    
-    <table width="50%" frame="box"border="3" cellpadding="3" cellspacing="3">
-     <tr>
-        <td><p>First Name</p></td>
-        <td><p>Last Name</p></td>
-        <td><p>Email</p></td>
-      </tr>
 
-      {{#users}}
-          <tr>
-            <td>{{toStringFirstName}}</td>
-            <td>{{toStringLastName}}</td>
-            <td>{{toStringEmail}}</td>
-          </tr>
-            
-      {{/users}}
-    </table>
-    <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
-   </body>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body background="fondo1.jpg">
+    <p>Users</p>
+      
+      <table width="50%" frame="box"border="3" cellpadding="3" cellspacing="3">
+       <tr>
+          <td><p>First Name</p></td>
+          <td><p>Last Name</p></td>
+          <td><p>Email</p></td>
+        </tr>
+
+        {{#users}}
+            <tr>
+              <td>{{toStringFirstName}}</td>
+              <td>{{toStringLastName}}</td>
+              <td>{{toStringEmail}}</td>
+            </tr>
+              
+        {{/users}}
+      </table>
+      <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+     </body>
+  </head>
 </html>

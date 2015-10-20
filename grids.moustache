@@ -33,16 +33,19 @@
      		-webkit-transform-style: preserve-3d;
   	  	}
   	</style>
-  	<body>
-		<p>Grids</p>
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <body>
+      <p>Grids</p>
 
 
-		  <table width="50%" border="3" cellspacing="3" cellpadding="3">
-		    {{#grids}}
-		        <tr>
-		          <td>{{toString}}</td>
-		        </tr>
-		    {{/grids}}
-		  </table>
-	</body>
+        <table width="50%" border="3" cellspacing="3" cellpadding="3">
+          {{#grids}}
+              <tr>
+                <td>{{toString}}</td>
+              </tr>
+          {{/grids}}
+        </table>
+    </body>
+  </head>
 </html>

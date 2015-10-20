@@ -21,28 +21,27 @@
           font-family: Verdana;
           font-size: 30px;
         }
-  </style>  
-  <body background="fondo1.jpg">
-  <p>Ranks</p>
+  </style>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <body background="fondo1.jpg">
+    <p>Ranks</p>
+      <table width="50%" border="3" cellpadding="3" cellspacing="3">
+        <tr>
+          <td><p>Id</p></td>
+          <td><p>User</p></td>
+          <td><p>Games Wons</p></td>
+        </tr>
 
-
-   
-      
-    <table width="50%" border="3" cellpadding="3" cellspacing="3">
-      <tr>
-      	<td><p>Id</p></td>
-      	<td><p>User</p></td>
-      	<td><p>Games Wons</p></td>
-      </tr>
-
-      {{#ranks}}
-          <tr>
-            <td>{{toStringId}}</td>
-  					<td>{{toStringUserId}}</td>
-  					<td>{{toStringRank}}</td>
-          </tr>
-      {{/ranks}}
-    </table>
-    <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
-  </body>
+        {{#ranks}}
+            <tr>
+              <td>{{toStringId}}</td>
+              <td>{{toStringUserId}}</td>
+              <td>{{toStringRank}}</td>
+            </tr>
+        {{/ranks}}
+      </table>
+      <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+    </body>
+  </head>  
 </html>
