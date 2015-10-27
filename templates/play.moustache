@@ -52,19 +52,23 @@
           <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
         </form>
       
+      <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
      <script>
-      $("document").ready(function(e)){
-        $("button").on("click", function(){
-          $ajax({
-            /play,
-            data:{colum:"column1", game_id:"x"},
-            method:"post"
+      $("document").ready(function(){
+        $("#column1").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:1, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
           }).done(function(data){
-            alert("hola");
+            //alert(data);
           });
-        }
-      }
+          e.preventDefault();
+          return false;
+        }); 
+      });
      </script>
+     <!-- HACER GENERICO PARA TODAS LAS COLUMNAS -->
 
       <style>
             .crojo {
