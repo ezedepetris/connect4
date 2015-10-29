@@ -53,7 +53,7 @@
           <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
         </form>
       
-      <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
+       <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
      <script>
       $("document").ready(function(){
         $("#column1").on("submit", function(e){
@@ -62,15 +62,123 @@
             data: {col:1, game_id:"gameId", grid_id:"gridId"},
             method: "post"
           }).done(function(data){
-            <td><button class="cverde"></button>
-            </td>
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
      </script>
-     <!-- HACER GENERICO PARA TODAS LAS COLUMNAS -->
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 2 -->
+     <script>
+      $("document").ready(function(){
+        $("#column2").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:2, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 3 -->
+     <script>
+      $("document").ready(function(){
+        $("#column3").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:3, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 4 -->
+      <script>
+      $("document").ready(function(){
+        $("#column4").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:4, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 5 -->
+     <script>
+      $("document").ready(function(){
+        $("#column5").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:5, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 6 -->
+     <script>
+      $("document").ready(function(){
+        $("#column6").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:6, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
+     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 7 -->
+     <script>
+      $("document").ready(function(){
+        $("#column7").on("submit", function(e){
+          $.ajax({
+            url: "/add_token",
+            data: {col:7, game_id:"gameId", grid_id:"gridId"},
+            method: "post"
+          }).done(function(data){
+            //alert(data);
+            console.log(data);
+            $("html").html(data);
+          });
+          e.preventDefault();
+          return false;
+        }); 
+      });
+     </script>
 
       <style>
             .crojo {
