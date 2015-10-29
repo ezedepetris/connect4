@@ -1,6 +1,20 @@
 <html>
 	<style>
-        .button {
+
+                .button{
+          font-weight: bold;
+          width: 100%;
+          margin-top: 28px;
+          height: 55px;
+          border-radius: 11px;
+          font-size: 22px;
+          box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+          border: 1px solid #FF0;
+          background: none repeat scroll 0% 0% #DF0008;
+          color: #FFE600;
+          text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+        }
+        button {
             position:relative;
             background: #3498db;
             background-image: -webkit-linear-gradient(top, #3498db, #216996);
@@ -25,7 +39,7 @@
 
 	<head>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   
-        <body background="fondo1.jpg">
+                    <body bgcolor="black"></body>
             <form action="/findGame" method="post">
                 <p>PLAYER 1</p>
                 <p>Email <input type="text" name="email1"><br></p>

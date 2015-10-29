@@ -1,58 +1,49 @@
 <html>
     <style>
-        button, table {
-            background: #3498db;
-            background-image: -webkit-linear-gradient(top, #3498db, #216996);
-            background-image: -moz-linear-gradient(top, #3498db, #216996);
-            background-image: -ms-linear-gradient(top, #3498db, #216996);
-            background-image: -o-linear-gradient(top, #3498db, #216996);
-            background-image: linear-gradient(to bottom, #3498db, #216996);
-            -webkit-border-radius: 20;
-            -moz-border-radius: 20;
-            border-radius: 24px;
-            font-family: Arial;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 5px 15px 5px 15px;
-            text-decoration: none;
+        button{
+              font-weight: bold;
+              width: 100%;
+              margin-top: 28px;
+              height: 55px;
+              border-radius: 11px;
+              font-size: 22px;
+              box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+              border: 1px solid #FF0;
+              background: none repeat scroll 0% 0% #DF0008;
+              color: #FFE600;
+              text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+        }
+         table {
+            font-family: Verdana;
+            font-weight: bold;
+            color: #DF0008;
+            font-size: 60px;
+            padding: 10px 15px 5px 15px;
+            text-shadow: 0 0 10px #FF0;
         }
         p{
           font-family: Verdana;
           font-size: 30px;
         }
-        @-webkit-keyframes girando {
-            from { -webkit-transform: rotateY(0deg);    }
-            to   { -webkit-transform: rotateY(-360deg); }
-        }
-        .girando {
-                -webkit-animation-name: girando;
-                -webkit-animation-timing-function: linear;
-                -webkit-animation-iteration-count: infinite;
-                -webkit-animation-duration: 3s;
-                -webkit-transform-style: preserve-3d;
-         }
     </style>
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>
-            $("document").ready(function(){
-                alert("jquery is OK");
-            });
-        </script>
-        <body background="fondo1.jpg">
+
+        <!-- <body background="fondo1.jpg"> -->
+            <body bgcolor="black"></body>
             <center>
             <table width="500">
                 <tr>
                    <td>
                         <center>
-                           <p> WELCOME TO CONNECT FOUR </p>
+                           <table> WELCOME TO CONNECT FOUR </table>
                         </center>
                     </td>
                 </tr>
             </table>
             <h1></h1>
-            <img src="fondo2.jpg" height="300" width="300" class="girando">
+           <!--   <img src="fondo2.jpg" height="300" width="300" class="girando"> -->
             <h1></h1>
             <a href="http://localhost:4567/users"><button type ="button" >Show Users</button></a>
             <h1></h1>
