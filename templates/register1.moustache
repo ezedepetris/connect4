@@ -39,16 +39,18 @@
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                 <body bgcolor="black"></body>
+        <font color="white">
         <p>PLAYER 1</p>
         <p>Sing Up</p>
         <form action="/register1" autocomplete="on" method="post">
-            <h3><font color="white">
+            <h3>
                 First name: <input type="text" name="fname1"><br>
                 Last name:  <input type="text" name="lname1"><br>
                 Email:      <input type="text" name="email1"><br>
-            </font></h3>
+            </h3>
             <input class="button" type="submit" value="Submit">
         </form>
+        </font>
     </body>
   </head>
 </html>
