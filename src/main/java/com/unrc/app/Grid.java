@@ -259,7 +259,7 @@ public String next(){
 	public String print(){
 		String board = "";
 
-		board +=("<table align="+'"'+"center"+'"'+" bgcolor="+'"'+"blue"+'"'+">");
+		board +=("<table align="+'"'+"center"+'"'+" bgcolor="+'"'+"#0174DF"+'"'+">");
 		for(int i=0; i<=row; i++){
 		board +=("<tr>");
 			for (int j=0 ;j<=column; j++){
@@ -284,6 +284,7 @@ public String next(){
 			board +=("</tr>");
 		}
 		board +=("</table>");
+		board +=("<table align="+'"'+"center"+'"'+"class="+'"'+"trapecio"+'"'+"></table>");
 		return board;
 	}
 
