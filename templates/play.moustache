@@ -1,10 +1,7 @@
 <html>
   <head>
     <script src="Jquery/jquery-2.1.4.js"></script>
-
-  <font color="white">
-
-  
+    <font color="white">
       <body bgcolor="black"></body>
 
       <div id="load_grid">
@@ -18,120 +15,120 @@
         </form>
       
        <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
-     <script>
-      $("document").ready(function(){
-        $("#column1").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:1},
-            method: "post"
-          }).done(function(data){
-            // alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
+       <script>
+        $("document").ready(function(){
+          $("#column1").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:1},
+              method: "post"
+            }).done(function(data){
+              // alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
 
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
 
-      $("document").ready(function(){
-        $("#column2").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:2},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
-    
-      $("document").ready(function(){
-        $("#column3").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:3},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
-    
-      $("document").ready(function(){
-        $("#column4").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:4},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
+        $("document").ready(function(){
+          $("#column2").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:2},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
+      
+        $("document").ready(function(){
+          $("#column3").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:3},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
+      
+        $("document").ready(function(){
+          $("#column4").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:4},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
 
-      $("document").ready(function(){
-        $("#column5").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:5},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
+        $("document").ready(function(){
+          $("#column5").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:5},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
 
-      $("document").ready(function(){
-        $("#column6").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:6},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
+        $("document").ready(function(){
+          $("#column6").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:6},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
 
-      $("document").ready(function(){
-        $("#column7").on("submit", function(e){
-          $.ajax({
-            url: "/add_token",
-            data: {col:7},
-            method: "post"
-          }).done(function(data){
-            //alert(data);
-            console.log(data);
-            $("#load_grid").html(data);
-          });
-          e.preventDefault();
-          return false;
-        }); 
-      });
-     </script>
+        $("document").ready(function(){
+          $("#column7").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:7},
+              method: "post"
+            }).done(function(data){
+              //alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+        });
+       </script>
 
 
 
@@ -174,8 +171,6 @@
           border-bottom: 70px solid #0174DF
       }
      </style>
-
     </font>
-
   </head>
 </html>
