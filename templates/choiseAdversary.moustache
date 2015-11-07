@@ -38,17 +38,12 @@
   </style>
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                <body bgcolor="black"></body>
-        <font color="white">
-        <p>PLAYER 1</p>
-        <p>Sing Up</p>
-        <form action="/register1" autocomplete="on" method="post">
-            <h3>
-                First name: <input type="text" name="fname1"><br>
-                Last name:  <input type="text" name="lname1"><br>
-                Email:      <input type="text" name="email1"><br>
-            </h3>
-            <input class="button" type="submit" value="Submit">
+        <body bgcolor="black"></body>
+        <form action="/registerPlayers" autocomplete="on" method="post">
+            <input class="button" type="submit" value="Player vs Player">
+        </form>
+        <form action="/registerPlayer" autocomplete="on" method="post">
+            <input class="button" type="submit" value="Player vs Computer">
         </form>
         </font>
     </body>

@@ -1,12 +1,16 @@
 <html>
   <head>
     <script src="Jquery/jquery-2.1.4.js"></script>
+
+  <font color="white">
+
   
       <body bgcolor="black"></body>
 
       <div id="load_grid">
         {{> playAjax}}
       </div>
+
 
         <form action="add_token" autocomplete="on" method="post">
           <input type="hidden" value="0" name="col">
@@ -161,6 +165,17 @@
            border: 3px solid #555;
            background: #FFCC66;
         }
+
+        .trapecio {
+          width: 640px;
+          height: 0px;
+          border-right: 60px solid transparent;
+          border-left: 60px solid transparent;
+          border-bottom: 70px solid #0174DF
+      }
      </style>
+
+    </font>
+
   </head>
 </html>
