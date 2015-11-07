@@ -1,7 +1,13 @@
 <html>
   <head>
     <script src="Jquery/jquery-2.1.4.js"></script>
-    <font color="white">
+    <style >
+      @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+      h1 {
+      font-family: slkscr
+        }
+    </style>
+    <font color="white" >
       <body bgcolor="black"></body>
 
       <div id="load_grid">

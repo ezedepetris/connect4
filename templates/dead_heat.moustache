@@ -1,75 +1,54 @@
 <html>
 	<style>
-        button{
-          font-weight: bold;
-          width: 100%;
-          margin-top: 28px;
-          height: 55px;
-          border-radius: 11px;
-          font-size: 22px;
-          box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
-          border: 1px solid #FF0;
-          background: none repeat scroll 0% 0% #DF0008;
-          color: #FFE600;
-          text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
-        }
-
-        table {
-        	  position:relative;
-            background: #3498db;
-            background-image: -webkit-linear-gradient(top, #3498db, #216996);
-            background-image: -moz-linear-gradient(top, #3498db, #216996);
-            background-image: -ms-linear-gradient(top, #3498db, #216996);
-            background-image: -o-linear-gradient(top, #3498db, #216996);
-            background-image: linear-gradient(to bottom, #3498db, #216996);
-            -webkit-border-radius: 20;
-            -moz-border-radius: 20;
-            border-radius: 24px;
-            font-family: Arial;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 5px 15px 5px 15px;
-            text-decoration: none;
-        }
-        p{
-          font-family: Verdana;
-          font-size: 30px;
-        }
-        @-webkit-keyframes girando {
-    		from { -webkit-transform: rotateX(0deg);    }
-    		to   { -webkit-transform: rotateX(-360deg); }
-  	  }
-  	  .girando {
-     		-webkit-animation-name: girando;
-     		-webkit-animation-timing-function: linear;
-     		-webkit-animation-iteration-count: infinite;
-     		-webkit-animation-duration: 3s;
-     		-webkit-transform-style: preserve-3d;
-  	  }
+    @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+    h1 {
+      color:##FFE600;
+      font-family: slkscr;
+    }
+    h2 {
+      color:#FFE600;
+      font-family: slkscr;
+    }
+    h3 {
+      color:#FFFFFF;
+      font-family: slkscr;
+    }
+    h4 {
+      color:#FFFFFF;
+      font-family: slkscr;
+    }
+    button{
+      font-weight: bold;
+      width: 100%;
+      margin-top: 28px;
+      height: 55px;
+      border-radius: 11px;
+      font-size: 22px;
+      box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+      border: 1px solid #FF0;
+      background: none repeat scroll 0% 0% #DF0008;
+      color: #FFE600;
+      text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+    }
   </style>
 	            <body bgcolor="black"></body>
 		<center>
-			<h1></h1>
-			<table class="girando">
+		  <table>
 	    		<tr>
 	    			<td>
-	            	  <p> THE GAME </p>
+          	  <h1> THE GAME </h1>
 	    			</td>
 	    		</tr>
-	    	</table>
-	    	<h1></h1>
-	    	<table class="girando">
+	    	
 	    		<tr>
 	    			<td>
-	    			  	<p> ENDED </P>
+    			  	<h1> ENDED </h1>
 	   				</td>
 	   			</tr>
-	   		</table>
-	   		<h1></h1>
-	   		<table class="girando">
+	   		
 	   			<tr>
 	   				<td>
-	   				  <p> IN A DRAW </p> 
+	   				  <h1> IN A DRAW </h1> 
 	   				</td>
 	    		</tr>
 	    	</table>

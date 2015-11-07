@@ -1,70 +1,55 @@
 <html>
   <style>
         
-      button{
-        font-weight: bold;
-        width: 100%;
-        margin-top: 28px;
-        height: 55px;
-        border-radius: 11px;
-        font-size: 22px;
-        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
-        border: 1px solid #FF0;
-        background: none repeat scroll 0% 0% #DF0008;
-        color: #FFE600;
-        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
-      }
-        table {
-            position:relative;
-            background: #3498db;
-            background-image: -webkit-linear-gradient(top, #3498db, #216996);
-            background-image: -moz-linear-gradient(top, #3498db, #216996);
-            background-image: -ms-linear-gradient(top, #3498db, #216996);
-            background-image: -o-linear-gradient(top, #3498db, #216996);
-            background-image: linear-gradient(to bottom, #3498db, #216996);
-            -webkit-border-radius: 20;
-            -moz-border-radius: 20;
-            border-radius: 24px;
-            font-family: Arial;
-            color: #ffffff;
-            font-size: 14px;
-            padding: 5px 15px 5px 15px;
-            text-decoration: none;
-        }
-        p{
-          font-family: Verdana;
-          font-size: 30px;
-        }
-        @-webkit-keyframes girando {
-        from { -webkit-transform: rotateY(0deg);    }
-        to   { -webkit-transform: rotateY(-360deg); }
-      }
-      .girando {
-        -webkit-animation-name: girando;
-        -webkit-animation-timing-function: linear;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-duration: 3s;
-        -webkit-transform-style: preserve-3d;
-      }
+    button{
+      font-weight: bold;
+      width: 100%;
+      margin-top: 28px;
+      height: 55px;
+      border-radius: 11px;
+      font-size: 22px;
+      box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+      border: 1px solid #FF0;
+      background: none repeat scroll 0% 0% #DF0008;
+      color: #FFE600;
+      text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+    }
+    @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+    h1 {
+      color:##FFE600;
+      font-family: slkscr;
+    }
+    h2 {
+      color:#FFE600;
+      font-family: slkscr;
+    }
+    h3 {
+      color:#FFFFFF;
+      font-family: slkscr;
+    }
+    h4 {
+      color:#FFFFFF;
+      font-family: slkscr;
+    }
   </style>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <body>
-      <p>GamesUsers</p>
+      <h1>GamesUsers</h1>
 
 
         <table width="50%" border="3" cellspacing="4" cellpadding="3">  
-            <td><p>Id</p></td>
-            <td><p>Game Id</p></td>
-            <td><p>User Id</p></td>
+            <td><h2>Id</h2></td>
+            <td><h2>Game Id</h2></td>
+            <td><h2>User Id</h2></td>
           </table>
           
         <table width="50%" border="3" cellspacing="3" cellpadding="3">
           {{#gamesusers}}
               <tr>
-                <td>{{toStringId}}</td>
-                <td>{{toStringGamesId}}</td>
-                <td>{{toStringUserId}}</td>
+                <td><h3>{{toStringId}}</h3></td>
+                <td><h3>{{toStringGamesId}}</h3></td>
+                <td><h3>{{toStringUserId}}</h3></td>
               </tr>
           {{/gamesusers}}
         </table>
