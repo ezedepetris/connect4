@@ -1,53 +1,13 @@
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="Jquery/jquery-2.1.4.js"></script>
   
-                <body bgcolor="black"></body>
-      <table align="center">
-        <tr>
-        <form action="add_token" autocomplete="on" method="post" id="column1">
-          <input type="hidden" value="1" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-  
-        </form>
+      <body bgcolor="black"></body>
 
-        <form action="add_token" autocomplete="on" method="post" id="column2">
-          <input type="hidden" value="2" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form>
+      <div id="load_grid">
+        {{> playAjax}}
+      </div>
 
-        <form action="add_token" autocomplete="on" method="post" id="column3">
-          <input type="hidden" value="3" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form>
-
-        <form action="add_token" autocomplete="on" method="post" id="column4">
-          <input type="hidden" value="4" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form>
-
-        <form action="add_token" autocomplete="on" method="post" id="column5">
-          <input type="hidden" value="5" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form>
-
-        <form action="add_token" autocomplete="on" method="post" id="column6">
-          <input type="hidden" value="6" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form>
-
-       <form action="add_token" autocomplete="on" method="post" id="column7">
-          <input type="hidden" value="7" name="col">
-          <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
-        </form >
-        <form method="post" id="grid">
-        {{#grid}}
-          {{{print}}}
-        {{/grid}}
-        {{#grid}}
-          {{{next}}}
-        {{/grid}}
-        </form>
         <form action="add_token" autocomplete="on" method="post">
           <input type="hidden" value="0" name="col">
           <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
@@ -59,120 +19,109 @@
         $("#column1").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:1, game_id:"gameId", grid_id:"gridId"},
+            data: {col:1},
             method: "post"
           }).done(function(data){
-            //alert(data);
+            // alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
+
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 2 -->
-     <script>
+
       $("document").ready(function(){
         $("#column2").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:2, game_id:"gameId", grid_id:"gridId"},
+            data: {col:2},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 3 -->
-     <script>
+    
       $("document").ready(function(){
         $("#column3").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:3, game_id:"gameId", grid_id:"gridId"},
+            data: {col:3},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 4 -->
-      <script>
+    
       $("document").ready(function(){
         $("#column4").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:4, game_id:"gameId", grid_id:"gridId"},
+            data: {col:4},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 5 -->
-     <script>
+
       $("document").ready(function(){
         $("#column5").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:5, game_id:"gameId", grid_id:"gridId"},
+            data: {col:5},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 6 -->
-     <script>
+
       $("document").ready(function(){
         $("#column6").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:6, game_id:"gameId", grid_id:"gridId"},
+            data: {col:6},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
         }); 
       });
-     </script>
-     <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 7 -->
-     <script>
+
       $("document").ready(function(){
         $("#column7").on("submit", function(e){
           $.ajax({
             url: "/add_token",
-            data: {col:7, game_id:"gameId", grid_id:"gridId"},
+            data: {col:7},
             method: "post"
           }).done(function(data){
             //alert(data);
             console.log(data);
-            $("html").html(data);
+            $("#load_grid").html(data);
           });
           e.preventDefault();
           return false;
@@ -180,8 +129,10 @@
       });
      </script>
 
+
+
       <style>
-            .crojo {
+        .crojo {
            width: 70px;
            height: 70px;
            -moz-border-radius: 50%;
@@ -211,6 +162,5 @@
            background: #FFCC66;
         }
      </style>
-    </body>
   </head>
 </html>

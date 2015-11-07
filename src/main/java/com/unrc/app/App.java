@@ -241,13 +241,14 @@ public class App{
             cell.set("grid_id", currentGrid.getId());
             cell.save();
           }
+          attributes.put("grid", currentGrid);
+          return new ModelAndView(attributes, "playAjax.moustache");
 
-          response.redirect("/play");
-          return null;
         }
       }
 
-    }
+    },
+      new MustacheTemplateEngine() 
     );
 
     get("/games",(request, response) -> {
