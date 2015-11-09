@@ -151,37 +151,6 @@ public class Grid extends Model{
 		return doublet = new Doublet(x,-1);
 	}
 
-	/*this method show de board at now*/
-	public void show(){
-		for(int x = 0; x<25; x++){
-			System.out.println();
-		}
-		for(int i=0; i<=row; i++){
-			for (int j=0 ;j<=column; j++){
-				System.out.print("\033[34m"+"|");
-				if(grid[i][j]!=null){
-				//	System.out.println(grid[i][j].getCell());
-					if (grid[i][j].getCell()==1){
-						System.out.print("\033[31m"+"o"/*grid[i][j].getCell()*/);
-						System.out.print("\033[34m"+"");
-					}
-					else{
-						System.out.print("\033[32m"+"x"/*grid[i][j].getCell()*/);
-						System.out.print("\033[34m"+"");
-					}
-				 }
-				else{
-					System.out.print("\033[30m"+"");
-					System.out.print(" ");
-					System.out.print("\033[34m"+"");
-				}
-			}
-			System.out.print("|");
-			System.out.print("\033[37m"+"");	
-			System.out.println();
-		}
-	}
-
 	/*this method modeling how we insert a toke, we choose de dicotomic insert,
 	cause its more efficient that lineal form*/
 	public int putACell(Integer player,int aColumn){
@@ -288,21 +257,43 @@ public String next(){
 		return board;
 	}
 
+/* this method clone an state, but with out her references,this is uses when overlap the data*/
+	public Grid clone() {
+    if (this == null) 
+      return null;
+    Grid aux = new Grid(6,7);
+    if(this.flag)
+    	aux.flag = true;
+    else
+    	aux.flag = false;
+    for (int i = 0; i<=row; i++) {
+    	for (int j = 0; j<=column; j++) {
+    		if(this.grid[i][j]!= null)
+    			aux.grid[i][j] = new Cell (this.grid[i][j].getCell());
+    	}
+    }
+    return aux;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	public LinkedList<Grid> getSuccessors(Grid state) {
+		LinkedList<Grid> list = new LinkedList<Grid>();
+		int player;	
+		if(state.isMax()){
+			player = 1;
+		}
+		else{
+			player = -1;
+			for (int j = 0; j<=column; j++){
+				Cell cell = new Cell(player);
+	   			Grid aux = state.clone();
+				if(!aux.fullColumn){
+					aux.putACell(player,j);
+					list.add(aux);
+				}
+			} 
+		}
+		return list;
+	}
+	
 }
 	
