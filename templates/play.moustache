@@ -20,51 +20,6 @@
           <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
         </form>
       
-       <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
-       <script>
-
-       function insertToken(x,y){
-        $(x).on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:y},
-              method: "post"
-            }).done(function(data){
-              // alert(data);
-              console.log(data);
-            $("#load_grid").html(data);
-
-              insertToken("#column1","1");
-              insertToken("#column2","2");
-              insertToken("#column3","3");
-              insertToken("#column4","4");
-              insertToken("#column5","5");
-              insertToken("#column6","6");
-              insertToken("#column7","7");
-    
-              insertToken(x,y);
-
-            });
-            e.preventDefault();
-            return false;
-          }); 
-       };
-
-        $("document").ready(function(){
-          insertToken("#column1","1");
-          insertToken("#column2","2");
-          insertToken("#column3","3");
-          insertToken("#column4","4");
-          insertToken("#column5","5");
-          insertToken("#column6","6");
-          insertToken("#column7","7");
-        });
-
-
-       </script>
-
-
-
       <style>
         .crojo {
            width: 70px;

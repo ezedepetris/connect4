@@ -1,3 +1,29 @@
+<script>
+       function insertToken(x,y){
+        $(x).on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:y},
+              method: "post"
+            }).done(function(data){
+              console.log(data);
+              $("#load_grid").html(data);
+            });
+            e.preventDefault();
+            return false;
+          }); 
+       };
+
+        $("document").ready(function(){
+          insertToken("#column1","1");
+          insertToken("#column2","2");
+          insertToken("#column3","3");
+          insertToken("#column4","4");
+          insertToken("#column5","5");
+          insertToken("#column6","6");
+          insertToken("#column7","7");
+        });
+</script>
 
 <table align="center">
     <form action="add_token" autocomplete="on" method="post" id="column1">
