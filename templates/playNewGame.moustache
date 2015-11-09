@@ -1,19 +1,20 @@
 <html>
 	<style>
-      button{
-            font-weight: bold;
-            width: 100%;
-            margin-top: 28px;
-            height: 55px;
-            border-radius: 11px;
-            font-size: 22px;
-            box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
-            border: 1px solid #FF0;
-            background: none repeat scroll 0% 0% #DF0008;
-            color: #FFE600;
-            text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
-      }
       @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+      button{
+        font-family: slkscr;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 28px;
+        height: 55px;
+        border-radius: 11px;
+        font-size: 22px;
+        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+        border: 1px solid #FF0;
+        background: none repeat scroll 0% 0% #DF0008;
+        color: #FFE600;
+        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+      }
       h1 {
         color:##FFE600;
         font-family: slkscr;
@@ -33,27 +34,27 @@
   </style>
   <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                <body bgcolor="black"></body>
-        <h1>Sing Up</h1>
-        <form action="/register1" autocomplete="on" method="post">
-            <h3>
-            First name: <input type="text" name="fname"><br>
-                Last name: <input type="text" name="lname"><br>
-                Email: <input type="text" name="email1"><br>
-            </h3>
-                <!-- {{createUser(email,fname,lname)}} -->
-            <input type="submit" value="Submit">
-        </form>
+      <body bgcolor="black"></body>
+      <h1>Sing Up</h1>
+      <form action="/register1" autocomplete="on" method="post">
+          <h3>
+          First name: <input type="text" name="fname"><br>
+              Last name: <input type="text" name="lname"><br>
+              Email: <input type="text" name="email1"><br>
+          </h3>
+              <!-- {{createUser(email,fname,lname)}} -->
+          <input type="submit" value="Submit">
+      </form>
 
 
-        <h1>Sing In</h1>
-        <form action="/user/find" autocomplete="on">
-            <h3>
-                Email: <input type="text" name="email"><br>
-            </h3>
+      <h1>Sing In</h1>
+      <form action="/user/find" autocomplete="on">
+          <h3>
+              Email: <input type="text" name="email"><br>
+          </h3>
 
-            <input type="submit" value="Submit">
-        </form>
+          <input type="submit" value="Submit">
+      </form>
     </body>
   </head>
 </html>

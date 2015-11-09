@@ -19,6 +19,7 @@
     }
 
     button{
+      font-family: slkscr;
       font-weight: bold;
       width: 100%;
       margin-top: 28px;
@@ -36,22 +37,22 @@
 
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                <body bgcolor="black"></body>
+    <body bgcolor="black"></body>
     <h1>Users</h1>
       
       <table width="50%" frame="box"border="3" cellpadding="3" cellspacing="3">
-       <tr>
+        <tr>
           <td><h2>First Name</h2></td>
           <td><h2>Last Name</h2></td>
           <td><h2>Email</h2></td>
         </tr>
 
         {{#users}}
-            <tr>
-              <td><h3>{{toStringFirstName}}</h3></td>
-              <td><h3>{{toStringLastName}}</h3></td>
-              <td><h3>{{toStringEmail}}</h3></td>
-            </tr>
+          <tr>
+            <td><h3>{{toStringFirstName}}</h3></td>
+            <td><h3>{{toStringLastName}}</h3></td>
+            <td><h3>{{toStringEmail}}</h3></td>
+          </tr>
               
         {{/users}}
       </table>

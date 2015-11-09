@@ -317,6 +317,46 @@ public class App{
       new MustacheTemplateEngine()
     );
     
+    get("/choiseAdversary",(request, response) -> {
+      return new ModelAndView(null, "choiseAdversary.moustache");
+    },
+      new MustacheTemplateEngine()
+   );
+
+
+
+    get("/createFakeGame",(request, response) -> {
+      Map<String, Object> attributes = new HashMap<>();
+
+      User user1 = new User();
+      User user2 = new User();
+      user1 = user1.getUser("human@human.com");
+      user2 = user2.getUser("computer@computer.com");
+
+      if(user1 == null){
+        user1 = new User("human@human.com","CEO","ERROR-404");
+      }
+
+      if(user2 == null){
+        user2 = new User("computer@computer.com","CEO","ERROR-404");
+      }
+
+      Game newGame = new Game();
+      Grid newGrid = new Grid();
+      newGrid.save();
+ 
+      newGame.set("user1_id",user1.getId());
+      newGame.set("user2_id",user2.getId());
+      newGame.set("grid_id",newGrid.getId());
+      newGame.save();
+      request.session().attribute("gameId",newGame.getId());
+
+      response.redirect("/play");
+      return null;
+    }
+   );
+
+
     post("/findGame", (request, response) -> {
       String email1 = (String)request.queryParams("email1");
       String email2 = (String)request.queryParams("email2");

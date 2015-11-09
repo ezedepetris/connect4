@@ -1,6 +1,8 @@
 <html> 
   <style>
+    @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
     button{
+      font-family: slkscr;  
       font-weight: bold;
       width: 100%;
       margin-top: 28px;
@@ -13,7 +15,6 @@
       color: #FFE600;
       text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
     }
-    @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
     h1 {
       color:#FFE600;
       font-family: slkscr;
