@@ -22,6 +22,24 @@
       
        <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
        <script>
+
+       function algo(){
+        $("#column1").on("submit", function(e){
+            $.ajax({
+              url: "/add_token",
+              data: {col:1},
+              method: "post"
+            }).done(function(data){
+              // alert(data);
+              console.log(data);
+              $("#load_grid").html(data);
+              algo();
+            });
+            e.preventDefault();
+            return false;
+          }); 
+       };
+
         $("document").ready(function(){
           $("#column1").on("submit", function(e){
             $.ajax({
@@ -32,7 +50,7 @@
               // alert(data);
               console.log(data);
               $("#load_grid").html(data);
-
+              algo();
             });
             e.preventDefault();
             return false;
