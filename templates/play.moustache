@@ -23,17 +23,27 @@
        <!-- CODIGO HARDCODEADO SOLO PARA LA COLUMNA 1 -->
        <script>
 
-       function algo(){
-        $("#column1").on("submit", function(e){
+       function insertToken(x,y){
+        $(x).on("submit", function(e){
             $.ajax({
               url: "/add_token",
-              data: {col:1},
+              data: {col:y},
               method: "post"
             }).done(function(data){
               // alert(data);
               console.log(data);
-              $("#load_grid").html(data);
-              algo();
+            $("#load_grid").html(data);
+
+              insertToken("#column1","1");
+              insertToken("#column2","2");
+              insertToken("#column3","3");
+              insertToken("#column4","4");
+              insertToken("#column5","5");
+              insertToken("#column6","6");
+              insertToken("#column7","7");
+    
+              insertToken(x,y);
+
             });
             e.preventDefault();
             return false;
@@ -41,117 +51,16 @@
        };
 
         $("document").ready(function(){
-          $("#column1").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:1},
-              method: "post"
-            }).done(function(data){
-              // alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-              algo();
-            });
-            e.preventDefault();
-            return false;
-          }); 
+          insertToken("#column1","1");
+          insertToken("#column2","2");
+          insertToken("#column3","3");
+          insertToken("#column4","4");
+          insertToken("#column5","5");
+          insertToken("#column6","6");
+          insertToken("#column7","7");
         });
 
-        $("document").ready(function(){
-          $("#column2").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:2},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
-      
-        $("document").ready(function(){
-          $("#column3").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:3},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
-      
-        $("document").ready(function(){
-          $("#column4").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:4},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
 
-        $("document").ready(function(){
-          $("#column5").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:5},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
-
-        $("document").ready(function(){
-          $("#column6").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:6},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
-
-        $("document").ready(function(){
-          $("#column7").on("submit", function(e){
-            $.ajax({
-              url: "/add_token",
-              data: {col:7},
-              method: "post"
-            }).done(function(data){
-              //alert(data);
-              console.log(data);
-              $("#load_grid").html(data);
-            });
-            e.preventDefault();
-            return false;
-          }); 
-        });
        </script>
 
 
