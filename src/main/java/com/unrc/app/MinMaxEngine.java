@@ -48,9 +48,9 @@ public class MinMaxEngine  {
 /* this method select the best state between the all successors state*/
 	public Grid computeSuccessor(Grid state){
 		List<Grid> successors = problem.getSuccessors(state);
-		LinkedList<Doublet<Grid,Integer>> successorsValues = new LinkedList<Doublet<Grid,Integer>>();
+		LinkedList<DoubletGeneric<Grid,Integer>> successorsValues = new LinkedList<DoubletGeneric<Grid,Integer>>();
 		while (!successors.isEmpty()){
-			successorsValues.add(new Doublet<Grid,Integer>(successors.get(0),computeValue(successors.get(0))));
+			successorsValues.add(new DoubletGeneric<Grid,Integer>(successors.get(0),computeValue(successors.get(0))));
 			successors.remove(0);
 		}
 		int max = 0;
@@ -69,11 +69,6 @@ public class MinMaxEngine  {
         problem = p;
     }
 
-  public AdversarySearchEngine(Grid p, int depth) {
-    problem = p;
-    maxDepth = depth;
-  }
-
 	public int getMaxDepth() {
 		return maxDepth;
 	}
@@ -82,7 +77,7 @@ public class MinMaxEngine  {
 		this.maxDepth = maxDepth;
 	}
 
-	public P getProblem() {
+	public Grid getProblem() {
 		return problem;
 	}
 

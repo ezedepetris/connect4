@@ -47,7 +47,7 @@ public class Grid extends Model{
 	}
 
 /*this method search a winner of this game*/
-	public int scountSequence(Integer player){
+	public int countSequence(Integer player){
 		int score = 0;
 		int count = 0;
 		/*this verify the column if some player wins*/
@@ -56,11 +56,11 @@ public class Grid extends Model{
 			for (int j=0 ;j<column; j++){
 				if(grid[i][j]==null||grid[i][j+1] ==null){
 					if(count == 2)
-						score += 100
+						score += 100;
 					if(count == 3)
-						score +=1000
+						score +=1000;
 					if(count == 4)
-						score +=10000
+						score +=10000;
 					count =0;
 				}
 				else{
@@ -69,28 +69,28 @@ public class Grid extends Model{
 					}
 					else{
 						if(count == 2)
-							score += 100
+							score += 100;
 						if(count == 3)
-							score +=1000
+							score +=1000;
 						if(count == 4)
-							score +=10000
+							score +=10000;
 						count = 0;
 					}
 				}
 			}	
 		}
 		/*this verify the row if some player wins*/
-		int count = 0;
+		count = 0;
 		for(int i=0; i<=column; i++){
 			count = 0;
 			for (int j=0 ;j<row; j++){
 				if(grid[j][i]==null||grid[j+1][i] ==null){
 					if(count == 2)
-						score += 100
+						score += 100;
 					if(count == 3)
-						score +=1000
+						score +=1000;
 					if(count == 4)
-						score +=10000
+						score +=10000;
 					count =0;
 				}
 				else{
@@ -99,18 +99,18 @@ public class Grid extends Model{
 					}
 					else{
 						if(count == 2)
-							score += 100
+							score += 100;
 						if(count == 3)
-							score +=1000
+							score +=1000;
 						if(count == 4)
-							score +=10000
+							score +=10000;
 						count = 0;
 					}
 				}
 			}	
 		}
 		/*this verify the diagonal left toright if some player wins*/
-		int count = 0;
+		count = 0;
 		for(int i=0; i<column; i++){
 			count = 0;
 			int ii = i;
@@ -118,11 +118,11 @@ public class Grid extends Model{
 				if(ii<column){
 					if(grid[j][ii]==null||grid[j+1][ii+1] ==null){
 						if(count == 2)
-							score += 100
+							score += 100;
 						if(count == 3)
-							score +=1000
+							score +=1000;
 						if(count == 4)
-							score +=10000
+							score +=10000;
 						count =0;
 					}
 					else{
@@ -132,11 +132,11 @@ public class Grid extends Model{
 						}
 						else{
 							if(count == 2)
-								score += 100
+								score += 100;
 							if(count == 3)
-								score +=1000
+								score +=1000;
 							if(count == 4)
-								score +=10000
+								score +=10000;
 							count = 0;
 						}
 					}
@@ -144,7 +144,7 @@ public class Grid extends Model{
 			}	
 		}
 		/*this verify the diagonal right to left if some player wins*/
-		int count = 0;
+		count = 0;
 		for(int i=column; i>0; i--){
 			count = 0;
 			int ii = i;
@@ -152,11 +152,11 @@ public class Grid extends Model{
 				if(ii>0){
 					if(grid[j][ii] == null || grid[j+1][ii-1] == null){
 						if(count == 2)
-							score += 100
+							score += 100;
 						if(count == 3)
-							score +=1000
+							score +=1000;
 						if(count == 4)
-							score +=10000
+							score +=10000;
 						count =0;
 					}
 					else{
@@ -166,11 +166,11 @@ public class Grid extends Model{
 						}
 						else{
 							if(count == 2)
-								score += 100
+								score += 100;
 							if(count == 3)
-								score +=1000
+								score +=1000;
 							if(count == 4)
-								score +=10000
+								score +=10000;
 							count = 0;
 						}
 					}
@@ -252,9 +252,9 @@ public class Grid extends Model{
 	}
 
 	public int value(Grid state){
-		int pc = this.countSequence(2);
-		int human = this.countSequence(1);
-		if(this.isMax(state))
+		int pc = state.countSequence(2);
+		int human = state.countSequence(1);
+		if(state.isMax())
 			return pc-human;
 		else
 			return human-pc;
@@ -409,16 +409,25 @@ public String next(){
 		return 0 ;
 	}
 
+	public boolean end(Grid state){
+		if(state.fullBoard())
+			return true;
+		if(state.searchWinner(1) == 1)
+			return true;
+		if(state.searchWinner(2) == 2)
+			return true;
+		return false;
+	}
 
 /* this method clone an state, but with out her references,this is uses when overlap the data*/
 	public Grid clone() {
     if (this == null) 
       return null;
     Grid aux = new Grid(6,7);
-    if(this.flag)
-    	aux.flag = true;
-    else
-    	aux.flag = false;
+    // if(this.flag)
+    // 	aux.flag = true;
+    // else
+    // 	aux.flag = false;
     for (int i = 0; i<=row; i++) {
     	for (int j = 0; j<=column; j++) {
     		if(this.grid[i][j]!= null)
@@ -439,7 +448,7 @@ public String next(){
 			for (int j = 0; j<=column; j++){
 				Cell cell = new Cell(player);
 	   			Grid aux = state.clone();
-				if(!aux.fullColumn){
+				if(!aux.fullColumn(j)){
 					aux.putACell(player,j);
 					list.add(aux);
 				}
