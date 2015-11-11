@@ -46,7 +46,7 @@ public class MinMaxEngine  {
 	}	
 
 /* this method select the best state between the all successors state*/
-	public Grid computeSuccessor(Grid state){
+	public	Integer computeSuccessor(Grid state){
 		List<Grid> successors = problem.getSuccessors(state);
 		LinkedList<DoubletGeneric<Grid,Integer>> successorsValues = new LinkedList<DoubletGeneric<Grid,Integer>>();
 		while (!successors.isEmpty()){
@@ -61,10 +61,24 @@ public class MinMaxEngine  {
 			}
 			i++;
 		}
-		return successorsValues.get(max).getFst();
+		return obtainedXY(successorsValues.get(max).getFst(),state);
 	}
 
+	private Integer obtainedXY(Grid aux_state,Grid state){
+		int i = 0;
+		int j = 0;
+		while(i<=state.row){
+			while(j<=state.column){
+				if(aux_state.grid[i][j] != null && state.grid[i][j] == null)
+					return j;
+				j++;
+			}
+			j = 0;
+			i++;
+		}
+		return j;
 
+	}
 	public void setProblem(Grid p) {
         problem = p;
     }

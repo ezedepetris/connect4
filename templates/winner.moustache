@@ -50,7 +50,7 @@
             </tr>
           </table>
         <h1></h1>
-        <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
+        <a href="http://localhost:4567/main"><button type ="button" >MENU</button></a>
       </center> 
     </body>
   </head>

@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <style >
+      @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+      button {
+        font-family: slkscr;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 28px;
+        height: 55px;
+        border-radius: 11px;
+        font-size: 22px;
+        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+        border: 1px solid #FF0;
+        background: none repeat scroll 0% 0% #DF0008;
+        color: #FFE600;
+        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+      }
+
+    </style>
+    <body bgcolor="black"></body>
+    <form action="/difficulty" method="post">
+      <input type="hidden" value="4" name="level">
+      <td width="70" align="center"><button type ="submit" >Easy</button></td>
+    </form>
+
+     <form action="/difficulty" method="post">
+      <input type="hidden" value="10" name="level">
+      <td width="70" align="center"><button type ="submit" >Medium</button></td>
+    </form>
+
+    <form action="/difficulty" method="post">
+      <input type="hidden" value="42" name="level">
+      <td width="70" align="center"><button type ="submit" >Hard</button></td>
+    </form>
+  </head>
+</html>

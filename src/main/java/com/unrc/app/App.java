@@ -23,6 +23,7 @@ public class App{
 
     /*return the menu of the application*/
     get("/main", (request, response) -> {
+      Variable.computerGame = false;
       return new ModelAndView(null, "main.moustache");
     },
       new MustacheTemplateEngine()
@@ -129,7 +130,7 @@ public class App{
 
 
       /*show the board*/
-     get("/play", (request, response) -> {
+    get("/play", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
 
       Long longGameID = null;
@@ -241,9 +242,43 @@ public class App{
             cell.set("grid_id", currentGrid.getId());
             cell.save();
           }
+
+          // HERE THE COMPUTER BEGINS TO PLAY BITCHESS!!!
+          if(Variable.computerGame){ 
+
+            Integer nextMove = Variable.engine.computeSuccessor(currentGrid);
+
+            doublet = currentGrid.play(2,nextMove+1);
+
+            Cell cellComputer = new Cell();
+            cellComputer.set("pos_x", doublet.getFirst());
+            cellComputer.set("pos_y", nextMove+1);
+            if(doublet.getSecond()==0){
+              currentGame.set("winner_id",0);
+              currentGame.save();
+              response.redirect("/dead_heat");
+                return null;
+            }
+            else{
+              if(doublet.getSecond() >0){
+                currentGame.set("winner_id", currentGame.get("user2_id"));
+                currentGame.save();
+                request.session().attribute("winnerID",doublet.getSecond());
+                response.redirect("/winner");
+                return null;
+              }
+              else{
+                if(doublet.getSecond() != (-1)){
+                  cellComputer.set("user_id", currentGame.get("user2_id"));
+                  /*ASSIGN A GRID TO CELLComputer*/
+                  cellComputer.set("grid_id", currentGrid.getId());
+                  cellComputer.save();
+                }          
+              }
+            }
+          }
           attributes.put("grid", currentGrid);
           return new ModelAndView(attributes, "playAjax.moustache");
-
         }
       }
 
@@ -259,17 +294,17 @@ public class App{
       return new ModelAndView(attributes, "games.moustache");
     },
       new MustacheTemplateEngine()
-   );
+    );
     /*show all the ranks*/
-  get("/ranks",(request, response) -> {
+    get("/ranks",(request, response) -> {
 
-      Map<String, Object> attributes = new HashMap<>();
-      List<Rank> ranks = Rank.findAll();
-      attributes.put("ranks", ranks);
-      return new ModelAndView(attributes, "ranks.moustache");
+        Map<String, Object> attributes = new HashMap<>();
+        List<Rank> ranks = Rank.findAll();
+        attributes.put("ranks", ranks);
+        return new ModelAndView(attributes, "ranks.moustache");
     },
-      new MustacheTemplateEngine()
-   );
+        new MustacheTemplateEngine()
+    );
 
     get("/gamesusers",(request, response) -> {
 
@@ -279,19 +314,19 @@ public class App{
       return new ModelAndView(attributes, "gamesusers.moustache");
     },
       new MustacheTemplateEngine()
-   );
+    );
 
    
    
-   get("/grids",(request, response) -> {
+    get("/grids",(request, response) -> {
 
-      Map<String, Object> attributes = new HashMap<>();
-      List<Grid> grids = Grid.findAll();
-      attributes.put("grids", grids);
-      return new ModelAndView(attributes, "grids.moustache");
+        Map<String, Object> attributes = new HashMap<>();
+        List<Grid> grids = Grid.findAll();
+        attributes.put("grids", grids);
+        return new ModelAndView(attributes, "grids.moustache");
     },
-      new MustacheTemplateEngine()
-   );
+        new MustacheTemplateEngine()
+    );
 
    /*return the view when an user wins*/
     get("/winner", (request, response) -> {
@@ -321,13 +356,13 @@ public class App{
       return new ModelAndView(null, "choiseAdversary.moustache");
     },
       new MustacheTemplateEngine()
-   );
+    );
 
 
 
-    get("/createFakeGame",(request, response) -> {
+    post("/createFakeGame",(request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
-
+      Variable.computerGame = true;
       User user1 = new User();
       User user2 = new User();
       user1 = user1.getUser("human@human.com");
@@ -351,10 +386,22 @@ public class App{
       newGame.save();
       request.session().attribute("gameId",newGame.getId());
 
+      return new ModelAndView(null, "difficulty.moustache");
+    },
+       new MustacheTemplateEngine()
+    );
+
+    post("/difficulty",(request, response) -> {
+      Map<String, Object> attributes = new HashMap<>();
+      Grid grid = new Grid();
+      Integer depth = Integer.parseInt(request.queryParams("level"));
+      Variable.engine = new MinMaxEngine(grid,depth);
+      System.out.println("THE DEPTH ISs "+ Variable.engine.getMaxDepth());
+
       response.redirect("/play");
       return null;
     }
-   );
+    );
 
 
     post("/findGame", (request, response) -> {

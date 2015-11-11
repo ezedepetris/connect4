@@ -22,7 +22,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <body bgcolor="black"></body>
     <a href="http://localhost:4567/playNewGame"><button type ="button" >Player vs Player</button></a>
-    <a href="http://localhost:4567/createFakeGame"><button type ="button" >Player vs Computer</button></a>
+      <form action="/createFakeGame" method="post">
+        <td width="70" align="center"><button type ="submit" >Player vs Computer</button></td>
+      </form>
     </body>
   </head>
 </html>

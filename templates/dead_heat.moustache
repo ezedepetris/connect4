@@ -2,7 +2,7 @@
 	<style>
     @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
     h1 {
-      color:##FFE600;
+      color:#FFE600;
       font-family: slkscr;
     }
     h2 {

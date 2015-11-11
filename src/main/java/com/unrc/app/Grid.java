@@ -6,8 +6,8 @@ import java.util.*;
 public class Grid extends Model{
 
 	Cell[][] grid;
-	private int row;
-	private int column;
+	public int row;
+	public int column;
 	private int tokens;
 	private int level;
 
@@ -440,20 +440,20 @@ public String next(){
 	public LinkedList<Grid> getSuccessors(Grid state) {
 		LinkedList<Grid> list = new LinkedList<Grid>();
 		int player;	
-		if(state.isMax()){
-			player = 1;
-		}
-		else{
-			player = -1;
-			for (int j = 0; j<=column; j++){
-				Cell cell = new Cell(player);
-	   			Grid aux = state.clone();
-				if(!aux.fullColumn(j)){
-					aux.putACell(player,j);
-					list.add(aux);
-				}
-			} 
-		}
+		if(state.isMax())
+			player = 2;
+		else
+			player=1;
+
+		for (int j = 0; j<=column; j++){
+   			Grid aux = state.clone();
+   			aux.level = state.level *-1;
+			if(!aux.fullColumn(j+1)){
+				aux.putACell(player,j+1);
+				list.add(aux);
+			}
+		} 
+	
 		return list;
 	}
 	
