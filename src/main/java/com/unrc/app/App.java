@@ -21,6 +21,30 @@ public class App{
       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
     });
 
+    /*return the view for register a new user or login of the application*/
+    get("/firstView", (request, response) -> {
+      Variable.computerGame = false;
+      return new ModelAndView(null, "firstView.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
+    /*return the view for sing in a user*/
+    get("/singIn", (request, response) -> {
+      Variable.computerGame = false;
+      return new ModelAndView(null, "singIn.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
+    /*return the view for sing un a user*/
+    get("/singUp", (request, response) -> {
+      Variable.computerGame = false;
+      return new ModelAndView(null, "singUp.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
     /*return the menu of the application*/
     get("/main", (request, response) -> {
       Variable.computerGame = false;
@@ -32,7 +56,7 @@ public class App{
     get("/playNewGame", (request, response) -> {
       Map<String, Object> attributes = new HashMap<>();
           request.session(true);
-      response.redirect("/register_1");
+      response.redirect("/register_2");
       return null;
     });
 
@@ -56,6 +80,8 @@ public class App{
       Map<String, Object> attributes = new HashMap<>();
       String fname1 = request.queryParams("fname1");
       String lname1 = request.queryParams("lname1");
+      // String fname1 = "player1name";
+      // String lname1 = "player1lastname";
       String email1 = request.queryParams("email1");
       if(email1==null || email1==""){
         response.redirect("/main");
@@ -79,7 +105,7 @@ public class App{
         intUser1_id = (Integer)user1.getId();
         request.session().attribute("user1int",intUser1_id);
       }
-      response.redirect("/register_2");
+      response.redirect("/main");
       return null;
     });
 
