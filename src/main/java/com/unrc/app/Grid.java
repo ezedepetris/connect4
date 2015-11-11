@@ -56,7 +56,7 @@ public class Grid extends Model{
 			for (int j=0 ;j<column; j++){
 				if(grid[i][j]==null||grid[i][j+1] ==null){
 					if(count == 2)
-						score += 100;
+						score += 10;
 					if(count == 3)
 						score +=10000;
 					if(count == 4)
@@ -69,7 +69,7 @@ public class Grid extends Model{
 					}
 					else{
 						if(count == 2)
-							score += 100;
+							score += 10;
 						if(count == 3)
 							score +=10000;
 						if(count == 4)
@@ -86,7 +86,7 @@ public class Grid extends Model{
 			for (int j=0 ;j<row; j++){
 				if(grid[j][i]==null||grid[j+1][i] ==null){
 					if(count == 2)
-						score += 100;
+						score += 10;
 					if(count == 3)
 						score +=10000;
 					if(count == 4)
@@ -99,7 +99,7 @@ public class Grid extends Model{
 					}
 					else{
 						if(count == 2)
-							score += 100;
+							score += 10;
 						if(count == 3)
 							score +=10000;
 						if(count == 4)
@@ -118,7 +118,7 @@ public class Grid extends Model{
 				if(ii<column){
 					if(grid[j][ii]==null||grid[j+1][ii+1] ==null){
 						if(count == 2)
-							score += 100;
+							score += 10;
 						if(count == 3)
 							score +=1000;
 						if(count == 4)
@@ -132,7 +132,7 @@ public class Grid extends Model{
 						}
 						else{
 							if(count == 2)
-								score += 100;
+								score += 10;
 							if(count == 3)
 								score +=1000;
 							if(count == 4)
@@ -152,7 +152,7 @@ public class Grid extends Model{
 				if(ii>0){
 					if(grid[j][ii] == null || grid[j+1][ii-1] == null){
 						if(count == 2)
-							score += 100;
+							score += 10;
 						if(count == 3)
 							score +=10000;
 						if(count == 4)
@@ -166,7 +166,7 @@ public class Grid extends Model{
 						}
 						else{
 							if(count == 2)
-								score += 100;
+								score += 10;
 							if(count == 3)
 								score +=10000;
 							if(count == 4)
@@ -255,9 +255,9 @@ public class Grid extends Model{
 		int pc = state.countSequence(2);
 		int human = state.countSequence(1);
 		if(state.isMax())
-			return pc-human;
+			return pc;
 		else
-			return human-pc;
+			return -human;
 	}
 
 	/*load a old game*/
