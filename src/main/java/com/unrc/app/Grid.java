@@ -58,9 +58,9 @@ public class Grid extends Model{
 					if(count == 2)
 						score += 100;
 					if(count == 3)
-						score +=1000;
-					if(count == 4)
 						score +=10000;
+					if(count == 4)
+						score +=1000000;
 					count =0;
 				}
 				else{
@@ -71,9 +71,9 @@ public class Grid extends Model{
 						if(count == 2)
 							score += 100;
 						if(count == 3)
-							score +=1000;
-						if(count == 4)
 							score +=10000;
+						if(count == 4)
+							score +=1000000;
 						count = 0;
 					}
 				}
@@ -88,9 +88,9 @@ public class Grid extends Model{
 					if(count == 2)
 						score += 100;
 					if(count == 3)
-						score +=1000;
-					if(count == 4)
 						score +=10000;
+					if(count == 4)
+						score +=1000000;
 					count =0;
 				}
 				else{
@@ -101,9 +101,9 @@ public class Grid extends Model{
 						if(count == 2)
 							score += 100;
 						if(count == 3)
-							score +=1000;
-						if(count == 4)
 							score +=10000;
+						if(count == 4)
+							score +=1000000;
 						count = 0;
 					}
 				}
@@ -122,7 +122,7 @@ public class Grid extends Model{
 						if(count == 3)
 							score +=1000;
 						if(count == 4)
-							score +=10000;
+							score +=1000000;
 						count =0;
 					}
 					else{
@@ -136,7 +136,7 @@ public class Grid extends Model{
 							if(count == 3)
 								score +=1000;
 							if(count == 4)
-								score +=10000;
+								score +=1000000;
 							count = 0;
 						}
 					}
@@ -154,9 +154,9 @@ public class Grid extends Model{
 						if(count == 2)
 							score += 100;
 						if(count == 3)
-							score +=1000;
-						if(count == 4)
 							score +=10000;
+						if(count == 4)
+							score +=1000000;
 						count =0;
 					}
 					else{
@@ -168,9 +168,9 @@ public class Grid extends Model{
 							if(count == 2)
 								score += 100;
 							if(count == 3)
-								score +=1000;
-							if(count == 4)
 								score +=10000;
+							if(count == 4)
+								score +=1000000;
 							count = 0;
 						}
 					}

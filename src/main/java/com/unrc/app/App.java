@@ -265,6 +265,18 @@ public class App{
                 currentGame.save();
                 request.session().attribute("winnerID",doublet.getSecond());
                 response.redirect("/winner");
+                System.out.println("GANO EL DOSASDASD ASD ASD ASD ASDASD ASD ASD AD AD AS SAD SAD ASD AS DSA ");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
                 return null;
               }
               else{
