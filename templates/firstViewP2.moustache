@@ -1,0 +1,38 @@
+<html>
+    <style>
+      @font-face { font-family: slkscrb; src: url("8-bit/slkscrb.ttf"); } 
+      @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+      h3 {
+        font-family: slkscr;
+        color: #FFE600;
+      }
+      button{
+        font-family: slkscr;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 28px;
+        height: 55px;
+        border-radius: 11px;
+        font-size: 22px;
+        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+        border: 1px solid #FF0;
+        background: none repeat scroll 0% 0% #DF0008;
+        color: #FFE600;
+        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+      }
+      
+    </style>
+
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <body bgcolor="black"></body>
+        <center>
+          <h1></h1>
+          <a href="http://localhost:4567/singInP2"><button type ="button" >Sing In</button></a>
+          <h1></h1>
+          <a href="http://localhost:4567/singUpP2"><button type ="button" >Sing Up</button></a>
+        </center>
+        <h3> by Error-404</h3>
+    </body>
+  </head>
+</html>

@@ -53,12 +53,36 @@ public class App{
       new MustacheTemplateEngine()
     );
 
+    // get("/playNewGame", (request, response) -> {
+    //   Map<String, Object> attributes = new HashMap<>();
+    //       request.session(true);
+    //   response.redirect("/register_2");
+    //   return null;
+    // });
+
+    /*return the menu of the application*/
     get("/playNewGame", (request, response) -> {
-      Map<String, Object> attributes = new HashMap<>();
-          request.session(true);
-      response.redirect("/register_2");
-      return null;
-    });
+      Variable.computerGame = false;
+      return new ModelAndView(null, "firstViewP2.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
+    /*return the view for sing in a user 2*/
+    get("/singInP2", (request, response) -> {
+      Variable.computerGame = false;
+      return new ModelAndView(null, "singInP2.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
+
+    /*return the view for sing un a user 2*/
+    get("/singUpP2", (request, response) -> {
+      Variable.computerGame = false;
+      return new ModelAndView(null, "singUpP2.moustache");
+    },
+      new MustacheTemplateEngine()
+    );
 
     /*return the form to register the user 1*/
     get("/register_1", (request, response) -> {

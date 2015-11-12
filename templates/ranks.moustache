@@ -37,8 +37,9 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
                 <body bgcolor="black"></body>
+    <center>
     <h1>Ranks</h1>
-      <table width="50%" border="3" cellpadding="3" cellspacing="3">
+      <table  cellpadding="3" cellspacing="3">
         <tr>
           <td><h2>Id</h2></td>
           <td><h2>User</h2></td>
@@ -53,6 +54,7 @@
             </tr>
         {{/ranks}}
       </table>
+      </center>
       <a href="http://localhost:4567/main"><button type ="button" >Back</button></a>
     </body>
   </head>  

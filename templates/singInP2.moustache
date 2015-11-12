@@ -1,0 +1,59 @@
+<html>
+    <style>
+      @font-face { font-family: slkscrb; src: url("8-bit/slkscrb.ttf"); } 
+      @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
+      h1 {
+        font-family: slkscr;
+        color: #FFE600;
+      }
+      .button{
+        font-family: slkscr;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 28px;
+        height: 55px;
+        border-radius: 11px;
+        font-size: 22px;
+        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+        border: 1px solid #FF0;
+        background: none repeat scroll 0% 0% #DF0008;
+        color: #FFE600;
+        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+      }
+       table {
+        font-family: slkscrb;
+        font-weight: bold;
+        color: #DF0008;
+        font-size: 60px;
+        padding: 10px 15px 5px 15px;
+        text-shadow: 0 0 10px #FF0;
+      }
+      
+    </style>
+
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <body bgcolor="black"></body>
+        <center>
+          <table width="500">
+            <tr>
+             <td>
+                <center>
+                   <table> Sing In </table>
+                </center>
+              </td>
+            </tr>
+          </table>
+          <h1></h1>
+          <form action="/register2" autocomplete="on" method="post">
+            <h1>
+                *Email----->  <input type="text" size="25" name="email2"><br>
+                *Password->  <input type="password" size="25"><br>
+            </h1>
+            <input class="button" type="submit" value="Play">
+          </form>
+        </center>
+        <h3> by Error-404</h3>
+    </body>
+  </head>
+</html>
