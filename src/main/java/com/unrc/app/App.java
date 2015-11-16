@@ -264,8 +264,9 @@ public class App{
       if(doublet.getSecond()==0){
         currentGame.set("winner_id",0);
         currentGame.save();
-        response.redirect("/dead_heat");
-          return null;
+        return new ModelAndView(null,"dead_heat.moustache");
+        // response.redirect("/dead_heat");
+        // return null;
       }
       else{
         if(doublet.getSecond() >0){
@@ -276,9 +277,13 @@ public class App{
           currentGame.save();
           Rank rank = new Rank();
           rank.upDateRank((Integer)currentGame.get("winner_id"));
-          request.session().attribute("winnerID",doublet.getSecond());
-          response.redirect("/winner");
-          return null;
+          if(Variable.computerGame)
+            attributes.put("winnerID","human");
+          else
+            attributes.put("winnerID","player "+doublet.getSecond());
+          return new ModelAndView(attributes,"winner.moustache");
+          // response.redirect("/winner");
+          // return null;
         }
         else{
           if(doublet.getSecond() != (-1)){
@@ -306,28 +311,18 @@ public class App{
             if(doublet.getSecond()==0){
               currentGame.set("winner_id",0);
               currentGame.save();
-              response.redirect("/dead_heat");
-                return null;
+              return new ModelAndView(null,"dead_heat.moustache");
+              // response.redirect("/dead_heat");
+              // return null;
             }
             else{
               if(doublet.getSecond() >0){
                 currentGame.set("winner_id", currentGame.get("user2_id"));
                 currentGame.save();
-                request.session().attribute("winnerID",doublet.getSecond());
-                response.redirect("/winner");
-                System.out.println("GANO EL DOSASDASD ASD ASD ASD ASDASD ASD ASD AD AD AS SAD SAD ASD AS DSA ");
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                System.out.println();
-                return null;
+                attributes.put("winnerID","COMPUTER");
+                return new ModelAndView(attributes,"winner.moustache");
+                // response.redirect("/winner");
+                // return null;
               }
               else{
                 if(doublet.getSecond() != (-1)){
