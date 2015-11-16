@@ -62,7 +62,7 @@
                 <h2>PLAYER 1</h2>
                 <h3>Email <input type="text" name="email1"><br></h3>
 
-                <hs>PLAYER 2</hs>
+                <h2>PLAYER 2</h2>
                 <h3>Email <input type="text" name="email2"><br></h3>
                 <input class="button" type="submit" value="Submit">
             </form>
