@@ -2,23 +2,15 @@
 	<style>
       @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
       h1 {
-      color:#FFFFFF;
-      font-family: slkscr;
+        font-family: slkscr;
+        color: #FFE600;
       }
       h2 {
         color:#FFE600;
         font-family: slkscr;
       }
-      h3 {
-        color:#FFFFFF;
-        font-family: slkscr;
-      }
-      h4 {
-        color:#FFFFFF;
-        font-family: slkscr;
-      }
-
       .button{
+        font-family: slkscr;
         font-weight: bold;
         width: 100%;
         margin-top: 28px;
@@ -31,40 +23,33 @@
         color: #FFE600;
         text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
       }
-      button {
-          font-family: slkscr;
-          position:relative;
-          background: #3498db;
-          background-image: -webkit-linear-gradient(top, #3498db, #216996);
-          background-image: -moz-linear-gradient(top, #3498db, #216996);
-          background-image: -ms-linear-gradient(top, #3498db, #216996);
-          background-image: -o-linear-gradient(top, #3498db, #216996);
-          background-image: linear-gradient(to bottom, #3498db, #216996);
-          -webkit-border-radius: 20;
-          -moz-border-radius: 20;
-          border-radius: 24px;
-          font-family: Arial;
-          color: #ffffff;
-          font-size: 14px;
-          padding: 5px 15px 5px 15px;
-          text-decoration: none;
-      }
-      p{
-        font-family: Verdana;
-        font-size: 30px;
+      table {
+        font-family: slkscrb;
+        font-weight: bold;
+        color: #DF0008;
+        font-size: 60px;
+        padding: 10px 15px 5px 15px;
+        text-shadow: 0 0 10px #FF0;
       }
   </style>
 
 	<head>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   
-                    <body bgcolor="black"></body>
+            <body bgcolor="black"></body>
             <form action="/findGame" method="post">
-                <h2>PLAYER 1</h2>
-                <h3>Email <input type="text" name="email1"><br></h3>
-
-                <h2>PLAYER 2</h2>
-                <h3>Email <input type="text" name="email2"><br></h3>
-                <input class="button" type="submit" value="Submit">
+                <center>
+                <table width="500">
+                  <tr>
+                   <td>
+                      <center>
+                         <table> Player 2 </table>
+                      </center>
+                    </td>
+                  </tr>
+                </table>   
+                <h2>*Email-----> <input type="text" size="25" name="email2"><br></h2>
+                </center>
+                <input class="button" type="submit" value="Play">
             </form>
 
         </body>

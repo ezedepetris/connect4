@@ -2,11 +2,34 @@
     <style>
       @font-face { font-family: slkscrb; src: url("8-bit/slkscrb.ttf"); } 
       @font-face { font-family: slkscr; src: url("8-bit/slkscr.ttf"); } 
-      h3 {
+      h3{
         font-family: slkscr;
         color: #FFE600;
       }
-      button{
+      h4 {
+        font-family: slkscr;
+        color: #FFE600;
+        float: right;
+        position: absolute;
+        right: 0px;
+      }
+      .miniButton {
+        font-family: slkscr;
+        color: #FFE600;
+        float: right;
+        position: absolute;
+        right: 0px;
+        margin-top: 35px;
+        height: 25px;
+        border-radius: 11px;
+        font-size: 15px;
+        box-shadow: -5px 5px 1px rgba(0, 0, 0, 0.84);
+        border: 1px solid #FF0;
+        background: none repeat scroll 0% 0% #DF0008;
+        color: #FFE600;
+        text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.84);
+      }
+      .button{
         font-family: slkscr;
         font-weight: bold;
         width: 100%;
@@ -34,6 +57,10 @@
     <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <body bgcolor="black"></body>
+        {{#user}}
+        <h4>{{toStringEmail}}</h4>
+        {{/user}}
+        <a href="http://localhost:4567/firstView"><button class="miniButton" type ="button" >Log Out</button></a>
         <center>
           <table width="500">
             <tr>
@@ -43,16 +70,15 @@
                 </center>
               </td>
             </tr>
-          </table>
+          </table>          
           <h1></h1>
+          <a href="http://localhost:4567/users"><button class="button" type ="button" >Show Users</button></a>
           <h1></h1>
-          <a href="http://localhost:4567/users"><button type ="button" >Show Users</button></a>
+          <a href="http://localhost:4567/ranks"><button class="button" type ="button" >Show Ranking</button></a>
           <h1></h1>
-          <a href="http://localhost:4567/ranks"><button type ="button" >Show Ranking</button></a>
+          <a href="http://localhost:4567/choiseAdversary"><button class="button" type ="button" >New Game</button></a>
           <h1></h1>
-          <a href="http://localhost:4567/choiseAdversary"><button type ="button" >New Game</button></a>
-          <h1></h1>
-          <a href="http://localhost:4567/returnGame"><button type ="button" >Resume Game</button></a>
+          <a href="http://localhost:4567/returnGame"><button class="button" type ="button" >Resume Game</button></a>
         </center>
         <h3> by Error-404</h3>
     </body>
