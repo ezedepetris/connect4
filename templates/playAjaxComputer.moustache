@@ -1,6 +1,5 @@
 <script>
-
- function insertToken(x,y){
+  function insertToken(x,y){
   $(x).on("submit", function(e){
       $.ajax({
         url: "/add_token",
@@ -9,7 +8,10 @@
       }).done(function(data){
         console.log(data);
         $("#load_grid").html(data);
-        playComputer();
+        var computerGame = {{computer}} ;
+        if(computerGame == 1){
+          playComputer();
+        }
       });
       e.preventDefault();
       return false;

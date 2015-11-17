@@ -17,13 +17,18 @@ public class App{
     externalStaticFileLocation("./media");
 
     /*open the connection with the database*/
-    before((request, response) -> {
-      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
-    });
+    // before((request, response) -> {
+    //   Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+    // });
 
     /*return the view for register a new user or login of the application*/
     get("/firstView", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+
       Variable.computerGame = false;
+      request.session(true);
+      Base.close();
+
       return new ModelAndView(null, "firstView.moustache");
     },
       new MustacheTemplateEngine()
@@ -31,7 +36,9 @@ public class App{
 
     /*return the view for sing in a user*/
     get("/singIn", (request, response) -> {
-      Variable.computerGame = false;
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "singIn.moustache");
     },
       new MustacheTemplateEngine()
@@ -39,7 +46,9 @@ public class App{
 
     /*return the view for sing un a user*/
     get("/singUp", (request, response) -> {
-      Variable.computerGame = false;
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "singUp.moustache");
     },
       new MustacheTemplateEngine()
@@ -47,7 +56,11 @@ public class App{
 
     /*return the menu of the application*/
     get("/main", (request, response) -> {
+
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
+      request.session().removeAttribute("gameId");
+      request.session().removeAttribute("winnerID");
       Variable.computerGame = false;
       Integer user_int;
       Long user_long;
@@ -61,6 +74,8 @@ public class App{
         loginUser = loginUser.getUserLong(user_long);
       }
       attributes.put("user",loginUser);
+      Base.close();
+
       return new ModelAndView(attributes, "main.moustache");
     },
       new MustacheTemplateEngine()
@@ -69,13 +84,16 @@ public class App{
     // get("/playNewGame", (request, response) -> {
     //   Map<String, Object> attributes = new HashMap<>();
     //       request.session(true);
+
     //   response.redirect("/register_2");
     //   return null;
     // });
 
     /*return the menu of the application*/
     get("/playNewGame", (request, response) -> {
-      Variable.computerGame = false;
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "firstViewP2.moustache");
     },
       new MustacheTemplateEngine()
@@ -83,7 +101,9 @@ public class App{
 
     /*return the view for sing in a user 2*/
     get("/singInP2", (request, response) -> {
-      Variable.computerGame = false;
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "singInP2.moustache");
     },
       new MustacheTemplateEngine()
@@ -91,7 +111,9 @@ public class App{
 
     /*return the view for sing un a user 2*/
     get("/singUpP2", (request, response) -> {
-      Variable.computerGame = false;
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "singUpP2.moustache");
     },
       new MustacheTemplateEngine()
@@ -99,14 +121,20 @@ public class App{
 
     /*return the form to register the user 1*/
     get("/register_1", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
+      Base.close();
+
       return new ModelAndView(null, "register1.moustache");
     },
       new MustacheTemplateEngine()
     );
     /*return the form to register the user 2*/
     get("/register_2", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
+      Base.close();
+
       return new ModelAndView(null, "register2.moustache");
     },
       new MustacheTemplateEngine()
@@ -114,12 +142,14 @@ public class App{
 
     /*search or create an user*/
     post("/register1", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       String fname1 = request.queryParams("fname1");
       String lname1 = request.queryParams("lname1");
       String email1 = request.queryParams("email1");
 
       if(email1==null || email1==""){
+        Base.close();
         response.redirect("/main");
         return null;
       }
@@ -129,6 +159,7 @@ public class App{
       Integer intUser1_id;
       if(user1 == null){
         if(fname1==null|| lname1 ==null||fname1==""|| lname1 ==""){
+          Base.close();
           response.redirect("/main");
           return null;
         }
@@ -141,17 +172,20 @@ public class App{
         intUser1_id = (Integer)user1.getId();
         request.session().attribute("user1int",intUser1_id);
       }
+      Base.close();
       response.redirect("/main");
       return null;
     });
 
     /*search or create the user 2, and create a new game */
     post("/register2", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       String fname2 = request.queryParams("fname2");
       String lname2 = request.queryParams("lname2");
       String email2 = request.queryParams("email2");
       if(email2==null){
+        Base.close();
         response.redirect("/main");
         return null;
       }
@@ -161,6 +195,7 @@ public class App{
       Integer intUser2_id;
       if(user2 == null){
         if(fname2 ==null|| lname2 ==null || fname2 ==""|| lname2 ==""){
+          Base.close();
           response.redirect("/main");
           return null;
         }
@@ -184,6 +219,8 @@ public class App{
       newGame.set("grid_id",newGrid.getId());
       newGame.save();
       request.session().attribute("gameId",newGame.getId());
+      Base.close();
+
       response.redirect("/play");
       return null;
     }
@@ -193,6 +230,7 @@ public class App{
 
       /*show the board*/
     get("/play", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
 
       Long longGameID = null;
@@ -224,6 +262,7 @@ public class App{
       else
         attributes.put("computer", 2);  
 
+      Base.close();
       return new ModelAndView(attributes, "play.moustache");
 
     },
@@ -232,9 +271,12 @@ public class App{
     
     /*show all the user of the application*/
     get("/users", (request, response) -> {
-        Map<String, Object > attributes = new HashMap<>();
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+        Map<String, Object> attributes = new HashMap<>();
         List<User> users = User.findAll();
         attributes.put("users", users);
+        Base.close();
+
         return new ModelAndView(attributes, "users.moustache");
       },
       new MustacheTemplateEngine()
@@ -243,7 +285,14 @@ public class App{
     /*insert an atoken and verify if there is a winner or deat head */
             
     post("/add_token",(request,response)-> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
+      if(request.session().attribute("winnerID")!= null){
+        Base.close();
+
+        response.redirect("/winner");
+        return null;
+      }
       
       Integer column = Integer.parseInt(request.queryParams("col"));
 
@@ -268,6 +317,8 @@ public class App{
       if(column==0){
         currentGame.save();
         request.session().removeAttribute("returnGame");
+        Base.close();
+
         response.redirect("/main");
         return null;
       }
@@ -282,7 +333,10 @@ public class App{
       if(doublet.getSecond()==0){
         currentGame.set("winner_id",0);
         currentGame.save();
-        return new ModelAndView(null,"dead_heat.moustache");
+        attributes.put("computer", 2);
+        Base.close();
+        return new ModelAndView(attributes,"dead_heat.moustache");
+
         // response.redirect("/dead_heat");
         // return null;
       }
@@ -293,13 +347,21 @@ public class App{
           else
             currentGame.set("winner_id", currentGame.get("user2_id"));
           currentGame.save();
-          Rank rank = new Rank();
-          rank.upDateRank((Integer)currentGame.get("winner_id"));
-          if(Variable.computerGame)
+          if(!Variable.computerGame){
+            Rank rank = new Rank();
+            rank.upDateRank((Integer)currentGame.get("winner_id"));
+          }
+          if(Variable.computerGame){
             attributes.put("winnerID","human");
+            request.session().attribute("winnerID","human");
+          }
           else
             attributes.put("winnerID","player "+doublet.getSecond());
+          attributes.put("computer", 2);
+          Base.close();
+
           return new ModelAndView(attributes,"winner.moustache");
+
           // response.redirect("/winner");
           // return null;
         }
@@ -359,10 +421,14 @@ public class App{
             attributes.put("computer", 2);  
 
           
-          if(Variable.computerGame)
+          if(Variable.computerGame){
+            Base.close();
             return new ModelAndView(attributes, "playAjaxComputer.moustache");
-          else
+          }
+          else{
+            Base.close();
             return new ModelAndView(attributes, "playAjax.moustache");
+          }
         }
       }
 
@@ -373,9 +439,14 @@ public class App{
 
 
     post("/add_token_computer",(request,response)-> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
 
-
+      if(request.session().attribute("winnerID")!= null){
+        Base.close();
+        response.redirect("/winner");
+        return null;
+      }
 
       Long longGameID = null;
       Integer intGameID = null;
@@ -410,7 +481,10 @@ public class App{
       if(doublet.getSecond()==0){
         currentGame.set("winner_id",0);
         currentGame.save();
-        return new ModelAndView(null,"dead_heat.moustache");
+        attributes.put("computer", 2);
+        Base.close();
+
+        return new ModelAndView(attributes,"dead_heat.moustache");
         // response.redirect("/dead_heat");
         // return null;
       }
@@ -419,6 +493,8 @@ public class App{
           currentGame.set("winner_id", currentGame.get("user2_id"));
           currentGame.save();
           attributes.put("winnerID","COMPUTER");
+          Base.close();
+
           return new ModelAndView(attributes,"winner.moustache");
           // response.redirect("/winner");
           // return null;
@@ -433,10 +509,8 @@ public class App{
         }
       }
       attributes.put("grid", currentGrid);
-      if(Variable.computerGame)
-        attributes.put("computer", 1);
-      else
-        attributes.put("computer", 2);  
+      attributes.put("computer", 1);  
+      Base.close();
       return new ModelAndView(attributes, "playAjax.moustache");
       },
       new MustacheTemplateEngine()
@@ -452,30 +526,36 @@ public class App{
 
 
     get("/games",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
       Map<String, Object> attributes = new HashMap<>();
       List<Game> games = Game.findAll();
       attributes.put("games", games);
+      Base.close();
       return new ModelAndView(attributes, "games.moustache");
     },
       new MustacheTemplateEngine()
     );
     /*show all the ranks*/
     get("/ranks",(request, response) -> {
+      //Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-        Map<String, Object> attributes = new HashMap<>();
-        List<Rank> ranks = Rank.findAll();
-        attributes.put("ranks", ranks);
-        return new ModelAndView(attributes, "ranks.moustache");
+      Map<String, Object> attributes = new HashMap<>();
+      List<Rank> ranks = Rank.findAll();
+      attributes.put("ranks", ranks);
+      //Base.close();
+      return new ModelAndView(attributes, "ranks.moustache");
     },
         new MustacheTemplateEngine()
     );
 
     get("/gamesusers",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
       Map<String, Object> attributes = new HashMap<>();
       List<GamesUsers> gamesusers = GamesUsers.findAll();
       attributes.put("gamesusers", gamesusers);
+      Base.close();
       return new ModelAndView(attributes, "gamesusers.moustache");
     },
       new MustacheTemplateEngine()
@@ -484,10 +564,13 @@ public class App{
    
    
     get("/grids",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
-        Map<String, Object> attributes = new HashMap<>();
-        List<Grid> grids = Grid.findAll();
-        attributes.put("grids", grids);
+      Map<String, Object> attributes = new HashMap<>();
+      List<Grid> grids = Grid.findAll();
+      attributes.put("grids", grids);
+      Base.close();
+
         return new ModelAndView(attributes, "grids.moustache");
     },
         new MustacheTemplateEngine()
@@ -495,9 +578,12 @@ public class App{
 
    /*return the view when an user wins*/
     get("/winner", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       // User user = User.where("id = ?", request.session().attribute("user_id"));
-      attributes.put("player", request.session().attribute("winnerID"));
+      attributes.put("winnerID", request.session().attribute("winnerID"));
+      Base.close();
+
       return new ModelAndView(attributes, "winner.moustache");
     },
       new MustacheTemplateEngine()
@@ -505,6 +591,9 @@ public class App{
 
     /*return the view when a game is dead heat*/
     get("/dead_heat", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "dead_heat.moustache");
     },
       new MustacheTemplateEngine()
@@ -512,12 +601,18 @@ public class App{
 
     /*here search two useres and load his last game*/
     get("/returnGame", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "returnGame.moustache");
     },
       new MustacheTemplateEngine()
     );
     
     get("/choiseAdversary",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      Base.close();
+
       return new ModelAndView(null, "choiseAdversary.moustache");
     },
       new MustacheTemplateEngine()
@@ -526,6 +621,7 @@ public class App{
 
 
     post("/createFakeGame",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       Variable.computerGame = true;
       User user1 = new User();
@@ -551,18 +647,21 @@ public class App{
       newGame.save();
       request.session().attribute("gameId",newGame.getId());
 
+      Base.close();
       return new ModelAndView(null, "difficulty.moustache");
     },
        new MustacheTemplateEngine()
     );
 
     post("/difficulty",(request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       Grid grid = new Grid();
       Integer depth = Integer.parseInt(request.queryParams("level"));
       Variable.engine = new MinMaxEngine(grid,depth);
       System.out.println("THE DEPTH ISs "+ Variable.engine.getMaxDepth());
 
+      Base.close();
       response.redirect("/play");
       return null;
     }
@@ -570,8 +669,10 @@ public class App{
 
 
     post("/findGame", (request, response) -> {
+      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       String email2 = (String)request.queryParams("email2");
       if(email2 == null || email2==""){  
+        Base.close();
         response.redirect("/main");
         return null;
       }
@@ -590,20 +691,25 @@ public class App{
 
       User player2 = User.findFirst("email = ?" ,email2);
        if(player1 == null || player2 == null){
+        Base.close();
         response.redirect("/main");
         return null;
       }
       Game game = Game.findFirst("((user1_id = "+ (Integer)player1.getId() +" and user2_id = "+ (Integer)player2.getId()+") or (user2_id = "+ (Integer)player1.getId() +" and user1_id = "+ (Integer)player2.getId()+")) and (winner_id <=> null)");
       if(game==null){
+        Base.close();
         response.redirect("/main");
         return null;
       }
-      if (game == null)
+      if (game == null){
+        Base.close();
         return new ModelAndView(null, "main.moustache");
+      }
       else{
         Integer game_id = (Integer)game.getId();
         request.session().attribute("gameId", game_id);
         request.session().attribute("returnGame", 0);
+        Base.close();
         response.redirect("/play");
         return null;
       }
@@ -611,9 +717,9 @@ public class App{
 
 
     /*close the connection*/  
-    after((request, response) -> {
-      Base.close();
-    });
+    // after((request, response) -> {
+    //   Base.close();
+    // });
 
   }
 

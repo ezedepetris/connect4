@@ -2,6 +2,7 @@ package com.unrc.app;
 import java.util.*;
 import org.javalite.activejdbc.Model;
 
+
 public class Rank extends Model{
 	
 	public Rank(){
@@ -47,8 +48,6 @@ public class Rank extends Model{
     	i--;
     }
 	}//End of upDateRank
-
-  
 
 
 	public String toStringId(){
