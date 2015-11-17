@@ -474,20 +474,30 @@ public class App{
 
 
     post("/findGame", (request, response) -> {
-      String email1 = (String)request.queryParams("email1");
       String email2 = (String)request.queryParams("email2");
-      if(email1 == email2 || email1 == null || email2 == null || email1=="" || email2==""){
+      if(email2 == null || email2==""){  
         response.redirect("/main");
         return null;
       }
-      User player1 = User.findFirst("email = ?" ,email1);
+
+      Integer user_int;
+      Long user_long;
+      User player1 = new User();
+      if(request.session().attribute("user1int")!=null){
+        user_int = (Integer)request.session().attribute("user1int");
+        player1 = player1.getUserInteger(user_int);
+      }
+      else{
+        user_long = (Long)request.session().attribute("user1long");
+        player1 = player1.getUserLong(user_long);
+      }
+
       User player2 = User.findFirst("email = ?" ,email2);
        if(player1 == null || player2 == null){
         response.redirect("/main");
         return null;
       }
       Game game = Game.findFirst("((user1_id = "+ (Integer)player1.getId() +" and user2_id = "+ (Integer)player2.getId()+") or (user2_id = "+ (Integer)player1.getId() +" and user1_id = "+ (Integer)player2.getId()+")) and (winner_id <=> null)");
-      System.out.println("PASEERERERERERE ER RE RERE RE RERER KEK EKRE KER E");
       if(game==null){
         response.redirect("/main");
         return null;
