@@ -47,6 +47,20 @@ public class User extends Model{
 		return this;
 	}
 
+	public User getUserInteger(Integer id){
+		List<User> current = User.where("id = ?",id);
+		if(!current.isEmpty() && current != null)
+			return current.get(0);
+		return null;
+	}
+
+	public User getUserLong(Long id){
+		List<User> current = User.where("id = ?",id);
+		if(!current.isEmpty() && current != null)
+			return current.get(0);
+		return null;
+	}
+
 	public String toStringFirstName(){
 		return this.getString("first_name");
 	}

@@ -47,8 +47,21 @@ public class App{
 
     /*return the menu of the application*/
     get("/main", (request, response) -> {
+      Map<String, Object> attributes = new HashMap<>();
       Variable.computerGame = false;
-      return new ModelAndView(null, "main.moustache");
+      Integer user_int;
+      Long user_long;
+      User loginUser = new User();
+      if(request.session().attribute("user1int")!=null){
+        user_int = (Integer)request.session().attribute("user1int");
+        loginUser = loginUser.getUserInteger(user_int);
+      }
+      else{
+        user_long = (Long)request.session().attribute("user1long");
+        loginUser = loginUser.getUserLong(user_long);
+      }
+      attributes.put("user",loginUser);
+      return new ModelAndView(attributes, "main.moustache");
     },
       new MustacheTemplateEngine()
     );
@@ -104,9 +117,8 @@ public class App{
       Map<String, Object> attributes = new HashMap<>();
       String fname1 = request.queryParams("fname1");
       String lname1 = request.queryParams("lname1");
-      // String fname1 = "player1name";
-      // String lname1 = "player1lastname";
       String email1 = request.queryParams("email1");
+
       if(email1==null || email1==""){
         response.redirect("/main");
         return null;
