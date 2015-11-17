@@ -296,6 +296,11 @@ public String next(){
 
 
 	/*this method show the board on the client side*/
+	public String menu(){
+		if(Variable.computerGame)
+			return ("<a href="+'"'+"http://localhost:4567/main"+'"'+"><button type ="+'"'+"button" +'"'+">MENU</button></a>");
+		return ("<td width="+'"'+"70"+'"'+ "align="+'"'+"left"+'"'+"><button type ="+'"'+"submit"+'"'+" >SAVE GAME</button></td>");
+	}
 	public String print(){
 		String board = "";
 

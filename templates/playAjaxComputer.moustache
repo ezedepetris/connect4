@@ -1,0 +1,70 @@
+<script>
+
+ function insertToken(x,y){
+  $(x).on("submit", function(e){
+      $.ajax({
+        url: "/add_token",
+        data: {col:y},
+        method: "post"
+      }).done(function(data){
+        console.log(data);
+        $("#load_grid").html(data);
+        playComputer();
+      });
+      e.preventDefault();
+      return false;
+    }); 
+ };
+ 
+  function playComputer(){
+    $.ajax({
+      method: "post",
+      url: "/add_token_computer"
+    }).done(function(data){
+        console.log(data);
+        $("#load_grid").html(data);
+      });
+  }
+
+
+  $("document").ready(function(){
+    insertToken("#column1","1");
+    insertToken("#column2","2");
+    insertToken("#column3","3");
+    insertToken("#column4","4");
+    insertToken("#column5","5");
+    insertToken("#column6","6");
+    insertToken("#column7","7");
+  });
+</script>
+
+<table align="center">
+  <input type="hidden" value="1" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="2" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="3" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="4" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="5" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="6" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+
+  <input type="hidden" value="7" name="col">
+  <td width="70" align="center">{{#grid}} {{{colorButton}}} {{/grid}}</td>
+</table>
+
+{{#grid}}
+  {{{print}}}
+{{/grid}}
+
+{{#grid}}
+  {{{next}}}
+{{/grid}}

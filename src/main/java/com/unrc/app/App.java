@@ -207,6 +207,11 @@ public class App{
       currentGrid.load(listCells);
 
       attributes.put("grid", currentGrid);
+      if(Variable.computerGame)
+        attributes.put("computer", 1);
+      else
+        attributes.put("computer", 2);  
+
       return new ModelAndView(attributes, "play.moustache");
 
     },
@@ -224,6 +229,7 @@ public class App{
     );
 
     /*insert an atoken and verify if there is a winner or deat head */
+            
     post("/add_token",(request,response)-> {
       Map<String, Object> attributes = new HashMap<>();
       
@@ -299,49 +305,139 @@ public class App{
           }
 
           // HERE THE COMPUTER BEGINS TO PLAY BITCHESS!!!
-          if(Variable.computerGame){ 
+          // if(Variable.computerGame){ 
 
-            Integer nextMove = Variable.engine.computeSuccessor(currentGrid);
+          //   Integer nextMove = Variable.engine.computeSuccessor(currentGrid);
 
-            doublet = currentGrid.play(2,nextMove+1);
+          //   doublet = currentGrid.play(2,nextMove+1);
 
-            Cell cellComputer = new Cell();
-            cellComputer.set("pos_x", doublet.getFirst());
-            cellComputer.set("pos_y", nextMove+1);
-            if(doublet.getSecond()==0){
-              currentGame.set("winner_id",0);
-              currentGame.save();
-              return new ModelAndView(null,"dead_heat.moustache");
-              // response.redirect("/dead_heat");
-              // return null;
-            }
-            else{
-              if(doublet.getSecond() >0){
-                currentGame.set("winner_id", currentGame.get("user2_id"));
-                currentGame.save();
-                attributes.put("winnerID","COMPUTER");
-                return new ModelAndView(attributes,"winner.moustache");
-                // response.redirect("/winner");
-                // return null;
-              }
-              else{
-                if(doublet.getSecond() != (-1)){
-                  cellComputer.set("user_id", currentGame.get("user2_id"));
-                  /*ASSIGN A GRID TO CELLComputer*/
-                  cellComputer.set("grid_id", currentGrid.getId());
-                  cellComputer.save();
-                }          
-              }
-            }
-          }
+          //   Cell cellComputer = new Cell();
+          //   cellComputer.set("pos_x", doublet.getFirst());
+          //   cellComputer.set("pos_y", nextMove+1);
+          //   if(doublet.getSecond()==0){
+          //     currentGame.set("winner_id",0);
+          //     currentGame.save();
+          //     return new ModelAndView(null,"dead_heat.moustache");
+          //     // response.redirect("/dead_heat");
+          //     // return null;
+          //   }
+          //   else{
+          //     if(doublet.getSecond() >0){
+          //       currentGame.set("winner_id", currentGame.get("user2_id"));
+          //       currentGame.save();
+          //       attributes.put("winnerID","COMPUTER");
+          //       return new ModelAndView(attributes,"winner.moustache");
+          //       // response.redirect("/winner");
+          //       // return null;
+          //     }
+          //     else{
+          //       if(doublet.getSecond() != (-1)){
+          //         cellComputer.set("user_id", currentGame.get("user2_id"));
+          //         /*ASSIGN A GRID TO CELLComputer*/
+          //         cellComputer.set("grid_id", currentGrid.getId());
+          //         cellComputer.save();
+          //       }          
+          //     }
+          //   }
+          // }
           attributes.put("grid", currentGrid);
-          return new ModelAndView(attributes, "playAjax.moustache");
+          if(Variable.computerGame)
+            attributes.put("computer", 1);
+          else
+            attributes.put("computer", 2);  
+
+          
+          if(Variable.computerGame)
+            return new ModelAndView(attributes, "playAjaxComputer.moustache");
+          else
+            return new ModelAndView(attributes, "playAjax.moustache");
         }
       }
 
     },
       new MustacheTemplateEngine() 
     );
+
+
+
+    post("/add_token_computer",(request,response)-> {
+      Map<String, Object> attributes = new HashMap<>();
+
+
+
+      Long longGameID = null;
+      Integer intGameID = null;
+      if(request.session().attribute("returnGame")== null)
+        longGameID = (Long)request.session().attribute("gameId");
+      else{
+        intGameID = (Integer)request.session().attribute("gameId");
+      }
+
+
+      Game currentGame = new Game();
+      Grid currentGrid = new Grid();
+
+      if (longGameID != null)
+        currentGame = currentGame.findFirst("id = "+longGameID);
+      else
+        currentGame = currentGame.findFirst("id = "+intGameID);
+
+      currentGrid = currentGrid.findFirst("id = "+ currentGame.get("grid_id"));
+     
+      Cell cellComputer = new Cell();
+      List<Cell> listCells = cellComputer.where("grid_id = ?",currentGrid.getId());
+      currentGrid.load(listCells);
+
+      Integer nextMove = Variable.engine.computeSuccessor(currentGrid);
+
+      Doublet doublet = currentGrid.play(2,nextMove+1);
+
+      cellComputer.set("pos_x", doublet.getFirst());
+      cellComputer.set("pos_y", nextMove+1);
+
+      if(doublet.getSecond()==0){
+        currentGame.set("winner_id",0);
+        currentGame.save();
+        return new ModelAndView(null,"dead_heat.moustache");
+        // response.redirect("/dead_heat");
+        // return null;
+      }
+      else{
+        if(doublet.getSecond() >0){
+          currentGame.set("winner_id", currentGame.get("user2_id"));
+          currentGame.save();
+          attributes.put("winnerID","COMPUTER");
+          return new ModelAndView(attributes,"winner.moustache");
+          // response.redirect("/winner");
+          // return null;
+        }
+        else{
+          if(doublet.getSecond() != (-1)){
+            cellComputer.set("user_id", currentGame.get("user2_id"));
+            /*ASSIGN A GRID TO CELLComputer*/
+            cellComputer.set("grid_id", currentGrid.getId());
+            cellComputer.save();
+          }          
+        }
+      }
+      attributes.put("grid", currentGrid);
+      if(Variable.computerGame)
+        attributes.put("computer", 1);
+      else
+        attributes.put("computer", 2);  
+      return new ModelAndView(attributes, "playAjax.moustache");
+      },
+      new MustacheTemplateEngine()
+      );
+
+
+
+
+
+
+
+
+
 
     get("/games",(request, response) -> {
 

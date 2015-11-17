@@ -30,7 +30,7 @@
     </form>
 
     <form action="/difficulty" method="post">
-      <input type="hidden" value="23" name="level">
+      <input type="hidden" value="24" name="level">
       <td width="70" align="center"><button type ="submit" >Hard</button></td>
     </form>
   </head>

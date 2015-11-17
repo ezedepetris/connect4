@@ -17,7 +17,9 @@
 
         <form action="add_token" autocomplete="on" method="post">
           <input type="hidden" value="0" name="col">
-          <td width="70" align="left"><button type ="submit" >SAVE GAME</button></td>
+          {{#grid}}
+           {{{menu}}}
+          {{/grid}}
         </form>
       
       <style>
