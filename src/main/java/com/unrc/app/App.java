@@ -5,6 +5,8 @@ import com.unrc.app.User;
 import org.javalite.activejdbc.Base;
 import java.util.Scanner;
 import java.util.*;
+import java.net.*;
+
 import java.lang.Object;
 
 import spark.ModelAndView;
@@ -36,7 +38,7 @@ public class App{
     }
 
 
-    
+
   public static void main(String[] args) {
     externalStaticFileLocation("./media");
 
@@ -281,6 +283,7 @@ public class App{
       currentGrid.load(listCells);
 
       attributes.put("grid", currentGrid);
+      attributes.put("ip", App.getServerIp());
       if(Variable.computerGame)
         attributes.put("computer", 1);
       else
@@ -439,6 +442,7 @@ public class App{
           //   }
           // }
           attributes.put("grid", currentGrid);
+          attributes.put("ip", App.getServerIp());
           if(Variable.computerGame)
             attributes.put("computer", 1);
           else
@@ -533,6 +537,7 @@ public class App{
         }
       }
       attributes.put("grid", currentGrid);
+      attributes.put("ip", App.getServerIp());
       attributes.put("computer", 1);  
       Base.close();
       return new ModelAndView(attributes, "playAjax.moustache");
