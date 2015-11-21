@@ -12,7 +12,31 @@ import spark.TemplateEngine;
 
 
 public class App{
+  private static String getServerIp(){
+        String ip="";
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+                // filters out 127.0.0.1 and inactive interfaces
+                if (iface.isLoopback() || !iface.isUp())
+                    continue;
 
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while(addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    ip = addr.getHostAddress();
+                    System.out.println(iface.getDisplayName() + " " + ip);
+                }
+            }
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
+      return ip;
+    }
+
+
+    
   public static void main(String[] args) {
     externalStaticFileLocation("./media");
 
@@ -56,7 +80,7 @@ public class App{
 
     /*return the menu of the application*/
     get("/main", (request, response) -> {
-
+      //Base.close();
       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
       Map<String, Object> attributes = new HashMap<>();
       request.session().removeAttribute("gameId");
@@ -272,13 +296,13 @@ public class App{
     /*show all the user of the application*/
     get("/users", (request, response) -> {
       Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
-        Map<String, Object> attributes = new HashMap<>();
-        List<User> users = User.findAll();
-        attributes.put("users", users);
-        Base.close();
+      Map<String, Object> attributes = new HashMap<>();
+      List<User> users = User.findAll();
+      attributes.put("users", users);
 
-        return new ModelAndView(attributes, "users.moustache");
-      },
+      Base.close();
+      return new ModelAndView(attributes, "users.moustache");
+    },
       new MustacheTemplateEngine()
     );
 
@@ -538,19 +562,19 @@ public class App{
     );
     /*show all the ranks*/
     get("/ranks",(request, response) -> {
-      //Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+     Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
       Map<String, Object> attributes = new HashMap<>();
       List<Rank> ranks = Rank.findAll();
       attributes.put("ranks", ranks);
-      //Base.close();
+      Base.close();
       return new ModelAndView(attributes, "ranks.moustache");
     },
         new MustacheTemplateEngine()
     );
 
     get("/gamesusers",(request, response) -> {
-      Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
+      //Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/connect4_development", "root", "root");
 
       Map<String, Object> attributes = new HashMap<>();
       List<GamesUsers> gamesusers = GamesUsers.findAll();
